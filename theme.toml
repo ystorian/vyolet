@@ -1,0 +1,20 @@
+name        = "Vyolet"
+description = "Ystorian theme"
+homepage    = "https://github.com/Ystorian/vyolet"
+min_version = "0.16.0"
+demo        = "https://ystorian.com"
+
+[author]
+name     = "Flavien Scheurer"
+homepage = "https://github.com/cyann/"
+
+[extra]
+site_title            = "Ystorian"
+site_description      = "Real-time security inventory"
+theme_color           = "hsl(265, 100%, 60%)"
+theme_color_rgb       = "#8533ff"
+plausible_data_domain = ""
+twitter               = "ystorian"
+linkedin              = "Ystorian"
+github                = "Ystorian"
+mailto                = "contact@ystorian.com"
