@@ -132,15 +132,9 @@
 {% macro plausible() %}
 <!-- base::plausible() -->
 {%- set data_domain = extra.plausible_data_domain | default(value='ystorian.com') %}
-{%- set plausible_js = 'js/script.js' %}
-{#- Download https://plausible.io/js/script.js into themes/vyolet/static/js/script.js to get Zola recalculate the hash.
-	2022-04-14: 0tX/C66trbqI1ludXxeZmlfZv7n7W+SsSI45FPLHoK49MIpj6t7dyZ7CalV7x2pk
-	2022-08-16: iqkTET22yeDECEmqgbALny1PVfq4Hh3uYBKbV1hvmW0YFKqGFviOvr15eFYMQOGy
-#}
 	<script defer
 		data-domain="{{ data_domain }}"
 		src="https://plausible.io/js/script.js"
-		integrity="sha384-{{ get_file_hash(path = plausible_js, sha_type=384, base64=true) | safe }}"
 		crossorigin="anonymous">
 	</script>
 <!-- /base::plausible -->
