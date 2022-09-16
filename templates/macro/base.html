@@ -166,17 +166,29 @@
 		<div class="column"><!-- column 4 -->
 			<p class="menu-label">Social Networks</p>
 			<p class="is-size-4">
-				<a href="https://twitter.com/ystorian">
+				{%- if config.extra.twitter %}
+				<a href="https://twitter.com/{{ config.extra.twitter }}">
 					<span class="svg-icon">{{ icon::twitter() }}</span></a>
-				<a href="https://www.linkedin.com/company/Ystorian">
+				{% endif -%}
+
+				{%- if config.extra.linkedin %}
+				<a href="https://www.linkedin.com/company/{{ config.extra.linkedin }}">
 					<span class="svg-icon">{{ icon::linkedin() }}</span></a>
-				<a href="https://github.com/Ystorian">
+				{% endif -%}
+
+				{%- if config.extra.github %}
+				<a href="https://github.com/{{ config.extra.github }}">
 					<span class="svg-icon">{{ icon::github() }}</span></a>
+				{% endif -%}
+
 				{%- if config.generate_feed %}
 				<a href="{{ get_url(path='atom.xml') | safe }}">
 					<span class="svg-icon">{{ icon::rss() }}</span></a>
-				{% endif %}
-				<a href="mailto:contact@ystorian.com">✉️</a>
+				{% endif -%}
+
+				{%- if config.extra.mailto %}
+				<a href="mailto:{{ config.extra.mailto }}">✉️</a>
+				{%- endif %}
 			</p>
 		</div><!-- /column 4 -->
 
