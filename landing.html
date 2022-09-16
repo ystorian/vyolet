@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{{ base::navbar(padding = false) }}
+{% endblock navbar %}
+
+{% block content %}
+<!-- landing.html -->
+<div class="hero is-fullwidth is-overlay has-background">
+	<img class="hero-background is-transparent" src="{{ get_url(path = 'image/background-512-128.min.svg') }}" />
+	<!-- Hero head: will stick at the top -->
+	<div class="hero-head">
+
+	</div>
+
+	<!-- Hero content: will be in the middle -->
+	<div class="hero-body">
+		<div class="container has-text-centered">
+			<p class="title">qwerwerqwer
+				{# {{ page.title }} #}
+			</p>
+			<p class="subtitle">qwerqwerqwer
+				{# {{ page.subtitle }} #}
+			</p>
+		</div>
+	</div>
+
+	<!-- Hero footer: will stick at the bottom -->
+	<div class="hero-foot">
+		<nav class="tabs">
+			<div class="container">
+				<ul>
+					<li class="is-active"><a>Overview</a></li>
+					<li><a>Modifiers</a></li>
+					<li><a>Grid</a></li>
+					<li><a>Elements</a></li>
+					<li><a>Components</a></li>
+					<li><a>Layout</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+<div class="content article-body">
+	{{ section.content | safe }}
+</div><!-- /content -->
+<!-- /landing.html -->
+{% endblock content %}

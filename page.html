@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "macro/blog.html" as blog %}
+
+{% block content %}
+<!-- page.html -->
+{% if 'blog' in page.components %}
+
+				<div class="card">
+					<div class="card-content">
+						{{ blog::header(page = page) }}
+						<div class="content article-body">
+							{{ page.content | safe }}
+						</div><!-- /content -->
+					</div><!-- /card-content -->
+					{% block page_footer %}
+					{{ blog::footer(page = page) }}
+					{% endblock page_footer %}
+				</div><!-- /card -->
+{% else %}
+{{ page.content | safe }}
+{% endif %}
+<!-- /page.html -->
+{% endblock content %}

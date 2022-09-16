@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{# Title #}
+{% block title %}<title>Page not found</title>{% endblock title %}
+
+{# Navbar without padding #}
+{% block navbar %}
+{{ base::navbar(padding = false) }}
+{% endblock navbar %}
+
+{# Page heading #}
+
+{% block content %}
+<!-- 404.html -->
+<section class="hero is-warning is-halfheight-with-navbar">
+	<div class="hero-body">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-1 ">
+					<span class="emoji-large">&#x26A0;&#xFE0F;</span>
+				</div>
+				<div class="column is-6 is-offset-2">
+					<p class="title is-1"> </p>
+					<p class="title is-1">404</p>
+					<p class="title is-3">Page not found</h2>
+					<p>The requested page does not exist or has been moved to another address.</p>
+				</div><!-- /column -->
+			</div><!-- /columns -->
+		</div><!-- /container -->
+	</div><!-- /hero-body -->
+</section>
+<!-- /404.html -->
+{% endblock content %}

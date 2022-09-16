@@ -1,0 +1,28 @@
+{#
+	https://www.getzola.org/documentation/templates/taxonomies/#taxonomy-list-list-html
+
+	This template is never paginated and therefore gets the following variables in all cases.
+
+	// The site config
+	config: Config;
+
+	// The data of the taxonomy, from the config
+	taxonomy: TaxonomyConfig;
+
+	// The current full permalink for that page
+	current_url: String;
+
+	// The current path for that page
+	current_path: String;
+
+	// All terms for that taxonomy
+	terms: Array<TaxonomyTerm>;
+
+	// The lang of the current page
+	lang: String;
+#}
+{% extends "taxonomy_list.html" %}
+
+{% block content %}
+{{ super() }}
+{% endblock content %}

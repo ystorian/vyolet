@@ -1,0 +1,206 @@
+{% import "macro/insert.html" as insert %}
+{% import "macro/blog.html" as blog %}
+{% import "macro/icon.html" as icon %}
+
+{% macro head() %}
+{%- set cachebust = true %}
+{%- if config.mode | lower == 'serve' %}
+	{%- set cachebust = false %}
+{% endif -%}
+<head><!-- base::head() -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:updated_time" content="{{ now(utc = true) | date(format = '%+') }}" />
+	<!-- Local time: {{ now() | date(format = '%Y-%m-%d %H:%M') }} -->
+
+	{#- Progressive Web Application #}
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	{#- Title #}
+	<title>{{ self::title() }}</title>
+	<meta property="og:title" content="{{ self::title() }}">
+
+	{#- Description #}
+	{%- set description = config.extra.site_description %}
+	{%- if page.description %}{% set description = page.description %}{% endif %}
+	<meta name="description" content="{{ description }}" />
+	<meta property="og:description" content="{{ description }}">
+
+	{#- Favicon #}
+	<link rel="icon" sizes="any"
+		href="{{ get_url(path='icon/favicon.ico', cachebust = cachebust) }}" />
+	<link rel="apple-touch-icon"
+		href="{{ get_url(path='icon/icon-180x180.png', cachebust = cachebust) }}" />
+	<link rel="mask-icon" color="{{ config.extra.theme_color }}"
+		href="{{ get_url(path='icon/mask-icon.min.svg', cachebust = cachebust) }}" />
+	<link rel="manifest"
+		href="{{ get_url(path='icon/manifest.json', cachebust = cachebust) }}" />
+	<link rel="icon" type="image/svg+xml"
+		href="{{ get_url(path='icon/icon.svg', cachebust = cachebust) }}" />
+
+	{#- Stylesheet #}
+	<link rel="stylesheet"
+		href="{{ get_url(path='css/yulma.css', cachebust = cachebust) }}" />
+
+	{#- Markdown highlighter #}
+	{%- if config.markdown.highlight_code %}
+	<link id="syntax_highlight" href="#" rel="stylesheet">
+	{% endif %}
+
+	{#- Scripts #}
+	<script src="{{ get_url(path='js/yulma.js') }}"></script>
+
+	{#- Feed #}
+	{%- if config.generate_feed %}
+	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='atom.xml') | safe }}">
+	{% endif %}
+</head><!-- /base::head -->
+{% endmacro head %}
+
+
+{% macro title() %}
+{%- set title = config.extra.site_title %}
+{%- if page.title %}
+{%- set title = config.extra.site_title ~ ' &middot; ' ~ page.title %}
+{%- endif %}
+{{- title | safe }}
+{%- endmacro title %}
+
+
+{% macro navbar(padding) %}
+{#- If padding is true: use the "section" class to add padding below the navbar -#}
+<!-- base::navbar() -->
+<header class="header">
+	{%- if padding %}<section class="section">{% endif %}
+		<nav class="navbar is-fixed-top is-hoverable has-shadow"
+			aria-label="main navigation">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="{{ config.base_url | safe }}">
+					{{ insert::logo(width = 48, height = 32) }}
+					{{ insert::logotype(header = true) }}
+				</a>
+				<a role="button" class="navbar-burger" aria-label="menu"
+					aria-expanded="false"
+					data-target="navbarMenu">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div><!-- /navbar-brand -->
+			<div id="navbarMenu" class="navbar-menu">
+				<div class="navbar-start">
+					{%- if config.extra.header_menu %}
+					{%- set navbar_item_class = 'navbar-item' %}
+					{%- for menu in config.extra.header_menu %}
+					{%- if current_url %}
+					{%- set url = menu.url | replace(from = '$BASE_URL', to = config.base_url) %}
+					{%- set url = url ~ '/' %}
+					{%- if current_url is containing('/' ~ menu.url) %}
+					{%- set navbar_item_class = 'navbar-item is-active' %}
+					{%- endif %}
+					{%- endif %}
+					<a class="{{ navbar_item_class }}" href="/{{ menu.url }}">{{ menu.name }}</a>
+					{%- endfor %}
+					{%- endif %}
+				</div><!-- /navbar-start -->
+				{%- if config.build_search_index %}
+				<div class="navbar-item search-container js-only">
+					<input class="input" id="search" type="search" placeholder="Search">
+					<div class="search-results box">
+						<div class="search-results__items"></div>
+					</div><!-- /search-results -->
+				</div><!-- /navbar-item -->
+				{%- endif %}
+				<div class="navbar-end">
+					<div class="navbar-item">
+						<div class="buttons">
+							<a class="button is-primary">
+								<strong>Log in</strong>
+							</a>
+						</div><!-- /buttons -->
+					</div><!-- /navbar-item -->
+				</div><!-- /navbar-end -->
+			</div><!-- /navbar-menu -->
+		</nav>
+	{%- if padding %}</section>{% endif %}
+</header>
+<!-- /base::navbar -->
+{% endmacro navbar %}
+
+
+{% macro plausible() %}
+<!-- base::plausible() -->
+{%- set data_domain = extra.plausible_data_domain | default(value='ystorian.com') %}
+{%- set plausible_js = 'js/script.js' %}
+{#- Download https://plausible.io/js/script.js into themes/yulma/static/js/script.js to get Zola recalculate the hash.
+	2022-04-14: 0tX/C66trbqI1ludXxeZmlfZv7n7W+SsSI45FPLHoK49MIpj6t7dyZ7CalV7x2pk
+	2022-08-16: iqkTET22yeDECEmqgbALny1PVfq4Hh3uYBKbV1hvmW0YFKqGFviOvr15eFYMQOGy
+#}
+	<script defer
+		data-domain="{{ data_domain }}"
+		src="https://plausible.io/js/script.js"
+		integrity="sha384-{{ get_file_hash(path = plausible_js, sha_type=384, base64=true) | safe }}"
+		crossorigin="anonymous">
+	</script>
+<!-- /base::plausible -->
+{% endmacro plausible %}
+
+
+{% macro footer() %}
+<!-- base::footer() -->
+<footer class="footer">
+	<div class="columns is-flex-direction-row-reverse">
+
+
+
+		<div class="column"><!-- column 3 -->
+			<p class="menu-label">Project</p>
+			<ul class="menu-list">
+				<li><a href="{{ get_url(path='about') | safe }}">About</a></li>
+				<li><a href="{{ get_url(path='blog') | safe }}">Blog</a></li>
+			</ul>
+		</div><!-- /column 3 -->
+		<div class="column"><!-- column 2 -->
+			<p class="menu-label">Resources</p>
+			<ul class="menu-list">
+				<li><a href="{{ get_url(path='docs') | safe }}">Documentation</a></li>
+				<li><a href="https://status.ystorian.com">Status</a></li>
+
+			</ul>
+		</div><!-- /column 2 -->
+		<div class="column"><!-- column 4 -->
+			<p class="menu-label">Social Networks</p>
+			<p class="is-size-4">
+				<a href="https://twitter.com/ystorian">
+					<span class="svg-icon">{{ icon::twitter() }}</span></a>
+				<a href="https://www.linkedin.com/company/Ystorian">
+					<span class="svg-icon">{{ icon::linkedin() }}</span></a>
+				<a href="https://github.com/Ystorian">
+					<span class="svg-icon">{{ icon::github() }}</span></a>
+				{%- if config.generate_feed %}
+				<a href="{{ get_url(path='atom.xml') | safe }}">
+					<span class="svg-icon">{{ icon::rss() }}</span></a>
+				{% endif %}
+				<a href="mailto:contact@ystorian.com">✉️</a>
+			</p>
+		</div><!-- /column 4 -->
+
+		<div class="column"><!-- column 1 -->
+			<p class="has-text-centered is-size-3">
+				<span class="icon-text">
+					<span class="logotype"><span class="svg-icon">{{ icon::ystorian() }}</span>{{ config.extra.site_title }}</span>
+				</span>
+			</p>
+			<p class="has-text-centered is-size-7">&copy;2022 Flavien Scheurer</p>
+			<p class="has-text-centered is-size-7">
+				<a href="/privacy">Privacy</a> &amp;
+				<a href="/security">Security</a>
+			</p>
+			<p class="has-text-centered is-size-7">Made in 🇨🇭</p>
+			<p class="has-text-centered is-size-7"><a href="https://www.infomaniak.com/goto/en/home?utm_term=617a889a54450">Hosted in 🇨🇭 by Infomaniak</a></p>
+		</div><!-- /column 1 -->
+	</div><!-- /columns -->
+</footer>
+<!-- /base::footer -->
+{% endmacro footer %}

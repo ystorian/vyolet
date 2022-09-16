@@ -1,0 +1,31 @@
+{% import "macro/base.html" as base %}
+
+<!doctype html>
+<html lang="{{ lang }}">
+
+{{- base::head() -}}
+
+<!-- ...base.html/body -->
+<body class="has-navbar-fixed-top">
+{% block navbar %}
+{{ base::navbar(padding = true) }}
+{% endblock navbar %}
+
+<!-- ...base.html/main -->
+<main>
+	{% block content %}
+	{% endblock content %}
+</main>
+<!-- /base.html/main -->
+
+{{ base::footer() }}
+
+{{ base::plausible() }}
+
+</body>
+<!-- /base.html/body -->
+</html>
+<!-- /base.html/html -->
+
+
+{% if config.mode | lower == 'serve' %}<!-- {{ __tera_context }} -->{% endif %}
