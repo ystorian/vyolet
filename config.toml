@@ -13,8 +13,8 @@ taxonomies = [
 ]
 
 [extra]
-# site_title            = "Ystorian"
-# site_description      = "Real-time security inventory"
-# theme_color           = "hsl(265, 100%, 60%)"
-# theme_color_rgb       = "#8533ff"
-# plausible_data_domain = ""
+site_title            = "Ystorian"
+site_description      = "Real-time security inventory"
+theme_color           = "hsl(265, 100%, 60%)"
+theme_color_rgb       = "#8533ff"
+plausible_data_domain = ""
