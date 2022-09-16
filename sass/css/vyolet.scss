@@ -1,0 +1,132 @@
+@charset "utf-8";
+
+// Important:
+// - Use a relative path (../) for @import.
+// - Keep the `vendor` directory out of the sass/css directory.
+//
+// Zola processes all the files in /sass/css, and will not be able to compile if
+// all the Bulma CSS files are present.
+
+// Import the initial Bulma variables.
+@import "../../vendor/bulma/sass/utilities/initial-variables.sass";
+// Import the Bulma functions to help with variable redefinition.
+@import "../../vendor/bulma/sass/utilities/functions.sass";
+
+// Set the theme variables.
+@import "_variables.scss";
+
+
+// Import the rest of the Bulma SASS files.
+@import "../../vendor/bulma/sass/utilities/_all.sass";
+@import "../../vendor/bulma/sass/base/_all.sass";
+@import "../../vendor/bulma/sass/elements/_all.sass";
+@import "../../vendor/bulma/sass/form/_all.sass";
+@import "../../vendor/bulma/sass/components/_all.sass";
+@import "../../vendor/bulma/sass/layout/_all.sass";
+@import "../../vendor/bulma/sass/grid/_all.sass";
+@import "../../vendor/bulma/sass/helpers/_all.sass";
+// TODO: Probably importing too much, should refactor later.
+
+
+// Ystorian logotype.
+.logotype {
+	font-family: "Avenir Next", "Helvetica Neue", "Lato", sans-serif;
+	font-variant: small-caps;
+	font-weight: 100;
+	color: $ystorian-darker;
+}
+
+.logotype.header {
+	font-size: 150%;
+}
+
+// Large emoji.
+.emoji-large {
+	font-size: 900%;
+	vertical-align: top;
+}
+
+
+// SVG icons.
+.svg-icon {
+	display: inline-flex;
+	align-self: center;
+	padding-right: .5ch;
+}
+
+.svg-icon svg {
+	height: 1em;
+	width: 1em;
+	fill: currentColor;
+	top: .125em;
+	position: relative;
+}
+
+.svg-icon.baseline svg {
+	top: .125em;
+	position: relative;
+}
+
+
+// Logo.
+.logo {
+	align-items: center;
+	justify-content: center;
+}
+
+
+// Page background.
+body {
+	background-color: $body-background;
+}
+
+// Landing page hero.
+.hero.has-background {
+	position: relative;
+	overflow: hidden;
+}
+
+.hero-background {
+	position: absolute;
+	object-fit: cover;
+	object-position: center center;
+	width: 100%;
+	height: 100%;
+}
+
+.hero-background.is-transparent {
+	opacity: 0.9;
+}
+
+
+// Menu.
+.menu-label {
+	color: $menu-label;
+	letter-spacing: 1.3;
+	font-weight: 700;
+}
+
+.menu-label:not(:last-child) {
+	margin-bottom: 1em;
+}
+
+
+// Sticky footer.
+html {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+
+header,
+footer {
+	flex: none;
+}

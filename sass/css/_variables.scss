@@ -1,0 +1,26 @@
+// Ystorian colors.
+$hsl-degree: 265;
+// Main (right) #8833ff:
+$ystorian: hsl(265, 100%, 60%);
+// Light (left) #a666ff:
+$ystorian-light: hsl(265, 100%, 70%);
+// Lighter (up) #c499ff:
+$ystorian-lighter: hsl(265, 100%, 80%);
+// Darker for logotype #2b0066.
+// $ystorian-darker: hsl(265, 100%, 20%);
+$ystorian-darker: findDarkColor($ystorian);
+
+// Page background:
+$body-background: hsl(265, 100%, 99%);
+$menu-label: hsl(265, 40%, 70%);
+
+// Reset some default Bulma variables.
+
+// Set the primary color to the main theme color.
+$primary: $ystorian;
+
+// Reduce the navbar breakpoint to smaller screens.
+//	Default is $desktop (1024px).
+//	$widescreen / 2 (1152px / 2 = 576) is smaller and allows for the menu to be displayed
+//	when the browser is resized to a narrow window.
+$navbar-breakpoint: $widescreen / 2;
