@@ -1,3 +1,6 @@
+#:schema zola
+# The schema line above is to prevent taplo (used in Even Better TOML) by specyfying an unexisting schema directive.
+
 name        = "Vyolet"
 description = "Ystorian theme"
 homepage    = "https://github.com/Ystorian/vyolet"
