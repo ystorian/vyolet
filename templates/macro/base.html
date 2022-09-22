@@ -49,7 +49,7 @@
 	{% endif %}
 
 	{#- Scripts #}
-	<script src="{{ get_url(path='js/bulma.js') }}"></script>
+	<script src="{{ get_url(path='js/vyolet.js', cachebust = cachebust) }}"></script>
 
 	{#- Feed #}
 	{%- if config.generate_feed %}
