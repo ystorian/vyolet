@@ -1,5 +1,7 @@
 #:schema zola
-# The schema line above is to prevent taplo (used in Even Better TOML) by specyfying an unexisting schema directive.
+# The schema line above is to prevent taplo to validate this file.
+# Taplo is used by the Even Better TOML extension in VS Code,
+# Since the `zola` schema does not exist, this disables taplo for this file.
 
 name        = "Vyolet"
 description = "Ystorian theme"
