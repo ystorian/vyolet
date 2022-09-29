@@ -22,7 +22,7 @@
 	<meta property="og:title" content="{{ self::title() }}">
 
 	{#- Description #}
-	{%- set description = config.extra.site_description %}
+	{%- set description = config.description %}
 	{%- if page.description %}{% set description = page.description %}{% endif %}
 	<meta name="description" content="{{ description }}" />
 	<meta property="og:description" content="{{ description }}">
@@ -60,9 +60,9 @@
 
 
 {% macro title() %}
-{%- set title = config.extra.site_title %}
+{%- set title = config.title %}
 {%- if page.title %}
-{%- set title = config.extra.site_title ~ ' &middot; ' ~ page.title %}
+{%- set title = config.title ~ ' &middot; ' ~ page.title %}
 {%- endif %}
 {{- title | safe }}
 {%- endmacro title %}
@@ -193,7 +193,7 @@
 		<div class="column"><!-- column 1 -->
 			<p class="has-text-centered is-size-3">
 				<span class="icon-text">
-					<span class="logotype"><span class="svg-icon">{{ icon::ystorian() }}</span>{{ config.extra.site_title }}</span>
+					<span class="logotype"><span class="svg-icon">{{ icon::ystorian() }}</span>{{ config.title }}</span>
 				</span>
 			</p>
 			<p class="has-text-centered is-size-7">&copy;2022 Flavien Scheurer</p>
