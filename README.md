@@ -16,3 +16,7 @@ cd vendor/bulma
 git sparse-checkout init --cone
 git sparse-checkout set sass
 ```
+
+## Theming
+
+When `icon.svg` is modified, icons must be regenerated with `./update-icon.sh`.
