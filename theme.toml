@@ -14,8 +14,8 @@ homepage = "https://github.com/cyann/"
 
 [extra]
 
-twitter  = "ystorian"
-linkedin = "Ystorian"
-github   = "Ystorian"
-mailto   = "contact@ystorian.com"
-# plausible_data_domain = "ystorian.com"
+twitter   = "ystorian"
+linkedin  = "Ystorian"
+github    = "Ystorian"
+mailto    = "contact@ystorian.com"
+plausible = "ystorian.com"

@@ -124,9 +124,9 @@
 
 {% macro plausible() %}
 <!-- base::plausible() -->
-{%- if config.extra.plausible_data_domain %}
+{%- if config.extra.plausible %}
 {%- set plausible_script_path = config.extra.plausible_script_path | default(value='https://plausible.io/js/script.js') %}
-	<script defer data-domain="{{ config.extra.plausible_data_domain }}" src="{{ plausible_script_path | safe }}" crossorigin="anonymous"></script>
+	<script defer data-domain="{{ config.extra.plausible }}" src="{{ plausible_script_path | safe }}" crossorigin="anonymous"></script>
 {%- endif %}
 <!-- /base::plausible -->
 {% endmacro plausible %}
