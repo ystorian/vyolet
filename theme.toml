@@ -1,7 +1,6 @@
-#:schema zola
-# The schema line above is to prevent taplo to validate this file.
-# Taplo is used by the Even Better TOML extension in VS Code,
-# Since the `zola` schema does not exist, this disables taplo for this file.
+#:schema base
+# The schema line above is for taplo to validate this file since a `zola`
+# schema is not available.
 
 name        = "Vyolet"
 description = "Ystorian theme"
