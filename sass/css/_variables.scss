@@ -1,23 +1,27 @@
-// Ystorian colors.
-$hsl-degree: 265;
-// Main (right) #8833ff:
-$ystorian: hsl(265, 100%, 60%);
-// Light (left) #a666ff:
-$ystorian-light: hsl(265, 100%, 70%);
-// Lighter (up) #c499ff:
-$ystorian-lighter: hsl(265, 100%, 80%);
-// Darker for logotype #2b0066.
-// $ystorian-darker: hsl(265, 100%, 20%);
-$ystorian-darker: findDarkColor($ystorian);
+// Vyolet - Spring 2023 color scheme
+
+// Main | oklch(50% 0.24 300) | hsl(270.26 71% 49%) | #7d24d3:
+$vyolet-main: hsl(270.26 71% 49%);
+// Medium | oklch(60% 0.21 300) | hsl(265.96 76% 63%) | #9657e8:
+$vyolet-medium: hsl(265.96 76% 63%);
+// Light | oklch(70% 0.18 300) | hsl(263.68 95% 74%) | #b180fc:
+$vyolet-lighter: hsl(263.68 95% 74%);
+// Logotype | oklch(35% 0.05 300) | hsl(261.12 21% 26%) | #3e3451:
+$vyolet-logotype: hsl(261.12 21% 26%);
+// Background light | oklch(95% 0.02 300) | hsl(258.43 61% 95%) | #f0ecfa:
+$vyolet-background-light: hsl(258.43 61% 95%);
+// Background dark | oklch(25% 0.12 300) | hsl(270.16 83% 17%) | #2c0751:
+$vyolet-background-dark: hsl(270.16 83% 17%);
+
 
 // Page background:
-$body-background: hsl(265, 100%, 99%);
-$menu-label: hsl(265, 40%, 70%);
+$body-background: $vyolet-background-light;
+$menu-label: $vyolet-lighter;
 
 // Reset some default Bulma variables.
 
 // Set the primary color to the main theme color.
-$primary: $ystorian;
+$primary: $vyolet-main;
 
 // Reduce the navbar breakpoint to smaller screens.
 //	Default is $desktop (1024px).

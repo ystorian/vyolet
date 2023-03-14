@@ -19,4 +19,10 @@ git sparse-checkout set sass
 
 ## Theming
 
+Colors are defined in:
+
+- `assets/sass/_variables.scss`
+- `static/icon/icon.svg`
+- `static/icon/manifest.json`
+
 When `icon.svg` is modified, icons must be regenerated with `./update-icon.sh`.
