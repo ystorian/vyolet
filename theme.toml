@@ -13,8 +13,6 @@ name     = "Flavien Scheurer"
 homepage = "https://github.com/cyann/"
 
 [extra]
-theme_color     = "hsl(265, 100%, 60%)"
-theme_color_rgb = "#8533ff"
 
 twitter  = "ystorian"
 linkedin = "Ystorian"
