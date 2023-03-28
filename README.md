@@ -22,7 +22,7 @@ git sparse-checkout set sass
 Colors are defined in:
 
 - `assets/sass/_variables.scss`
-- `static/icon/icon.svg`
-- `static/icon/manifest.json`
+- `static/appicon/icon.svg`
+- `static/appicon/manifest.json`
 
-When `icon.svg` is modified, icons must be regenerated with `./update-icon.sh`.
+When `icon.svg` is modified, icons must be regenerated with `./update-appicon.sh`.
