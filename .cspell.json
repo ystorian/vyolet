@@ -1,0 +1,18 @@
+{
+	"version": "0.2",
+	"language": "en",
+	"words": [
+		"Ally",
+		"Cly",
+		"Deby",
+		"Irys",
+		"Nyquyst",
+		"Vyolet",
+		"Ysto",
+		"Ystorian",
+		"Yzo"
+	],
+	"ignorePaths": [
+		"Cargo.lock"
+	]
+}
