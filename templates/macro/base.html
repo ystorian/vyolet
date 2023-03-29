@@ -105,9 +105,9 @@
 				<div class="navbar-end">
 					<div class="navbar-item">
 						<div class="buttons">
-							<a class="button is-primary">
+							<button class="button is-primary" disabled>
 								<strong>Log in</strong>
-							</a>
+							</button>
 						</div><!-- /buttons -->
 					</div><!-- /navbar-item -->
 				</div><!-- /navbar-end -->
@@ -119,14 +119,14 @@
 {% endmacro navbar %}
 
 
-{% macro plausible() %}
-<!-- base::plausible() -->
+{%- macro plausible() %}
+	<!-- base::plausible() -->
 {%- if config.extra.plausible %}
 {%- set plausible_script_path = config.extra.plausible_script_path | default(value='https://plausible.io/js/script.js') %}
 	<script defer data-domain="{{ config.extra.plausible }}" src="{{ plausible_script_path | safe }}" crossorigin="anonymous"></script>
 {%- endif %}
-<!-- /base::plausible -->
-{% endmacro plausible %}
+	<!-- /base::plausible -->
+{% endmacro plausible -%}
 
 
 {% macro footer() %}
