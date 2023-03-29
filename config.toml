@@ -59,6 +59,7 @@ linkedin  = ""
 mailto    = ""
 mastodon  = ""
 plausible = ""
+status    = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b"
 twitter   = ""
 
 # Configuration of the Markdown rendering.
