@@ -54,11 +54,12 @@ build_search_index = false
 # Theme variables.
 [extra]
 # Any variable there can be overridden in the end user `config.toml`.
-twitter   = "ystorian"
-linkedin  = "Ystorian"
-github    = "Ystorian"
-mailto    = "contact@ystorian.com"
-plausible = "ystorian.com"
+github    = "ystorian/vyolet"
+linkedin  = ""
+mailto    = ""
+mastodon  = ""
+plausible = ""
+twitter   = ""
 
 # Configuration of the Markdown rendering.
 [markdown]
