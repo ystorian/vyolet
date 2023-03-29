@@ -1,25 +1,21 @@
 {% import "macro/insert.html" as insert %}
 {% import "macro/blog.html" as blog %}
-{% import "macro/icon.html" as icon %}
 
 {% macro head() %}
-{%- set cachebust = true %}
-{%- if config.mode | lower == 'serve' %}
-	{%- set cachebust = false %}
-{% endif -%}
 <head><!-- base::head() -->
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta property="og:updated_time" content="{{ now(utc = true) | date(format = '%+') }}" />
 	<!-- Local time: {{ now() | date(format = '%Y-%m-%d %H:%M') }} -->
 
+	{#- Title #}
+	<title>{{ self::title() }}</title>
+	<meta property="og:title" content="{{ self::title() }}">
+
 	{#- Progressive Web Application #}
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-	{#- Title #}
-	<title>{{ self::title() }}</title>
-	<meta property="og:title" content="{{ self::title() }}">
 
 	{#- Description #}
 	{%- set description = config.description %}
@@ -28,26 +24,28 @@
 	<meta property="og:description" content="{{ description }}">
 
 	{#- Application icon #}
-	<link rel="icon" sizes="any" href="{{ get_url(path='appicon/favicon.ico', cachebust = cachebust) }}" />
-	<link rel="apple-touch-icon" href="{{ get_url(path='appicon/icon-180x180.png', cachebust = cachebust) }}" />
-	<link rel="manifest" href="{{ get_url(path='appicon/manifest.json', cachebust = cachebust) }}" />
-	<link rel="icon" type="image/svg+xml" href="{{ get_url(path='appicon/icon.svg', cachebust = cachebust) }}" />
+	<link rel="icon" sizes="any" href="{{ get_url(path='appicon/favicon.ico', cachebust = true) }}" />
+	<link rel="apple-touch-icon" href="{{ get_url(path='appicon/icon-180x180.png', cachebust = true) }}" />
+	<link rel="manifest" href="{{ get_url(path='appicon/manifest.json', cachebust = true) }}" />
+	<link rel="icon" type="image/svg+xml" href="{{ get_url(path='appicon/icon.svg', cachebust = true) }}" />
 
 	{#- Stylesheet #}
-	<link rel="stylesheet" href="{{ get_url(path='css/vyolet.css', cachebust = cachebust) }}" />
+	<link rel="stylesheet" href="{{ get_url(path='css/vyolet.css', cachebust = true) }}" />
 
 	{#- Markdown highlighter #}
 	{%- if config.markdown.highlight_code %}
 	<link id="syntax_highlight" href="#" rel="stylesheet">
 	{% endif %}
 
-	{#- Scripts #}
-	<script src="{{ get_url(path='js/vyolet.js', cachebust = cachebust) }}"></script>
+	{#- Scripts -#}
+	<script src="{{ get_url(path='js/vyolet.js', cachebust = true) }}"></script>
 
 	{#- Feed #}
 	{%- if config.generate_feed %}
 	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='atom.xml') | safe }}">
 	{% endif %}
+
+
 </head><!-- /base::head -->
 {% endmacro head %}
 
