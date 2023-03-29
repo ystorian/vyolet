@@ -145,8 +145,9 @@
 			<p class="menu-label">Resources</p>
 			<ul class="menu-list">
 				<li><a href="{{ get_url(path='docs') | safe }}">Documentation</a></li>
-				<li><a href="https://status.ystorian.com">Status</a></li>
-
+				{%- if config.extra.status %}
+				<li><a href="{{ config.extra.status | safe }}">Status</a></li>
+				{%- endif -%}
 			</ul>
 		</div><!-- /column 2 -->
 		<div class="column"><!-- column 4 -->
