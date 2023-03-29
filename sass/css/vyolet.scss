@@ -28,13 +28,52 @@
 // TODO: Probably importing too much, should refactor later.
 
 
-// Ystorian logotype.
-.logotype {
-	font-family: "Avenir Next", "Helvetica Neue", "Lato", sans-serif;
-	font-variant: small-caps;
-	font-weight: 100;
-	color: $vyolet-logotype;
+// SVG fill colors.
+.vyolet-main {
+	fill: $vyolet-main;
 }
+
+.vyolet-medium {
+	fill: $vyolet-medium;
+}
+
+.vyolet-light {
+	fill: $vyolet-light;
+}
+
+.vyolet-text-dark {
+	fill: $vyolet-text-dark;
+}
+
+.vyolet-text-light {
+	fill: $vyolet-text-light;
+}
+
+.vyolet-outline {
+	stroke: #3e3451;
+	stroke: oklch(35% 0.05 300);
+	fill: none;
+	stroke-width: 28;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.vyolet-symbol {
+	stroke: #3e3451;
+	stroke: oklch(35% 0.05 300);
+	fill: none;
+	stroke-width: 28;
+	stroke-linecap: butt;
+	stroke-linejoin: round;
+}
+
+
+// Text variants and colors.
+.logotype {
+	font-weight: 100;
+	font-variant: small-caps;
+}
+
 
 .logotype.header {
 	font-size: 150%;
@@ -67,6 +106,16 @@
 	position: relative;
 }
 
+// SVG logotype.
+.svg-logotype {
+	display: inline-flex;
+	align-self: center;
+	padding-right: 1ch;
+}
+
+.svg-logotype svg {
+	height: 2em;
+}
 
 // Logo.
 .logo {

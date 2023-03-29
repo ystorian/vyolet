@@ -1,22 +1,33 @@
 // Vyolet - Spring 2023 color scheme
+@charset "utf-8";
 
 // Main | oklch(50% 0.24 300) | hsl(270.26 71% 49%) | #7d24d3:
 $vyolet-main: hsl(270.26 71% 49%);
+
 // Medium | oklch(60% 0.21 300) | hsl(265.96 76% 63%) | #9657e8:
 $vyolet-medium: hsl(265.96 76% 63%);
+
 // Light | oklch(70% 0.18 300) | hsl(263.68 95% 74%) | #b180fc:
-$vyolet-lighter: hsl(263.68 95% 74%);
-// Logotype | oklch(35% 0.05 300) | hsl(261.12 21% 26%) | #3e3451:
-$vyolet-logotype: hsl(261.12 21% 26%);
-// Background light | oklch(95% 0.02 300) | hsl(258.43 61% 95%) | #f0ecfa:
-$vyolet-background-light: hsl(258.43 61% 95%);
+$vyolet-light: hsl(263.68 95% 74%);
+
+// Text dark | oklch(35% 0.05 300) | hsl(261.12 21% 26%) | #3e3451:
+$vyolet-text-dark: hsl(261.12 21% 26%);
+
+// Text light | oklch(80% 0.11 300) | hsl(261.00 89% 83%) | #c8aefa:
+$vyolet-text-light: hsl(261.00 89% 83%);
+
+// Pattern | oklch(45% 0.20 300) | hsl(268.81 63% 42%) | #6928b0:
+$vyolet-pattern: hsl(268.81 63% 42%);
+
 // Background dark | oklch(25% 0.12 300) | hsl(270.16 83% 17%) | #2c0751:
 $vyolet-background-dark: hsl(270.16 83% 17%);
 
+// Background light | oklch(95% 0.02 300) | hsl(258.43 61% 95%) | #f0ecfa:
+$vyolet-background-light: hsl(258.43 61% 95%);
 
-// Page background:
+// Page background.
 $body-background: $vyolet-background-light;
-$menu-label: $vyolet-lighter;
+$menu-label: $vyolet-light;
 
 // Reset some default Bulma variables.
 
