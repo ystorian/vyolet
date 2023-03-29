@@ -70,7 +70,6 @@
 			aria-label="main navigation">
 			<div class="navbar-brand">
 				<a class="navbar-item" href="{{ config.base_url | safe }}">
-					{{ insert::logo(width = 48, height = 32) }}
 					{{ insert::logotype(header = true) }}
 				</a>
 				<a role="button" class="navbar-burger" aria-label="menu"
@@ -153,30 +152,26 @@
 			</ul>
 		</div><!-- /column 2 -->
 		<div class="column"><!-- column 4 -->
-			<p class="menu-label">Social Networks</p>
+			<p class="menu-label">Follow us</p>
 			<p class="is-size-4">
-				{%- if config.extra.twitter %}
-				<a href="https://twitter.com/{{ config.extra.twitter }}">
-					<span class="svg-icon">{{ icon::twitter() }}</span></a>
-				{% endif -%}
-
 				{%- if config.extra.linkedin %}
-				<a href="https://www.linkedin.com/company/{{ config.extra.linkedin }}">
-					<span class="svg-icon">{{ icon::linkedin() }}</span></a>
+				<a href="https://www.linkedin.com/company/{{ config.extra.linkedin }}" rel="me">{{ insert::icon(image="linkedin") }}</a>
 				{% endif -%}
 
 				{%- if config.extra.github %}
-				<a href="https://github.com/{{ config.extra.github }}">
-					<span class="svg-icon">{{ icon::github() }}</span></a>
+				<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ insert::icon(image="github") }}</a>
+				{% endif -%}
+
+				{%- if config.extra.twitter %}
+				<a href="https://twitter.com/{{ config.extra.twitter }}" rel="me">{{ insert::icon(image="twitter") }}</a>
 				{% endif -%}
 
 				{%- if config.generate_feed %}
-				<a href="{{ get_url(path='atom.xml') | safe }}">
-					<span class="svg-icon">{{ icon::rss() }}</span></a>
+				<a href="{{ get_url(path='atom.xml') | safe }}">{{ insert::icon(image="rss") }} </a>
 				{% endif -%}
 
 				{%- if config.extra.mailto %}
-				<a href="mailto:{{ config.extra.mailto }}">✉️</a>
+				<a href="mailto:{{ config.extra.mailto }}">{{ insert::icon(image="mail") }} </a>
 				{%- endif %}
 			</p>
 		</div><!-- /column 4 -->
@@ -184,7 +179,7 @@
 		<div class="column"><!-- column 1 -->
 			<p class="has-text-centered is-size-3">
 				<span class="icon-text">
-					<span class="logotype"><span class="svg-icon">{{ icon::ystorian() }}</span>{{ config.title }}</span>
+					<span class="logotype">{{ insert::icon(image="ystorian") }}{{ config.title }}</span>
 				</span>
 			</p>
 			<p class="has-text-centered is-size-7">
