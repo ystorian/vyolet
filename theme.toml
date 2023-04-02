@@ -2,20 +2,16 @@
 # The schema line above is for taplo to validate this file since a `zola`
 # schema is not available.
 
+# Important: To modify the settings for your site, use a copy of the
+# `config.toml` file from this theme and save it at the root of your site.
+
 name        = "Vyolet"
-description = "Ystorian theme"
-homepage    = "https://github.com/Ystorian/vyolet"
-min_version = "0.16.0"
+description = "A theme for Ystorian web sites"
+license     = "MIT"
+homepage    = "https://github.com/ystorian/vyolet"
+min_version = "0.17.2"
 demo        = "https://ystorian.com"
 
 [author]
 name     = "Flavien Scheurer"
-homepage = "https://github.com/cyann/"
-
-[extra]
-
-twitter   = "ystorian"
-linkedin  = "Ystorian"
-github    = "Ystorian"
-mailto    = "contact@ystorian.com"
-plausible = "ystorian.com"
+homepage = "https://ystorian.com"
