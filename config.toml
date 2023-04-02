@@ -1,165 +1,148 @@
-# The base URL of the site; the only required configuration variable.
-base_url = "."
+#:schema base
+# The schema line above is for taplo to validate this file since a `zola`
+# schema is not available.
 
-# The site title and description; used in feeds by default.
-title       = "Vyolet"
-description = "Ystorian theme"
+# Vyolet config file.
 
-# The default language; used in feeds.
+# Important: this file is only used when developing the theme. It is not used
+# when the theme is used as a dependency in a site. To modify the settings for
+# your site, use the `config.toml` file in the root of your site, using this
+# file as a reference.
+
+base_url         = "."
+compile_sass     = true
 default_language = "en"
-
-# When set to "true", the Sass files in the `sass` directory in the site root are compiled.
-# Sass files in theme directories are always compiled.
-compile_sass = true
-
-# When set to "true", the generated HTML files are minified.
-minify_html = false
-
-# When set to "true", a feed is automatically generated.
-generate_feed = true
-
-# The filename to use for the feed. Used as the template filename, too.
-# Defaults to "atom.xml", which has a built-in template that renders an Atom 1.0 feed.
-# There is also a built-in template "rss.xml" that renders an RSS 2.0 feed.
-feed_filename = "atom.xml"
-
-# The number of articles to include in the feed. All items are included if
-# this limit is not set (the default).
-# feed_limit = 20
-
-# When set to "true", files in the `static` directory are hard-linked. Useful for large
-# static files. Note that for this to work, both `static` and the
-# output directory need to be on the same filesystem. Note that the theme's `static`
-# files are always copied, regardless of this setting.
+feed_limit       = 20
 hard_link_static = false
 
-# The taxonomies to be rendered for the site and their configuration of the default languages
-# Example:
-#     taxonomies = [
-#       {name = "tags", feed = true}, # each tag will have its own feed
-#       {name = "tags"}, # you can have taxonomies with the same name in multiple languages
-#       {name = "categories", paginate_by = 5},  # 5 items per page for a term
-#       {name = "authors"}, # Basic definition: no feed or pagination
-#     ]
-#
+# Site specific.
+
+# The site theme to use.
+theme = "vyolet"
+
+# Output directory, /public by default.
+output_dir = "public"
+
+# Minify the generated HTML files for prod.
+minify_html = true
+
+# Don't build a search index since this feature is not used.
+build_search_index = false
+
+
+[markdown]
+# Configuration of the Markdown rendering.
+external_links_no_follow    = true
+external_links_no_referrer  = true
+external_links_target_blank = true
+extra_syntaxes_and_themes   = []
+highlight_code              = true
+highlight_theme             = "base16-ocean-dark"
+render_emoji                = false
+smart_punctuation           = false
+
+
+[link_checker]
+# Configuration of the link checker.
+external_level       = "error"
+internal_level       = "error"
+skip_anchor_prefixes = ["https://caniuse.com/"]
+skip_prefixes        = ["http://[2001:db8::]/"]
+
+
+[slugify]
+# Slugification strategies.
+anchors    = "on"
+paths      = "on"
+taxonomies = "on"
+
+
+# Theme variables.
+[extra]
+header_menu = [{ url = "pricing" }, { url = "solution" }, { url = "blog" }]
+
+header_buttons = [
+	{ url = "login", name = "Log in", state = "disabled" },
+	{ url = "signup", name = "Sign up", state = "disabled" },
+]
+
+# Social links.
+social_header = "Follow us"
+github        = "ystorian/vyolet"
+linkedin      = ""
+mailto        = ""
+mastodon      = ""
+plausible     = ""
+status        = ""
+twitter       = ""
+
+
+navbar_links = [
+	{ name = "about", url = "/about" },
+	{ name = "archive", url = "/archive" },
+	{ name = "tags", url = "/tags" },
+	{ name = "categories", url = "/categories" },
+	{ name = "links", url = "/links" },
+]
+footer_links = [
+	{ name = "about", url = "/about" },
+	{ name = "archive", url = "/archive" },
+	{ name = "tags", url = "/tags" },
+	{ name = "categories", url = "/categories" },
+	{ name = "links", url = "/links" },
+]
+
+
+# Multilingual support.
+# Default values (English).
+[languages.en]
+title              = "Vyolet"
+description        = "Ystorian theme"
+generate_feed      = true
+feed_filename      = "atom.xml"
+build_search_index = false
+search             = { include_title = true, include_description = true, include_path = true, include_content = true }
+
 taxonomies = [
 	{ name = "categories", paginate_by = 3 },
 	{ name = "tags", paginate_by = 3, rss = true },
 ]
 
-# When set to "true", a search index is built from the pages and section
-# content for `default_language`.
-build_search_index = false
-
-# Theme variables.
-[extra]
-# Any variable there can be overridden in the end user `config.toml`.
-github    = "ystorian/vyolet"
-linkedin  = ""
-mailto    = ""
-mastodon  = ""
-plausible = ""
-status    = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b"
-twitter   = ""
-
-# Configuration of the Markdown rendering.
-[markdown]
-
-# When set to "true", all code blocks are highlighted.
-highlight_code = false
-
-# A list of directories used to search for additional `.sublime-syntax` and `.tmTheme` files.
-extra_syntaxes_and_themes = []
-
-# The theme to use for code highlighting.
-# See below for list of allowed values.
-highlight_theme = "base16-ocean-dark"
-
-# When set to "true", emoji aliases translated to their corresponding
-# Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
-render_emoji = false
-
-# Whether external links are to be opened in a new tab
-# If this is true, a `rel="noopener"` will always automatically be added for security reasons
-external_links_target_blank = false
-
-# Whether to set rel="nofollow" for all external links
-external_links_no_follow = false
-
-# Whether to set rel="noreferrer" for all external links
-external_links_no_referrer = false
-
-# Whether smart punctuation is enabled (changing quotes, dashes, dots in their typographic form)
-# For example, `...` into `…`, `"quote"` into `“curly”` etc
-smart_punctuation = false
-
-
-# Configuration of the link checker.
-[link_checker]
-
-# Skip link checking for external URLs that start with these prefixes
-skip_prefixes = ["http://[2001:db8::]/"]
-
-# Skip anchor checking for external URLs that start with these prefixes
-skip_anchor_prefixes = ["https://caniuse.com/"]
-
-# Treat internal link problems as either "error" or "warn", default is "error"
-internal_level = "error"
-
-# Treat external link problems as either "error" or "warn", default is "error"
-external_level = "error"
-
-# Various slugification strategies, see below for details
-# Defaults to everything being a slug
-[slugify]
-paths      = "on"
-taxonomies = "on"
-anchors    = "on"
-
-# Configuration of the search index.
-[search]
-
-# Whether to include the title of the page/section in the index
-include_title = true
-# Whether to include the description of the page/section in the index
-include_description = false
-# Whether to include the path of the page/section in the index
-include_path = false
-# Whether to include the rendered content of the page/section in the index
-include_content = true
-# At which character to truncate the content to. Useful if you have a lot of pages and the index would
-# become too big to load on the site. Defaults to not being set.
-# truncate_content_length = 100
-
-# Optional translation object for the default language
-[translations]
-# Example:
-#     default_language = "fr"
-#
-#     [translations]
-#     title = "Un titre"
+[languages.en.translations]
+language_name = "English"
+about         = "About"
+blog          = "Blog"
+follow_us     = "Follow us"
+home          = "Home"
+links         = "Links"
+login         = "Log in"
+pricing       = "Pricing"
+privacy       = "Privacy"
+security      = "Security"
+solution      = "Solutions"
 
 
 # Additional languages definition.
-[languages]
-# You can define language specific config values and translations:
-# title, description, generate_feed, feed_filename, taxonomies, build_search_index
-# as well as its own search configuration and translations (see above for details on those)
-# For example
-# [languages.fr]
-# title = "Mon blog"
-# generate_feed = true
-# taxonomies = [
-#    {name = "auteurs"},
-#    {name = "tags"},
-# ]
-# build_search_index = false
+# cspell:disable
 
-# You can put any kind of data here. The data
-# will be accessible in all templates
-# Example:
-#     [extra]
-#     author = "Famous author"
-#
-# author value will be available using {{ config.extra.author }} in templates
-#
+# French.
+[languages.fr]
+title       = "Ystorian"
+description = "Thème Ystorian"
+
+taxonomies = [
+	{ name = "categories", paginate_by = 3 },
+	{ name = "tags", paginate_by = 3, rss = true },
+]
+
+[languages.fr.translations]
+language_name = "Français"
+about         = "A propos"
+blog          = "Blog"
+follow_us     = "Suivez-nous"
+home          = "Accueil"
+login         = "Connexion"
+pricing       = "Tarifs"
+privacy       = "Confidentialité"
+security      = "Sécurité"
+solution      = "Solutions"
