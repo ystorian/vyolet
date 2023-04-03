@@ -2,16 +2,15 @@
 
 <!doctype html>
 <html lang="{{ lang }}">
-
 {{- base::head() -}}
 
-<!-- ...base.html/body -->
+<!-- base.html/body -->
 <body class="has-navbar-fixed-top">
 {% block navbar %}
 {{ base::navbar(padding = true) }}
 {% endblock navbar %}
 
-<!-- ...base.html/main -->
+<!-- base.html/main -->
 <main>
 	{% block content %}
 	{% endblock content %}
