@@ -9,6 +9,7 @@
 {%- macro logotype(header=false) %}
 	<!-- insert::logotype() -->
 	{%- set svg = load_data(path="image/logotype.svg") -%}
+	{%- set svg = svg | replace(from="<svg ", to="<svg height=32 width=128 ") -%}
 	<span class="svg-logotype">{{ svg | trim | safe}}</span>
 	<!-- /insert::logotype -->
 {% endmacro logotype -%}
@@ -16,5 +17,6 @@
 
 {%- macro icon(image="not_found") %}
 {%- set svg = load_data(path="image/" ~ image ~ ".svg") -%}
+{%- set svg = svg | replace(from="<svg ", to="<svg height=32 width=32 ") -%}
 <!-- {{ image }}.svg --><span class="svg-icon">{{ svg | trim | safe}}</span>
 {%- endmacro icon -%}
