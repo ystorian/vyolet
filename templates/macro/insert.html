@@ -1,11 +1,3 @@
-{%- macro logo(width=16, height=16) %}
-{# Source: /static/image/ #}
-	<!-- insert::logo() -->
-	{%- set svg = load_data(path="image/" ~ image ~ ".svg") -%}
-	<!-- {{ image }}.svg --><span class="svg-icon">{{ svg | trim | safe}}</span>
-	<!-- /insert::logo -->
-{% endmacro logo -%}
-
 {%- macro logotype(header=false) %}
 	<!-- insert::logotype() -->
 	{%- set svg = load_data(path="image/logotype.svg") -%}
@@ -19,4 +11,10 @@
 {%- set svg = load_data(path="image/" ~ image ~ ".svg") -%}
 {%- set svg = svg | replace(from="<svg ", to="<svg height=32 width=32 ") -%}
 <!-- {{ image }}.svg --><span class="svg-icon">{{ svg | trim | safe}}</span>
+{%- endmacro icon -%}
+
+
+{%- macro svg(image="not_found") %}
+{%- set svg = load_data(path="image/" ~ image ~ ".svg") -%}
+<!-- {{ image }}.svg -->{{ svg | trim | safe}}
 {%- endmacro icon -%}
