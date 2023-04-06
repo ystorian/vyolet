@@ -1,27 +1,27 @@
 {% macro toc_menu(display) %}
 <!-- blog::toc_menu() -->
 {%- if display %}
-	<!-- TOC -->
-	{%- if page.toc %}
-	<p class="menu-label">TOC</p>
-	<ul class="menu-list">
-	{%- for h1 in page.toc %}
-		<li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
-		{%- if h1.children %}
-			<ul class="menu-list">
-			{%- for h2 in h1.children %}
-				<li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
-			{% endfor -%}
-			</ul>
-		{% endif -%}
-		</li>
-	{%- endfor %}
-	</ul>
-	{%- else %}
-	<!-- Not TOC found -->
-	{%- endif %}
+<!-- TOC -->
+{%- if page.toc %}
+<p class="menu-label">TOC</p>
+<ul class="menu-list">
+{%- for h1 in page.toc %}
+	<li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+	{%- if h1.children %}
+		<ul class="menu-list">
+		{%- for h2 in h1.children %}
+			<li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
+		{% endfor -%}
+		</ul>
+	{% endif -%}
+	</li>
+{%- endfor %}
+</ul>
+{%- else %}
+<!-- No TOC found -->
+{%- endif %}
 {% else %}
-	<!-- TOC menu not displayed -->
+<!-- TOC menu not displayed -->
 {%- endif %}
 <!-- /blog::toc_menu -->
 {% endmacro toc_menu %}
@@ -30,22 +30,22 @@
 {% macro categories_menu(label="") %}
 <!-- blog::categories_menu() -->
 {%- if label != "" %}
-	<!-- Categories -->
-	{%- set categories = get_taxonomy(kind = 'categories') %}
-	{%- if categories %}
-	<p class="menu-label">{{ label }}</p>
-	<ul class="menu-list">
-	{%- for category in categories.items %}
-		<li><a href="{{ category.path | safe }}">{{ category.name }}</a></li>
-	{%- endfor %}
-	</ul>
-	{%- else %}
-	<!-- Not categories found -->
-	{%- endif %}
-	<!-- /Categories -->
-{% else %}
-	<!-- Categories menu not displayed -->
+<!-- Categories -->
+{%- set categories = get_taxonomy(kind = 'categories') %}
+{%- if categories %}
+<p class="menu-label">{{ label }}</p>
+<ul class="menu-list">
+{%- for category in categories.items %}
+	<li><a href="{{ category.path | safe }}">{{ category.name }}</a></li>
+{%- endfor %}
+</ul>
+{%- else %}
+<!-- Not categories found -->
 {%- endif %}
+<!-- /Categories -->
+{% else %}
+<!-- Categories menu not displayed -->
+{% endif %}
 <!-- /blog::categories_menu -->
 {% endmacro categories_menu %}
 
@@ -53,21 +53,21 @@
 {% macro tags_menu(display) %}
 <!-- blog::tags_menu() -->
 {%- if display %}
-	<!-- Tags -->
-	{%- set tags = get_taxonomy(kind = 'tags') %}
-	{%- if tags %}
-	<p class="menu-label">Tags</p>
-	<ul class="menu-list">
-		{%- for tag in tags.items %}
-		<li><a href="{{ tag.path | safe }}">{{ tag.name }}</a></li>
-		{%- endfor %}
-	</ul>
-	{%- else %}
-	<!-- Not tags found -->
-	{%- endif %}
-	<!-- /Tags -->
+<!-- Tags -->
+{%- set tags = get_taxonomy(kind = 'tags') %}
+{%- if tags %}
+<p class="menu-label">Tags</p>
+<ul class="menu-list">
+	{%- for tag in tags.items %}
+	<li><a href="{{ tag.path | safe }}">{{ tag.name }}</a></li>
+	{%- endfor %}
+</ul>
 {%- else %}
-	<!-- Tags menu not displayed -->
+<!-- Not tags found -->
+{%- endif %}
+<!-- /Tags -->
+{%- else %}
+<!-- Tags menu not displayed -->
 {%- endif %}
 <!-- /blog::tags_menu -->
 {% endmacro tags_menu %}
@@ -76,56 +76,65 @@
 
 {% macro read_time(page) %}
 <!-- blog::read_time() -->
-	<svg class="i-clock" viewBox="0 0 32 32" width="16" height="16">
-		<g fill="none" stroke="currentcolor" stroke-linecap="round"
-			stroke-linejoin="round" stroke-width="6.25%">
-			<circle cx="16" cy="16" r="14" /><path d="M16 8 L16 16 20 20" /></g>
-	</svg>
-	<span>&nbsp;{{ page.reading_time }} minute read</span>
+{{ insert::icon(image="clock")}}
+<span>&nbsp;{{ page.reading_time }} minute read</span>
 <!-- /blog::read_time -->
 {% endmacro read_time %}
 
 
 {% macro footer(page) %}
 <!-- blog::footer() -->
-	<footer class="card-footer">
-		<div class="card-footer-item has-text-centered">
-			<div>
-				<p class="heading">Published</p>
-				<p class="subtitle">{{ self::footer_date(page = page) }}</p>
-			</div>
-		</div><!-- /card-footer-item -->
-		{%- if page.updated %}
-		<div class="card-footer-item has-text-centered">
-			<div>
-				<p class="heading">Updated</p>
-				<p class="subtitle"><time datetime="{{ page.updated | date(format='%F') }}">{{ page.updated | date(format = '%F') }}</time></p>
-			</div>
-		</div><!-- /card-footer-item -->
-		{%- endif %}
-		<div class="card-footer-item has-text-centered">
-			<div>
-				<p class="heading">Category</p>
-				<p class="subtitle">{{ self::footer_categories(page = page) }}</p>
-			</div>
-		</div><!-- /card-footer-item -->
-		<div class="card-footer-item has-text-centered">
-			<div>
-				<p class="heading">Tags</p>
-				<p class="">{{ self::footer_tags(page = page) }}</p>
-			</div>
-		</div><!-- /card-footer-item -->
-	</footer>
+<footer class="card-footer">
+
+	<!-- Published -->
+	<div class="card-footer-item has-text-centered">
+		<div>
+			<p class="heading">Published</p>
+			<p class="subtitle">{{ self::footer_date(page = page) }}</p>
+		</div>
+	</div>
+	<!-- /Published -->
+
+	<!-- Updated -->
+	{%- if page.updated %}
+	<div class="card-footer-item has-text-centered">
+		<div>
+			<p class="heading">Updated</p>
+			<p class="subtitle"><time datetime="{{ page.updated | date(format='%F') }}">{{ page.updated | date(format = '%F') }}</time></p>
+		</div>
+	</div>
+	{% else %}
+	<!-- (page without "updated" date) -->
+	{%- endif %}
+	<!-- /Updated -->
+
+	<!-- Category -->
+	<div class="card-footer-item has-text-centered">
+		<div>
+			<p class="heading">Category</p>
+			<p class="subtitle">{{ self::footer_categories(page = page) }}</p>
+		</div>
+	</div>
+	<!-- /Category -->
+
+	<!-- Tags -->
+	<div class="card-footer-item has-text-centered">
+		<div>
+			<p class="heading">Tags</p>
+			<p class="">{{ self::footer_tags(page = page) }}</p>
+		</div>
+	</div>
+	<!-- /Tags -->
+
+</footer>
 <!-- /blog::footer -->
 {% endmacro footer %}
 
 
 {% macro footer_date(page) -%}
-<!-- blog::footer_date() -->
 {%- if page.date -%}
-	<time datetime="{{ page.date | date(format='%F') }}">{{ page.date | date(format = '%F') }}</time>
+<time datetime="{{ page.date | date(format='%F') }}">{{ page.date | date(format = '%F') }}</time>
 {%- endif -%}
-<!-- /blog::footer_date -->
 {%- endmacro footer_date %}
 
 
@@ -133,7 +142,7 @@
 <!-- blog::footer_categories() -->
 {%- if page.taxonomies.categories %}
 {%- set category = page.taxonomies.categories[0] -%}
-	<a href="{{ get_taxonomy_url(kind = 'categories', name = category) | safe }}"><span class="tag is-light">{{ category }}</span></a>
+<a href="{{ get_taxonomy_url(kind = 'categories', name = category) | safe }}"><span class="tag is-light">{{ category }}</span></a>
 {%- endif -%}
 <!-- /blog::footer_categories -->
 {%- endmacro footer_categories %}
@@ -152,73 +161,78 @@
 
 {% macro page_in_list(page) %}
 <!-- blog::page_in_list() -->
-	<div class="card article">
-		<div class="card-content">
-			{{ self::header(page = page) }}
-			{% if page.summary %}
-			<div class="content article-body">
-				{{ page.summary | safe }}
-				<nav class="readmore">
-					<a href="{{ page.permalink | safe }}">Read
-						More&nbsp;&raquo;
-					</a>
-				</nav>
-			</div><!-- /content -->
-			{% endif %}
-		</div><!-- /card-content -->
-	</div><!-- /card article -->
+<!-- card article -->
+<div class="card article">
+	<div class="card-content">
+	{{ self::header(page = page) }}
+	{% if page.summary %}
+	<div class="content article-body">
+	{{ page.summary | safe }}
+	<nav class="readmore">
+	<a href="{{ page.permalink | safe }}">Read More&nbsp;&raquo;</a>
+	</nav>
+	</div><!-- /content -->
+	{% endif %}
+	</div><!-- /card-content -->
+</div>
+<!-- /card article -->
 <!-- /blog::page_in_list -->
 {% endmacro page_in_list %}
 
 
 {% macro header(page) %}
 <!-- blog::header() -->
-	<section class="hero is-small is-primary">
-		<div class="hero-body">
-			<p class="title has-text-centered">{{ page.title }}</p>
-		</div>
-	</section>
-	<div class="has-text-centered my-4">
-		<div class="tags has-addons level-item">
-			{%- if page.date %}
-			<span class="tag is-rounded">{{ page.date | date(format = '%F') }}</span>
-			{%- endif %}
-			<span class="tag is-rounded">{{ self::read_time(page = page) }}</span>
-		</div><!-- /tags -->
-	</div><!-- /has-text-centered -->
+<section class="hero is-small is-primary">
+	<div class="hero-body">
+		<p class="title has-text-centered">{{ page.title }}</p>
+	</div>
+</section>
+
+<!-- has-text-centered -->
+<div class="has-text-centered my-4">
+	<div class="tags has-addons level-item">
+	{%- if page.date %}
+		<span class="tag is-rounded">{{ page.date | date(format = '%F') }}</span>
+	{%- endif %}
+	<span class="tag is-rounded">{{ self::read_time(page = page) }}</span>
+	</div><!-- /tags -->
+</div>
+<!-- /has-text-centered -->
 <!-- /blog::header() -->
 {% endmacro header %}
 
 
 {% macro list_taxonomy(terms) %}
 <!-- blog::list_taxonomy() -->
-	<section>
-		<div class="container">
-			<div class="columns">
-				<div class="column is-8 is-offset-2">
-					{% if terms %}
-					<div class="list box">
-						{% for term in terms %}
-						<a href="{{ term.permalink | safe }}">
-							<span class="tag is-large is-primary">{{ term.name }}({{ term.pages | length }})</span>
-						</a>
-						{% endfor %}
-					</div><!-- /list -->
-					{% endif %}
-				</div><!-- /column -->
-			</div><!-- /columns -->
-		</div><!-- /container -->
-	</section>
+<section>
+	<div class="container">
+	<div class="columns">
+	<div class="column is-8 is-offset-2">
+	{% if terms %}
+	<div class="list box">
+		{% for term in terms %}
+		<a href="{{ term.permalink | safe }}">
+			<span class="tag is-large is-primary">
+				{{ term.name }}({{ term.pages | length }})
+			</span>
+		</a>
+		{% endfor %}
+	</div><!-- /list -->
+	{% endif %}
+	</div><!-- /column -->
+	</div><!-- /columns -->
+	</div><!-- /container -->
+</section>
 <!-- /blog::list_taxonomy -->
 {% endmacro list_taxonomy %}
 
 {% macro list_articles(pages) %}
 <!-- blog::list_articles() -->
-	<section>
-		{% for page in pages %}
-		{{ blog::page_in_list(page=page) }}
-		{% endfor %}
-	</section>
+<section>
+	{% for page in pages %}
+	{{ blog::page_in_list(page=page) }}
+	{% endfor %}
+</section>
 <!-- /blog::list_articles -->
 {% endmacro list_articles %}
 
@@ -226,28 +240,28 @@
 
 {% macro paginate(paginator) %}
 <!-- blog::paginate() -->
-	<nav class="pagination is-centered my-6" role="navigation" aria-label="pagination">
-		{%- if paginator.previous %}
-		<a class="pagination-previous" href="{{ paginator.previous | safe }}">&laquo; Previous</a>
-		{%- else %}
-		<a class="pagination-previous is-disabled" title="This is the first page">&laquo; Previous</a>
-		{%- endif %}
-		<ul class="pagination-list">
-		{%- for index in range(end = paginator.number_pagers) %}
-		{%- set page_number = index + 1 %}
-		{%- if page_number == paginator.current_index %}
-			<li><a class="pagination-link is-current" aria-label="Page {{ page_number }}" aria-current="page">{{ page_number }}</a></li>
-		{%- else %}
-			<li><a class="pagination-link" aria-label="Go to page {{ page_number }}" href="{{ paginator.base_url ~ page_number }}">{{ page_number }}</a></li>
-		{%- endif %}
-		{%- endfor %}
-		</ul>
-		{%- if paginator.next %}
-		<a class="pagination-next" href="{{ paginator.next | safe }}">Next &raquo;</a>
-		{%- else %}
-		<a class="pagination-next is-disabled" title="This is the last page">Next &raquo;</a>
-		{%- endif %}
-	</nav>
+<nav class="pagination is-centered my-6" role="navigation" aria-label="pagination">
+	{%- if paginator.previous %}
+	<a class="pagination-previous" href="{{ paginator.previous | safe }}">&laquo; Previous</a>
+	{%- else %}
+	<a class="pagination-previous is-disabled" title="This is the first page">&laquo; Previous</a>
+	{%- endif %}
+	<ul class="pagination-list">
+	{%- for index in range(end = paginator.number_pagers) %}
+	{%- set page_number = index + 1 %}
+	{%- if page_number == paginator.current_index %}
+		<li><a class="pagination-link is-current" aria-label="Page {{ page_number }}" aria-current="page">{{ page_number }}</a></li>
+	{%- else %}
+		<li><a class="pagination-link" aria-label="Go to page {{ page_number }}" href="{{ paginator.base_url ~ page_number }}">{{ page_number }}</a></li>
+	{%- endif %}
+	{%- endfor %}
+	</ul>
+	{%- if paginator.next %}
+	<a class="pagination-next" href="{{ paginator.next | safe }}">Next &raquo;</a>
+	{%- else %}
+	<a class="pagination-next is-disabled" title="This is the last page">Next &raquo;</a>
+	{%- endif %}
+</nav>
 <!-- /blog::paginate -->
 {% endmacro paginate %}
 
@@ -258,12 +272,12 @@
 {% if primary %}
 {% set class = class ~ " hero is-primary" %}
 {% endif %}
-	<section class="{{ class }}">
-		<div class="hero-body">
-			<div class="container has-text-centered">
-				<p class="title is-1">{{title}}</p>
-			</div><!-- /container -->
-		</div><!-- /hero-body -->
-	</section>
+<section class="{{ class }}">
+	<div class="hero-body">
+		<div class="container has-text-centered">
+			<p class="title is-1">{{title}}</p>
+		</div><!-- /container -->
+	</div><!-- /hero-body -->
+</section>
 <!-- /blog::hero -->
 {% endmacro hero %}
