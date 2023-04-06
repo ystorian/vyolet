@@ -65,15 +65,6 @@
 {% endmacro head %}
 
 
-{% macro title() %}
-{%- set title = config.title %}
-{%- if page.title %}
-{%- set title = config.title ~ ' &middot; ' ~ page.title %}
-{%- endif %}
-{{- title | safe }}
-{%- endmacro title %}
-
-
 {% macro navbar(padding) %}
 {#- If padding is true: use the "section" class to add padding below the navbar -#}
 <!-- base::navbar() -->
