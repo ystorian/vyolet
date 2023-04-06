@@ -53,13 +53,15 @@
 	{#- Scripts -#}
 	<script src="{{ get_url(path='js/vyolet.js', cachebust = true) }}"></script>
 
+	{#- Plausible #}
+	{{ self::plausible() }}
 	{#- Feed #}
 	{%- if config.generate_feed %}
 	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='atom.xml') | safe }}">
-	{% endif %}
+	{%- endif %}
+</head>
+<!-- /base::head -->
 
-
-</head><!-- /base::head -->
 {% endmacro head %}
 
 
@@ -133,12 +135,15 @@
 
 
 {%- macro plausible() %}
-	<!-- base::plausible() -->
+<!-- base::plausible() -->
 {%- if config.extra.plausible %}
 {%- set plausible_script_path = config.extra.plausible_script_path | default(value='https://plausible.io/js/script.js') %}
-	<script defer data-domain="{{ config.extra.plausible }}" src="{{ plausible_script_path | safe }}" crossorigin="anonymous"></script>
+<script defer data-domain="{{ config.extra.plausible }}" src="{{ plausible_script_path | safe }}" crossorigin="anonymous"></script>
+	{%- if current_path is undefined %}
+	<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+	{%- endif %}
 {%- endif %}
-	<!-- /base::plausible -->
+<!-- /base::plausible -->
 {% endmacro plausible -%}
 
 
