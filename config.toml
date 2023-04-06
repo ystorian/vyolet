@@ -70,12 +70,10 @@ header_buttons = [
 # Social links.
 social_header = "Follow us"
 github        = "ystorian/vyolet"
-linkedin      = ""
-mailto        = ""
-mastodon      = ""
-plausible     = ""
-status        = ""
-twitter       = ""
+linkedin      = "in/flavienscheurer"
+mailto        = "contact@example.com"
+mastodon      = "https://infosec.exchange"
+twitter       = "."
 
 
 navbar_links = [
@@ -85,6 +83,10 @@ navbar_links = [
 	{ name = "categories", url = "/categories" },
 	{ name = "links", url = "/links" },
 ]
+
+# Footer.
+status = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b"
+
 footer_links = [
 	{ name = "about", url = "/about" },
 	{ name = "archive", url = "/archive" },
@@ -93,8 +95,13 @@ footer_links = [
 	{ name = "links", url = "/links" },
 ]
 
+# Analytics.
+plausible = "ystorian.com"
+
 
 # Multilingual support.
+[languages]
+
 # Default values (English).
 [languages.en]
 title              = "Vyolet"
@@ -102,7 +109,7 @@ description        = "Ystorian theme"
 generate_feed      = true
 feed_filename      = "atom.xml"
 build_search_index = false
-search             = { include_title = true, include_description = true, include_path = true, include_content = true }
+search             = { include_title = false, include_description = false, include_path = true, include_content = true }
 
 taxonomies = [
 	{ name = "categories", paginate_by = 3 },
@@ -128,13 +135,8 @@ solution      = "Solutions"
 
 # French.
 [languages.fr]
-title       = "Ystorian"
+title       = "Vyolet"
 description = "Thème Ystorian"
-
-taxonomies = [
-	{ name = "categories", paginate_by = 3 },
-	{ name = "tags", paginate_by = 3, rss = true },
-]
 
 [languages.fr.translations]
 language_name = "Français"
