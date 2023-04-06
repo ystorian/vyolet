@@ -1,25 +1,38 @@
 {% import "macro/insert.html" as insert %}
 {% import "macro/blog.html" as blog %}
 
+
 {% macro head() %}
-<head><!-- base::head() -->
+{#- Page title #}
+{%- set title = config.title | default(value='⚠️ No Title for this language') %}
+{%- if page.title %}
+{%- set title = title ~ ' &middot; ' ~ page.title | safe %}
+{%- endif %}
+
+{#- Page description #}
+{%- set description = config.description | default(value=page.description) %}
+
+{#- Timestamp #}
+{%- set updated_time = now(utc = true) | date(format = '%+') %}
+{%- set local_time = now(utc = false) | date(format = '%Y-%m-%d %H:%M') %}
+
+<!-- Generated: {{ local_time }} -->
+
+<!-- base::head() -->
+<head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta property="og:updated_time" content="{{ now(utc = true) | date(format = '%+') }}" />
-	<!-- Local time: {{ now() | date(format = '%Y-%m-%d %H:%M') }} -->
+	<meta property="og:updated_time" content="{{ updated_time }}" />
 
 	{#- Title #}
-	<title>{{ self::title() }}</title>
-	<meta property="og:title" content="{{ self::title() }}">
+	<title>{{ title | safe }}</title>
+	<meta property="og:title" content="{{ title | safe }}">
 
 	{#- Progressive Web Application #}
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-
 	{#- Description #}
-	{%- set description = config.description %}
-	{%- if page.description %}{% set description = page.description %}{% endif %}
 	<meta name="description" content="{{ description }}" />
 	<meta property="og:description" content="{{ description }}">
 
