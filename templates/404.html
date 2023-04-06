@@ -13,26 +13,22 @@
 
 {% block content %}
 <!-- 404.html -->
-<section class="hero is-warning is-halfheight-with-navbar">
+<section class="hero is-halfheight-with-navbar">
 	<div class="hero-body">
 		<div class="container">
-			<div class="columns">
-				<div class="column is-4">{{ insert::svg(image="warning") }}</div>
-				<div class="column is-2"></div>
-					<div class="column is-6">
-					<p class="title is-1"> </p>
-					<p class="title is-1">404</p>
-					<p class="title is-3">Page not found</h2>
-					<p class="title is-4">The requested page does not exist or has been moved to another address.</p>
-					<em>
-					{# cspell:disable #}
-					<p><strong>DE</strong> Die angeforderte Seite existiert nicht oder wurde an eine andere Adresse verschoben.</p>
-					<p><strong>ES</strong> La página solicitada no existe o se ha movido a otra dirección.</p>
-					<p><strong>FR</strong> La page demandée n'existe pas ou a été déplacée vers une autre adresse.</p>
-					<p><strong>IT</strong> La pagina richiesta non esiste o è stata spostata su un altro indirizzo.</p>
-					<p><strong>PT</strong> A página solicitada não existe ou foi movida para outro endereço.</p>
-					{# cspell:enable #}
-					</em>
+			<div class="columns is-vcentered is-mobile">
+				<div class="column is-3">{{ insert::svg(image="warning") }}</div>
+				<div class="column is-9">
+					<div lang="en">
+						<p class="title is-1">Page not found</p>
+						<p>The requested page does not exist or has been moved to another address.</p>
+					</div>
+					{%- for language in config.extra.error_404 %}
+					<div lang="{{ language.lang }}" class="is-hidden">
+						<p class="title is-1">{{ language.title }}</p>
+						<p>{{ language.text }}</p>
+					</div>
+					{%- endfor %}
 				</div><!-- /column -->
 			</div><!-- /columns -->
 		</div><!-- /container -->
@@ -40,3 +36,7 @@
 </section>
 <!-- /404.html -->
 {% endblock content %}
+
+{%- macro lang_tag(tag) %}
+<span class="tag is-info is-light">{{ tag }}</span>
+{%- endmacro lang_tag %}

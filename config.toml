@@ -62,6 +62,18 @@ taxonomies = "on"
 [extra]
 header_menu = [{ url = "pricing" }, { url = "solution" }, { url = "blog" }]
 
+error_404 = [
+	# English is already in 404.html.
+	# cspell:disable
+	{ lang = "de", title = "Seite nicht gefunden", text = "Die angeforderte Seite existiert nicht oder wurde an eine andere Adresse verschoben." },
+	{ lang = "es", title = "Página no encontrada", text = "La página solicitada no existe o se ha movido a otra dirección." },
+	{ lang = "fr", title = "Page introuvable", text = "La page demandée n'existe pas ou a été déplacée à une autre adresse." },
+	{ lang = "it", title = "Pagina non trovata", text = "La pagina richiesta non esiste o è stata spostata a un altro indirizzo." },
+	{ lang = "nl", title = "Pagina niet gevonden", text = "De gevraagde pagina bestaat niet of is verplaatst naar een ander adres." },
+	{ lang = "pt", title = "Página não encontrada", text = "A página solicitada não existe ou foi movida para outro endereço." },
+	# cspell:enable
+]
+
 header_buttons = [
 	{ url = "login", name = "Log in", state = "disabled" },
 	{ url = "signup", name = "Sign up", state = "disabled" },
