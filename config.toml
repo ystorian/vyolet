@@ -14,6 +14,7 @@ compile_sass     = true
 default_language = "en"
 feed_limit       = 20
 hard_link_static = false
+ignored_content  = ["static/**/*.inkscape.svg"]
 
 # Site specific.
 
