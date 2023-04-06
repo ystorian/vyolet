@@ -19,7 +19,7 @@ ignored_content  = ["static/**/*.inkscape.svg"]
 # Site specific.
 
 # The site theme to use.
-theme = "vyolet"
+# theme = "vyolet"
 
 # Output directory, /public by default.
 output_dir = "public"
