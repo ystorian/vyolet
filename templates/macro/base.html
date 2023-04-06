@@ -55,6 +55,10 @@
 
 	{#- Plausible #}
 	{{ self::plausible() }}
+
+	{#- Javascript for the 404 page #}
+	{{- self::js_unhide_native() }}
+
 	{#- Feed #}
 	{%- if config.generate_feed %}
 	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='atom.xml') | safe }}">
@@ -252,3 +256,41 @@
 </footer>
 <!-- /base::footer -->
 {% endmacro footer %}
+
+
+{% macro js_unhide_native() %}
+{%- if current_path is undefined %}
+<script>
+// This is injected into the HTML head only when a non-templated page is
+// generated, typically a static 404 page. This script will unhide the
+// native language div if the browser language matches the language of
+// the page, and hide the English div.
+
+document.addEventListener("DOMContentLoaded", function() {
+	// Get the language code of the browser
+	const language = navigator.language;
+
+	// Remove the region and lowercase the language code.
+	const language_code = language.split('-')[0].toLowerCase();
+
+	// Get the language elements with the user's language (<div lang="##">).
+	const language_elements = document.querySelectorAll(`div[lang="${language_code}"]`);
+
+	// Loop through the elements and unhide them.
+	language_elements.forEach((element) => {
+		element.classList.remove('is-hidden');
+	});
+
+	// Hide the English div if another div is unhidden.
+	if (language_elements.length > 0 && language_code !== 'en') {
+		document.querySelector('div[lang="en"]').classList.add('is-hidden');
+	}
+});
+// https://plausible.io/docs/error-pages-tracking-404
+// {%- if config.extra.plausible %}
+plausible("404", {props: {path: document.location.pathname} });
+// {%- endif %}
+</script>
+{%- endif %}
+{% endmacro js_unhide_native %}
+
