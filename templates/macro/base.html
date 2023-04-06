@@ -69,57 +69,93 @@
 {#- If padding is true: use the "section" class to add padding below the navbar -#}
 <!-- base::navbar() -->
 <header class="header">
-	{%- if padding %}<section class="section">{% endif %}
-		<nav class="navbar is-fixed-top is-hoverable has-shadow"
-			aria-label="main navigation">
-			<div class="navbar-brand">
-				<a class="navbar-item" href="{{ config.base_url | safe }}">
-					{{ insert::logotype(header = true) }}
-				</a>
-				<a role="button" class="navbar-burger" aria-label="menu"
-					aria-expanded="false"
-					data-target="navbarMenu">
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-				</a>
-			</div><!-- /navbar-brand -->
-			<div id="navbarMenu" class="navbar-menu">
-				<div class="navbar-start">
-					{%- if config.extra.header_menu %}
-					{%- set navbar_item_class = 'navbar-item' %}
-					{%- for menu in config.extra.header_menu %}
-					{%- if current_url %}
-					{%- set url = menu.url | replace(from = '$BASE_URL', to = config.base_url) %}
-					{%- set url = url ~ '/' %}
-					{%- if current_url is containing('/' ~ menu.url) %}
-					{%- set navbar_item_class = 'navbar-item is-active' %}
-					{%- endif %}
-					{%- endif %}
-					<a class="{{ navbar_item_class }}" href="/{{ menu.url }}">{{ menu.name }}</a>
-					{%- endfor %}
-					{%- endif %}
-				</div><!-- /navbar-start -->
-				{%- if config.build_search_index %}
-				<div class="navbar-item search-container js-only">
-					<input class="input" id="search" type="search" placeholder="Search">
-					<div class="search-results box">
-						<div class="search-results__items"></div>
-					</div><!-- /search-results -->
-				</div><!-- /navbar-item -->
-				{%- endif %}
-				<div class="navbar-end">
-					<div class="navbar-item">
-						<div class="buttons">
-							<button class="button is-primary" disabled>
-								<strong>Log in</strong>
-							</button>
-						</div><!-- /buttons -->
-					</div><!-- /navbar-item -->
-				</div><!-- /navbar-end -->
-			</div><!-- /navbar-menu -->
-		</nav>
-	{%- if padding %}</section>{% endif %}
+{%- if padding %}<section class="section">{% endif %}
+<nav class="navbar is-fixed-top is-hoverable has-shadow" aria-label="main navigation">
+
+<!-- navbar-brand -->
+<div class="navbar-brand">
+
+	<!-- Logo -->
+	<a class="navbar-item" href="{{ config.base_url | safe }}">
+		{{ insert::logotype(header = true) }}</a>
+	<!-- /Logo -->
+
+	<!-- Burger -->
+	<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+	data-target="navbarMenu"><span aria-hidden="true"></span>
+	<span aria-hidden="true"></span><span aria-hidden="true"></span></a>
+	<!-- /Burger -->
+
+</div>
+<!-- /navbar-brand -->
+
+<!-- navbar-menu -->
+<div id="navbarMenu" class="navbar-menu">
+	<!-- navbar-start -->
+	<div class="navbar-start">
+	{%- if config.extra.header_menu %}
+		{%- for item in config.extra.header_menu %}
+			{%- set navbar_item_class = 'navbar-item' %}
+			{%- if current_path is defined and current_path is containing(item.url) %}
+				{%- set navbar_item_class = 'navbar-item is-active' %}
+			{%- endif %}
+			<a class="{{ navbar_item_class }}" href="{{ get_url(path=item.url) }}">{{ trans(key=item.url, lang=lang) }}</a>
+		{%- endfor %}
+	{%- endif %}
+	</div>
+	<!-- /navbar-start -->
+
+	<!-- /search-container -->
+	{%- if config.build_search_index %}
+		<div class="navbar-item search-container js-only">
+			<input class="input" id="search" type="search" placeholder="Search">
+			<div class="search-results box">
+				<div class="search-results__items"></div>
+			</div><!-- /search-results -->
+		</div>
+	{%- endif %}
+	<!-- /search-container -->
+
+	<!-- navbar-end -->
+	<div class="navbar-end">
+
+	<!-- language-switcher -->
+	{%- if config.extra.header_languages is defined %}
+		{%- set url = current_path | default(value = "") %}
+		{%- set url = url | replace(from=lang, to="") %}
+		{%- set url = url | replace(from="//", to="/") %}
+		<!-- {{ url }} -->
+	{%- endif %}
+	<div class="navbar-item has-dropdown is-hoverable">
+		<a class="navbar-link is-arrowless" href="">{{ insert::icon(image="globe") }}</a>
+		<div class="navbar-dropdown is-boxed">
+		{%- for language in config.extra.header_languages %}
+			{%- set active = "" %}
+			{%- if language.lang == lang %}{% set active = "is-active" %}{% endif %}
+			<a class="navbar-item {{ active }}" href="{{ get_url(path = url, lang = language.lang, trailing_slash=false) }}">{{ language.name }}</a>
+		{%- endfor %}
+		</div>
+	</div>
+	<!-- /language-switcher -->
+
+	<!-- buttons -->
+	<div class="navbar-item">
+			<div class="buttons">
+				<button class="button is-primary" disabled>
+					<strong>{{ trans(key="login", lang=lang) }}</strong>
+				</button>
+			</div><!-- /buttons -->
+		</div><!-- /navbar-item -->
+	</div>
+	<!-- /buttons -->
+
+	<!-- /navbar-end -->
+
+</div>
+<!-- /navbar-menu -->
+
+</nav>
+{%- if padding %}</section>{% endif %}
 </header>
 <!-- /base::navbar -->
 {% endmacro navbar %}
@@ -141,67 +177,78 @@
 {% macro footer() %}
 <!-- base::footer() -->
 <footer class="footer">
-	<div class="columns is-flex-direction-row-reverse">
+<div class="columns is-flex-direction-row-reverse">
 
-		<div class="column"><!-- column 3 -->
-			<p class="menu-label">Project</p>
-			<ul class="menu-list">
-				<li><a href="{{ get_url(path='about') | safe }}">About</a></li>
-				<li><a href="{{ get_url(path='blog') | safe }}">Blog</a></li>
-			</ul>
-		</div><!-- /column 3 -->
-		<div class="column"><!-- column 2 -->
-			<p class="menu-label">Resources</p>
-			<ul class="menu-list">
-				<li><a href="{{ get_url(path='docs') | safe }}">Documentation</a></li>
-				{%- if config.extra.status %}
-				<li><a href="{{ config.extra.status | safe }}">Status</a></li>
-				{%- endif -%}
-			</ul>
-		</div><!-- /column 2 -->
-		<div class="column"><!-- column 4 -->
-			<p class="menu-label">Follow us</p>
-			<p class="is-size-4">
-				{%- if config.extra.linkedin %}
-				<a href="https://www.linkedin.com/company/{{ config.extra.linkedin }}" rel="me">{{ insert::icon(image="linkedin") }}</a>
-				{% endif -%}
+<!-- column 3 -->
+<div class="column">
+	<p class="menu-label">Project</p>
+	<ul class="menu-list">
+		<li><a href="{{ get_url(path='about') | safe }}">About</a></li>
+		<li><a href="{{ get_url(path='blog') | safe }}">Blog</a></li>
+	</ul>
+</div>
+<!-- /column 3 -->
 
-				{%- if config.extra.github %}
-				<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ insert::icon(image="github") }}</a>
-				{% endif -%}
+<!-- column 2 -->
+<div class="column">
+	<p class="menu-label">Resources</p>
+	<ul class="menu-list">
+		<li><a href="{{ get_url(path='docs') | safe }}">Documentation</a></li>
+		{%- if config.extra.status %}
+		<li><a href="{{ config.extra.status | safe }}">Status</a></li>
+		{%- endif -%}
+	</ul>
+</div>
+<!-- /column 2 -->
 
-				{%- if config.extra.mastodon %}
-				<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ insert::icon(image="mastodon") }}</a>
-				{% endif -%}
+<!-- column 4 -->
+<div class="column">
+	<p class="menu-label">{{ trans(key="follow_us", lang=lang) }}</p>
+	<p class="is-size-4">
+		{%- if config.extra.linkedin %}
+		<a href="https://www.linkedin.com/{{ config.extra.linkedin }}" rel="me">{{ insert::icon(image="linkedin") }}</a>
+		{% endif -%}
 
-				{%- if config.extra.twitter %}
-				<a href="https://twitter.com/{{ config.extra.twitter }}" rel="me">{{ insert::icon(image="twitter") }}</a>
-				{% endif -%}
+		{%- if config.extra.github %}
+		<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ insert::icon(image="github") }}</a>
+		{% endif -%}
 
-				{%- if config.generate_feed %}
-				<a href="{{ get_url(path='atom.xml') | safe }}">{{ insert::icon(image="rss") }} </a>
-				{% endif -%}
+		{%- if config.extra.mastodon %}
+		<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ insert::icon(image="mastodon") }}</a>
+		{% endif -%}
 
-				{%- if config.extra.mailto %}
-				<a href="mailto:{{ config.extra.mailto }}">{{ insert::icon(image="mail") }} </a>
-				{%- endif %}
-			</p>
-		</div><!-- /column 4 -->
+		{%- if config.extra.twitter %}
+		<a href="https://twitter.com/{{ config.extra.twitter }}" rel="me">{{ insert::icon(image="twitter") }}</a>
+		{% endif -%}
 
-		<div class="column"><!-- column 1 -->
-			<p class="has-text-centered is-size-3">
-				<span class="icon-text">
-					<span class="logotype">{{ insert::icon(image="ystorian") }}{{ config.title }}</span>
-				</span>
-			</p>
-			<p class="has-text-centered is-size-7">
-				<a href="/privacy">Privacy</a> &amp;
-				<a href="/security">Security</a>
-			</p>
-			<p class="has-text-centered is-size-7">Made with 💜</p>
-			<p class="has-text-centered is-size-7"><a href="https://www.infomaniak.com/goto/en/home?utm_term=617a889a54450">Hosted in 🇨🇭 by Infomaniak</a></p>
-		</div><!-- /column 1 -->
-	</div><!-- /columns -->
+		{%- if config.generate_feed %}
+		<a href="{{ get_url(path='atom.xml') | safe }}">{{ insert::icon(image="rss") }} </a>
+		{% endif -%}
+
+		{%- if config.extra.mailto %}
+		<a href="mailto:{{ config.extra.mailto }}">{{ insert::icon(image="mail") }} </a>
+		{%- endif %}
+	</p>
+</div>
+<!-- /column 4 -->
+
+<!-- column 1 -->
+<div class="column">
+	<p class="has-text-centered is-size-3">
+		<span class="icon-text">
+			<span class="logotype">{{ insert::icon(image="logo") }}{{ config.title }}</span>
+		</span>
+	</p>
+	<p class="has-text-centered is-size-7">
+		<a href="{{ get_url(path='privacy', lang=lang) }}">{{ trans(key="privacy", lang=lang) }}</a> &amp;
+		<a href="{{ get_url(path='security', lang=lang) }}">{{ trans(key="security", lang=lang) }}</a>
+	</p>
+	<p class="has-text-centered is-size-7">Made with 💜</p>
+	<p class="has-text-centered is-size-7"><a href="https://www.infomaniak.com/goto/en/home?utm_term=617a889a54450">Hosted in 🇨🇭 by Infomaniak</a></p>
+</div>
+<!-- /column 1 -->
+
+</div><!-- /columns -->
 </footer>
 <!-- /base::footer -->
 {% endmacro footer %}
