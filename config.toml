@@ -174,3 +174,97 @@ pricing       = "Tarifs"
 privacy       = "Confidentialité"
 security      = "Sécurité"
 solution      = "Solutions"
+
+
+# German.
+[languages.de]
+title       = "Vyolet"
+description = "Ystorian-Theme"
+
+[languages.de.translations]
+language_name = "Deutsch"
+about         = "Über uns"
+blog          = "Blog"
+follow_us     = "Folgen Sie uns"
+home          = "Startseite"
+login         = "Anmeldung"
+pricing       = "Preise"
+privacy       = "Datenschutz"
+security      = "Sicherheit"
+solution      = "Lösungen"
+
+
+# Italian.
+[languages.it]
+title       = "Vyolet"
+description = "Tema Ystorian"
+
+[languages.it.translations]
+language_name = "Italiano"
+about         = "Informazioni"
+blog          = "Blog"
+follow_us     = "Seguici"
+home          = "Home"
+links         = "Collegamenti"
+login         = "Accedi"
+pricing       = "Prezzi"
+privacy       = "Privacy"
+security      = "Sicurezza"
+solution      = "Soluzioni"
+
+
+# Spanish.
+[languages.es]
+title       = "Vyolet"
+description = "Tema Ystorian"
+
+[languages.es.translations]
+language_name = "Español"
+about         = "Acerca de"
+blog          = "Blog"
+follow_us     = "Síguenos"
+home          = "Inicio"
+links         = "Enlaces"
+login         = "Iniciar sesión"
+pricing       = "Precios"
+privacy       = "Privacidad"
+security      = "Seguridad"
+solution      = "Soluciones"
+
+
+# Portuguese.
+[languages.pt]
+title       = "Vyolet"
+description = "Tema Ystorian"
+
+[languages.pt.translations]
+language_name = "Português"
+about         = "Sobre"
+blog          = "Blog"
+follow_us     = "Siga-nos"
+home          = "Início"
+links         = "Links"
+login         = "Entrar"
+pricing       = "Preços"
+privacy       = "Privacidade"
+security      = "Segurança"
+solution      = "Soluções"
+
+# Dutch.
+[languages.nl]
+title       = "Vyolet"
+description = "Ystorian-thema"
+
+[languages.nl.translations]
+language_name = "Nederlands"
+about         = "Over"
+blog          = "Blog"
+follow_us     = "Volg ons"
+home          = "Home"
+links         = "Links"
+login         = "Inloggen"
+pricing       = "Prijzen"
+privacy       = "Privacy"
+security      = "Veiligheid"
+solution      = "Oplossingen"
+
