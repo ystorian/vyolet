@@ -72,6 +72,7 @@ header_languages = [
 	{ lang = "it", name = "Italiano" },
 	{ lang = "nl", name = "Nederlands" },
 	{ lang = "pt", name = "Português" },
+	{ lang = "rm", name = "Rumantsch" },
 	# cspell:enable
 ]
 
@@ -84,6 +85,8 @@ error_404 = [
 	{ lang = "it", title = "Pagina non trovata", text = "La pagina richiesta non esiste o è stata spostata a un altro indirizzo." },
 	{ lang = "nl", title = "Pagina niet gevonden", text = "De gevraagde pagina bestaat niet of is verplaatst naar een ander adres." },
 	{ lang = "pt", title = "Página não encontrada", text = "A página solicitada não existe ou foi movida para outro endereço." },
+	{ lang = "rm", title = "Betg chattà la pagina", text = "La pagina dumandada n’exista betg u è vegnida spustada ad in’autra adressa." },
+	# La pagina dumandada n’exista betg u è vegnida spustada ad in’autra adressa
 	# cspell:enable
 ]
 
@@ -268,3 +271,20 @@ privacy       = "Privacy"
 security      = "Veiligheid"
 solution      = "Oplossingen"
 
+# Romansh.
+[languages.rm]
+title       = "Vyolet"
+description = "Tema d'Ystorian"
+
+[languages.rm.translations]
+language_name = "Rumantsch"
+about         = "Sur"
+blog          = "Blog"
+follow_us     = "Suandai a nus"
+home          = "Pagina iniziala"
+links         = "Colliaziuns"
+login         = "Entra"
+pricing       = "Tariffas"
+privacy       = "Confidenzialitad"
+security      = "Segirtad"
+solution      = "Soluziuns"
