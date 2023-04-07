@@ -62,6 +62,19 @@ taxonomies = "on"
 [extra]
 header_menu = [{ url = "pricing" }, { url = "solution" }, { url = "blog" }]
 
+header_languages = [
+	# English first.
+	{ lang = "en", name = "English" },
+	# cspell:disable
+	{ lang = "de", name = "Deutsch" },
+	{ lang = "es", name = "Español" },
+	{ lang = "fr", name = "Français" },
+	{ lang = "it", name = "Italiano" },
+	{ lang = "nl", name = "Nederlands" },
+	{ lang = "pt", name = "Português" },
+	# cspell:enable
+]
+
 error_404 = [
 	# English is already in 404.html.
 	# cspell:disable
