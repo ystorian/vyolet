@@ -101,7 +101,6 @@ github        = "ystorian/vyolet"
 linkedin      = "in/flavienscheurer"
 mailto        = "contact@example.com"
 mastodon      = "https://infosec.exchange"
-twitter       = "."
 
 
 navbar_links = [

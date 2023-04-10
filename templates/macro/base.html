@@ -221,10 +221,6 @@
 		<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ insert::icon(image="mastodon") }}</a>
 		{% endif -%}
 
-		{%- if config.extra.twitter %}
-		<a href="https://twitter.com/{{ config.extra.twitter }}" rel="me">{{ insert::icon(image="twitter") }}</a>
-		{% endif -%}
-
 		{%- if config.generate_feed %}
 		<a href="{{ get_url(path='atom.xml') | safe }}">{{ insert::icon(image="rss") }} </a>
 		{% endif -%}
