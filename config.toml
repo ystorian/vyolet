@@ -98,9 +98,9 @@ header_buttons = [
 # Social links.
 social_header = "Follow us"
 github        = "ystorian/vyolet"
-linkedin      = "in/flavienscheurer"
-mailto        = "contact@example.com"
-mastodon      = "https://infosec.exchange"
+linkedin      = "company/Ystorian"
+mailto        = "contact@ystorian.com"
+mastodon      = "https://infosec.exchange/@ystorian"
 
 
 navbar_links = [
