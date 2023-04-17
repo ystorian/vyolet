@@ -1,0 +1,26 @@
+{% macro toc() %}
+<!-- column::toc() -->
+{%- if page.toc %}
+<div class="column is-one-fifth">
+<aside class="menu sticky">
+<ul class="menu-list">
+	<p class="menu-label">{{ page.title }}</p>
+{%- for h1 in page.toc %}
+	<li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+	{%- if h1.children %}
+		<ul class="menu-list">
+		{%- for h2 in h1.children %}
+			<li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
+		{% endfor -%}
+		</ul>
+	{% endif -%}
+	</li>
+{%- endfor %}
+</ul>
+</aside>
+</div><!-- /column -->
+{%- else %}
+<!-- No TOC found -->
+{%- endif %}
+<!-- /column::toc -->
+{% endmacro toc %}
