@@ -1,0 +1,99 @@
+{% macro head() %}
+<!-- head::head() -->
+<!-- Generated: {{ head::local_time() }} -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:updated_time" content="{{ head::updated_time() }}" />
+
+	{#- Title #}
+	<title>{{ head::title() }}</title>
+	<meta property="og:title" content="{{ head::title() }}">
+
+	{#- Progressive Web Application #}
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	{#- Description #}
+	<meta name="description" content="{{ head::description() }}" />
+	<meta property="og:description" content="{{ head::description() }}">
+
+	{#- Language #}
+	<meta name="language" content="{{ lang }}" />
+	<meta property="og:locale" content="{{ lang }}" />
+
+	{#- Image #}
+	{#- Application icon #}
+	<link rel="icon" sizes="any" href="{{ get_url(path='appicon/favicon.ico', cachebust = true) }}" />
+	<link rel="apple-touch-icon" href="{{ get_url(path='appicon/icon-180x180.png', cachebust = true) }}" />
+	<link rel="manifest" href="{{ get_url(path='appicon/manifest.json', cachebust = true) }}" />
+	<link rel="icon" type="image/svg+xml" href="{{ get_url(path='appicon/icon.svg', cachebust = true) }}" />
+
+	{#- Open Graph #}
+	{{ head::og_image() }}
+
+	{#- Stylesheet #}
+	<link rel="stylesheet" href="{{ get_url(path='css/vyolet.css', cachebust = true) }}" />
+
+	{#- Markdown highlighter #}
+	{%- if config.markdown.highlight_code and current_path is defined %}
+	<link id="syntax_highlight" href="#" rel="stylesheet">
+	{% endif %}
+
+	{#- Scripts -#}
+	<script src="{{ get_url(path='js/vyolet.js', cachebust = true) }}"></script>
+
+	{#- Plausible #}
+	{{ script::plausible() }}
+
+	{#- Javascript and meta for the 404 page #}
+	{%- if current_path is undefined %}
+		{{- head::no_index() }}
+		{{- script::show_native() }}
+	{%- endif %}
+
+	{#- Feed #}
+	{%- if config.generate_feed and current_path is defined %}
+	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='atom.xml') | safe }}">
+	{%- endif %}
+</head>
+<!-- /head::head -->
+{% endmacro head %}
+
+
+
+{%- macro local_time() %}
+{{- now(utc = false) | date(format = '%Y-%m-%d %H:%M') }}
+{%- endmacro local_time %}
+
+
+{%- macro updated_time() %}
+{{- now(utc = true) | date(format = '%+') -}}
+{%- endmacro updated_time %}
+
+
+{%- macro title() %}
+{%- set title = config.title | default(value='⚠️ No Title for this language') %}
+{%- if page.title %}
+	{%- set title = title ~ ' &middot; ' ~ page.title %}
+{%- endif %}
+{%- if current_path is undefined %}
+	{%- set title = '⚠️ Page not found' %}
+{%- endif %}
+{{- title | safe }}
+{%- endmacro title %}
+
+
+{%- macro description() %}
+{%- set description = config.description | default(value=page.description) %}
+{{- description | safe }}
+{%- endmacro description %}
+
+{%- macro no_index() %}
+	<meta name="robots" content="noindex,nofollow">
+{%- endmacro no_index %}
+
+{%- macro og_image() %}
+{%- set og_image = config.extra.og_image | default(value='image/opengraph-1200x630.png') %}
+	<meta property="og:image" content="{{ get_url(path='image/' ~ og_image, cachebust = true) }} " />
+{%- endmacro og_image %}
