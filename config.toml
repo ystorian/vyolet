@@ -60,6 +60,9 @@ taxonomies = "on"
 
 # Theme variables.
 [extra]
+# OpenGraph.
+# Image must be at least 1200x630.
+og_image = "vyolet-opengraph-1200x630.png"
 header_menu = [{ url = "pricing" }, { url = "solution" }, { url = "blog" }]
 
 
