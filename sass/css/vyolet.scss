@@ -153,6 +153,11 @@ body {
 	margin-bottom: 1em;
 }
 
+// Sticky column.
+.sticky {
+	position: sticky;
+	top: 0;
+}
 
 // Sticky footer.
 html {
