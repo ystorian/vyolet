@@ -42,3 +42,7 @@ $primary: $vyolet-main;
 //	$widescreen / 2 (1152px / 2 = 576px) is smaller and allows for the menu to
 //	be displayed when the browser is resized to a narrow window.
 $navbar-breakpoint: $widescreen / 2;
+
+// Reduce the footer padding.
+// Default: $footer-padding: 3rem 1.5rem 6rem !default
+$footer-padding: 3rem 1.5rem 3rem;
