@@ -63,7 +63,45 @@ taxonomies = "on"
 # OpenGraph.
 # Image must be at least 1200x630.
 og_image = "vyolet-opengraph-1200x630.png"
+# Analytics.
+plausible = "ystorian.com/vyolet"
+
+# Header.
 header_menu = [{ url = "pricing" }, { url = "solution" }, { url = "blog" }]
+header_buttons = [
+	{ url = "login", name = "Log in", state = "disabled" },
+	{ url = "signup", name = "Sign up", state = "disabled" },
+]
+
+# Footer.
+# Left column.
+left_column_label = "news"
+left_column = [
+	{ name = "blog", url = "/blog" },
+	{ name = "newsletter", url = "/newsletter" },
+]
+# Social links.
+github   = "ystorian/vyolet"
+linkedin = "company/Ystorian"
+mailto   = "contact@ystorian.com"
+mastodon = "https://infosec.exchange/@ystorian"
+# Middle column.
+middle_column_label = "products"
+middle_column = [
+	{ name = "solution", url = "/solution" },
+	{ name = "documentation", url = "/documentation" },
+	{ name = "pricing", url = "/pricing" },
+	{ name = "status", url = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b" },
+]
+# Right column.
+right_column_label = "company"
+right_column = [
+	{ name = "about", url = "/about" },
+	{ name = "contact", url = "@/contact/index.md" },
+	{ name = "privacy", url = "/privacy" },
+	{ name = "security", url = "/security" },
+	{ name = "imprint", url = "/contact" },
+]
 
 
 # Multilingual support.
@@ -101,43 +139,6 @@ error_404 = [
 	# cspell:enable
 ]
 
-header_buttons = [
-	{ url = "login", name = "Log in", state = "disabled" },
-	{ url = "signup", name = "Sign up", state = "disabled" },
-]
-
-# Social links.
-social_header = "Follow us"
-github        = "ystorian/vyolet"
-linkedin      = "company/Ystorian"
-mailto        = "contact@ystorian.com"
-mastodon      = "https://infosec.exchange/@ystorian"
-
-
-navbar_links = [
-	{ name = "about", url = "/about" },
-	{ name = "archive", url = "/archive" },
-	{ name = "tags", url = "/tags" },
-	{ name = "categories", url = "/categories" },
-	{ name = "links", url = "/links" },
-]
-
-# Footer.
-status = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b"
-
-footer_links = [
-	{ name = "about", url = "/about" },
-	{ name = "archive", url = "/archive" },
-	{ name = "tags", url = "/tags" },
-	{ name = "categories", url = "/categories" },
-	{ name = "links", url = "/links" },
-]
-
-# Analytics.
-plausible = "ystorian.com"
-
-
-# Multilingual support.
 [languages]
 
 # Default values (English).
