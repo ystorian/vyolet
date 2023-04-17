@@ -1,0 +1,104 @@
+{% macro navbar(padding=true) %}
+{#- If padding is true: use the "section" class to add padding below the navbar -#}
+<!-- navbar::navbar() -->
+<header class="header">
+{%- if padding %}<section class="section">{% endif %}
+<nav class="navbar is-fixed-top is-hoverable has-shadow" aria-label="main navigation">
+
+<!-- navbar-brand -->
+<div class="navbar-brand">
+	{{ navbar::logo() }}
+	{{ navbar::burger() }}
+</div><!-- /navbar-brand -->
+
+<!-- navbar-menu -->
+<div id="navbarMenu" class="navbar-menu">
+	{{ navbar::menu_items() }}
+
+	{{ navbar::search() }}
+
+<!-- navbar-end -->
+<div class="navbar-end">
+
+{{ navbar::languages() }}
+{{ navbar::button(key="login", disabled=true) }}
+
+</div><!-- /navbar-end -->
+
+</div><!-- /navbar-menu -->
+
+</nav>
+{%- if padding %}</section>{% endif %}
+</header>
+<!-- /navbar::navbar -->
+{% endmacro navbar %}
+
+
+
+{% macro logo() %}
+<!-- navbar::logo() -->
+<a class="navbar-item" href="{{ config.base_url | safe }}">
+	{{ image::logotype(header = true) }}</a>
+<!-- /navbar::logo -->
+{% endmacro logo %}
+
+
+{% macro burger() %}
+<!-- navbar::burger() -->
+<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+data-target="navbarMenu"><span aria-hidden="true"></span>
+<span aria-hidden="true"></span><span aria-hidden="true"></span></a>
+<!-- /navbar::burger -->
+{% endmacro burger %}
+
+
+{% macro menu_items() %}
+<!-- navbar::menu_items() -->
+<div class="navbar-start">
+	{%- if config.extra.header_menu %}
+	{%- for item in config.extra.header_menu %}
+		{%- set navbar_item_class = 'navbar-item' %}
+		{%- if current_path is defined and current_path is containing(item.url) %}
+		{%- set navbar_item_class = 'navbar-item is-active' %}
+		{%- endif %}
+		<a class="{{ navbar_item_class }}" href="{{ get_url(path=item.url) }}">{{ trans(key=item.url, lang=lang) }}</a>
+	{%- endfor %}
+	{%- endif %}
+</div><!-- /navbar-start -->
+<!-- /navbar::menu_items -->
+{% endmacro menu_items %}
+
+
+{% macro search() %}
+{%- if config.build_search_index %}
+<!-- navbar::search() -->
+<div class="navbar-item search-container js-only">
+	<input class="input" id="search" type="search" placeholder="Search">
+	<div class="search-results box">
+		<div class="search-results__items"></div>
+	</div><!-- /search-results -->
+</div><!-- /search-container -->
+<!-- /navbar::search -->
+{%- else %}
+<!-- navbar::search() [disabled] -->
+{%- endif %}
+{% endmacro search %}
+
+
+{% macro languages() %}
+{{ language::selector() }}
+{% endmacro languages %}
+
+
+{% macro button(key="login", disabled=false) %}
+{% if disabled == true %}{% set disabled = "disabled" %}{% endif %}
+<!-- navbar::button({{ key }}, {{ disabled }}) -->
+<div class="navbar-item">
+	<div class="buttons">
+		<button class="button is-primary" {{ disabled }} >
+			<strong>{{ trans(key=key, lang=lang) }}</strong>
+		</button>
+	</div><!-- /buttons -->
+</div><!-- /navbar-item -->
+<!-- /navbar::button -->
+{% endmacro button %}
