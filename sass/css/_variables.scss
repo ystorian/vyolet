@@ -1,6 +1,9 @@
 // Vyolet - Spring 2023 color scheme
 @charset "utf-8";
 
+// Font size based on the view port width.
+$body-font-size: clamp(0.9em, 1.3vw, 1.3em);
+
 // Main | oklch(50% 0.24 300) | hsl(270.26 71% 49%) | #7d24d3:
 $vyolet-main: hsl(270.26 71% 49%);
 
@@ -36,6 +39,6 @@ $primary: $vyolet-main;
 
 // Reduce the navbar breakpoint to smaller screens.
 //	Default is $desktop (1024px).
-//	$widescreen / 2 (1152px / 2 = 576) is smaller and allows for the menu to be displayed
-//	when the browser is resized to a narrow window.
+//	$widescreen / 2 (1152px / 2 = 576px) is smaller and allows for the menu to
+//	be displayed when the browser is resized to a narrow window.
 $navbar-breakpoint: $widescreen / 2;
