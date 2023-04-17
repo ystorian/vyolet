@@ -62,6 +62,14 @@ taxonomies = "on"
 [extra]
 header_menu = [{ url = "pricing" }, { url = "solution" }, { url = "blog" }]
 
+
+# Multilingual support.
+
+# List of languages to display in the header.
+# The theme cannot use the [languages] section because it is not available on
+# all pages.
+# This will be refactored in the future, when Zola will have proper multilingual
+# support, possibly with version 2.0.
 header_languages = [
 	# English first.
 	{ lang = "en", name = "English" },
@@ -76,8 +84,9 @@ header_languages = [
 	# cspell:enable
 ]
 
+# Translations for the 404 page.
+# Note: English is already in 404.html.
 error_404 = [
-	# English is already in 404.html.
 	# cspell:disable
 	{ lang = "de", title = "Seite nicht gefunden", text = "Die angeforderte Seite existiert nicht oder wurde an eine andere Adresse verschoben." },
 	{ lang = "es", title = "Página no encontrada", text = "La página solicitada no existe o se ha movido a otra dirección." },
@@ -86,7 +95,6 @@ error_404 = [
 	{ lang = "nl", title = "Pagina niet gevonden", text = "De gevraagde pagina bestaat niet of is verplaatst naar een ander adres." },
 	{ lang = "pt", title = "Página não encontrada", text = "A página solicitada não existe ou foi movida para outro endereço." },
 	{ lang = "rm", title = "Betg chattà la pagina", text = "La pagina dumandada n’exista betg u è vegnida spustada ad in’autra adressa." },
-	# La pagina dumandada n’exista betg u è vegnida spustada ad in’autra adressa
 	# cspell:enable
 ]
 
@@ -154,12 +162,15 @@ follow_us     = "Follow us"
 home          = "Home"
 login         = "Log in"
 made          = "Made with 💜"
+news          = "News"
+newsletter    = "Newsletter"
 pricing       = "Pricing"
 privacy       = "Privacy"
 products      = "Products"
 security      = "Security"
 solution      = "Solutions"
 status        = "System status"
+translated    = "This page has been automatically translated and may contain translation errors"
 
 
 # Additional languages definition.
@@ -181,12 +192,15 @@ follow_us     = "Suivez-nous"
 home          = "Accueil"
 login         = "Connexion"
 made          = "Fait avec 💜"
+news          = "Actualités"
+newsletter    = "Newsletter"
 pricing       = "Tarifs"
 privacy       = "Confidentialité"
 products      = "Produits"
 security      = "Sécurité"
 solution      = "Solutions"
 status        = "État du système"
+translated    = "Cette page a été traduite automatiquement et peut contenir des erreurs de traduction"
 
 
 # German.
@@ -205,12 +219,15 @@ follow_us     = "Folgen Sie uns"
 home          = "Startseite"
 login         = "Anmeldung"
 made          = "Hergestellt mit 💜"
+news          = "Neuigkeiten"
+newsletter    = "Newsletter"
 pricing       = "Preise"
 privacy       = "Datenschutz"
 products      = "Produkte"
 security      = "Sicherheit"
 solution      = "Lösungen"
 status        = "Systemstatus"
+translated    = "Diese Seite wurde maschinell übersetzt und kann Übersetzungsfehler enthalten"
 
 
 # Italian.
@@ -229,12 +246,15 @@ follow_us     = "Seguici"
 home          = "Home"
 login         = "Accedi"
 made          = "Fatto con 💜"
+news          = "Novità"
+newsletter    = "Newsletter"
 pricing       = "Prezzi"
 privacy       = "Privacy"
 products      = "Prodotti"
 security      = "Sicurezza"
 solution      = "Soluzioni"
 status        = "Stato del sistema"
+translated    = "Questa pagina è stata tradotta automaticamente e può contenere errori di traduzione"
 
 
 # Spanish.
@@ -253,12 +273,15 @@ follow_us     = "Síguenos"
 home          = "Inicio"
 login         = "Iniciar sesión"
 made          = "Hecho con 💜"
+news          = "Noticias"
+newsletter    = "Boletín"
 pricing       = "Precios"
 privacy       = "Privacidad"
 products      = "Productos"
 security      = "Seguridad"
 solution      = "Soluciones"
 status        = "Estado del sistema"
+translated    = "Esta página ha sido traducida automáticamente y puede contener errores de traducción"
 
 
 # Portuguese.
@@ -277,12 +300,15 @@ follow_us     = "Siga-nos"
 home          = "Início"
 login         = "Entrar"
 made          = "Feito com 💜"
+news          = "Notícias"
+newsletter    = "Newsletter"
 pricing       = "Preços"
 privacy       = "Privacidade"
 products      = "Produtos"
 security      = "Segurança"
 solution      = "Soluções"
 status        = "Estado do sistema"
+translated    = "Esta página foi automaticamente traduzida e pode conter erros de tradução"
 
 
 # Dutch.
@@ -301,12 +327,15 @@ follow_us     = "Volg ons"
 home          = "Home"
 login         = "Inloggen"
 made          = "Gemaakt met 💜"
+news          = "Nieuws"
+newsletter    = "Nieuwsbrief"
 pricing       = "Prijzen"
 privacy       = "Privacy"
 products      = "Producten"
 security      = "Veiligheid"
 solution      = "Oplossingen"
 status        = "Systeemstatus"
+translated    = "Deze pagina is automatisch vertaald en kan vertaalfouten bevatten"
 
 
 # Romansh.
@@ -315,6 +344,9 @@ title       = "Vyolet"
 description = "Tema d'Ystorian"
 
 [languages.rm.translations]
+# Sources:
+# - https://www.dicziunari.ch/rm/
+# - https://try.rumants.ch/
 language_name = "Rumantsch"
 about         = "Sur"
 blog          = "Blog"
@@ -323,11 +355,14 @@ contact       = "Contact"
 documentation = "Documentaziun"
 follow_us     = "Suandai a nus"
 home          = "Pagina iniziala"
-login         = "Entra"
+login         = "Connexiun"
 made          = "Fatg cun 💜"
-pricing       = "Tariffas"
-privacy       = "Confidenzialitad"
+news          = "Novitads"
+newsletter    = "Newsletter"
+pricing       = "Pretschs"
+privacy       = "Protecziun da datas"
 products      = "Products"
 security      = "Segirtad"
 solution      = "Soluziuns"
 status        = "Status da sistem"
+translated    = "Questa pagina è vegnida translatada automaticamain e po cuntegnair sbagls da translaziun"
