@@ -1,0 +1,95 @@
+{% macro footer() %}
+<!-- footer::footer() -->
+<footer class="footer">
+<div class="columns is-flex-direction-row-reverse">
+
+{#- Columns are reverse order to show the main column last on mobile #}
+{{ footer::right_column() }}
+{{ footer::middle_column() }}
+{{ footer::left_column() }}
+{{ footer::main_column() }}
+
+</div><!-- /columns -->
+</footer>
+<!-- /footer::footer -->
+{% endmacro footer %}
+
+
+{% macro main_column() %}
+<!-- footer::main_column() -->
+<div class="column">
+	<p class="has-text-centered is-size-3">
+		<span class="icon-text">
+			<span class="logotype">{{ image::icon(image="logo") }}{{ config.title }}</span>
+		</span>
+	</p>
+	<p class="has-text-centered is-size-4">{{ head::description() }}</p>
+	<p></p>
+	<p class="has-text-centered is-size-7 mt-4">{{ trans(key="made", lang=lang) }}</p>
+</div>
+<!-- /footer::main_column -->
+{% endmacro main_column %}
+
+
+{% macro left_column() %}
+<!-- footer::left_column() -->
+<div class="column">
+	<p class="menu-label">{{ trans(key=config.extra.left_column_label, lang=lang) }}</p>
+	<ul class="menu-list">
+	{%- for item in config.extra.left_column %}
+	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
+	{%- endfor %}
+	</ul>
+	<p class="menu-label">{{ trans(key="follow_us", lang=lang) }}</p>
+	<p class="is-size-4">
+		{%- if config.extra.linkedin %}
+		<a href="https://www.linkedin.com/{{ config.extra.linkedin }}" rel="me">{{ image::icon(image="linkedin") }}</a>
+		{% endif -%}
+
+		{%- if config.extra.github %}
+		<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ image::icon(image="github") }}</a>
+		{% endif -%}
+
+		{%- if config.extra.mastodon %}
+		<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ image::icon(image="mastodon") }}</a>
+		{% endif -%}
+
+		{%- if config.generate_feed %}
+		<a href="{{ get_url(path='atom.xml') | safe }}">{{ image::icon(image="rss") }} </a>
+		{% endif -%}
+
+		{%- if config.extra.mailto %}
+		<a href="mailto:{{ config.extra.mailto }}">{{ image::icon(image="mail") }} </a>
+		{%- endif %}
+	</p>
+</div>
+<!-- /footer::left_column -->
+{% endmacro left_column %}
+
+
+{% macro middle_column() %}
+<!-- footer::middle_column() -->
+<div class="column">
+	<p class="menu-label">{{ trans(key=config.extra.middle_column_label, lang=lang) }}</p>
+	<ul class="menu-list">
+	{%- for item in config.extra.middle_column %}
+	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
+	{%- endfor %}
+	</ul>
+</div>
+<!-- /footer::middle_column() -->
+{% endmacro middle_column %}
+
+
+{% macro right_column() %}
+<!-- footer::right_column() -->
+<div class="column">
+	<p class="menu-label">{{ trans(key=config.extra.right_column_label, lang=lang) }}</p>
+	<ul class="menu-list">
+	{%- for item in config.extra.right_column %}
+	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
+	{%- endfor %}
+	</ul>
+</div>
+<!-- /footer::right_column -->
+{% endmacro right_column %}
