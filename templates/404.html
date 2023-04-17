@@ -1,23 +1,21 @@
 {% extends "base.html" %}
 
 
-{# Title #}
-{% block title %}<title>Page not found</title>{% endblock title %}
-
 {# Navbar without padding #}
 {% block navbar %}
-{{ base::navbar(padding = false) }}
+<!-- 404.html/navbar -->
+{{ navbar::navbar(padding=false) }}
+<!-- /404.html/navbar -->
 {% endblock navbar %}
 
-{# Page heading #}
 
 {% block content %}
-<!-- 404.html -->
+<!-- 404.html/content -->
 <section class="hero is-halfheight-with-navbar">
 	<div class="hero-body">
 		<div class="container">
 			<div class="columns is-vcentered is-mobile">
-				<div class="column is-3">{{ insert::svg(image="warning") }}</div>
+				<div class="column is-3">{{ image::svg(image="warning") }}</div>
 				<div class="column is-9">
 					<div lang="en">
 						<p class="title is-1">Page not found</p>
@@ -34,9 +32,5 @@
 		</div><!-- /container -->
 	</div><!-- /hero-body -->
 </section>
-<!-- /404.html -->
+<!-- /404.html/content -->
 {% endblock content %}
-
-{%- macro lang_tag(tag) %}
-<span class="tag is-info is-light">{{ tag }}</span>
-{%- endmacro lang_tag %}
