@@ -1,0 +1,22 @@
+{%- macro logotype(header=false) %}
+	<!-- image::logotype() -->
+	{%- set svg = load_data(path="image/logotype.svg") -%}
+	{%- set svg = svg | replace(from="<svg ", to="<svg height=32 width=128 ") -%}
+	<span class="svg-logotype">{{ svg | trim | safe}}</span>
+	<!-- /image::logotype -->
+{% endmacro logotype -%}
+
+
+{%- macro icon(image="not_found") %}
+{%- set svg = load_data(path="image/" ~ image ~ ".svg") %}
+{%- set svg = svg | replace(from="<svg ", to="<svg height=32 width=32 ") %}
+<!-- image::icon({{ image }}) --><span class="svg-icon">{{ svg | trim | safe}}</span>
+<!-- /image::icon -->
+{%- endmacro icon -%}
+
+
+{%- macro svg(image="not_found") %}
+{%- set svg = load_data(path="image/" ~ image ~ ".svg") %}
+<!-- image::svg({{ image }}) -->{{ svg | trim | safe}}
+<!-- /image::svg -->
+{%- endmacro icon -%}
