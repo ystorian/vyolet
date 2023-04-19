@@ -18,14 +18,13 @@
 {% macro main_column() %}
 <!-- footer::main_column() -->
 <div class="column">
-	<p class="has-text-centered is-size-3">
+	<p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
 		<span class="icon-text">
 			<span class="logotype">{{ image::icon(image="logo") }}{{ config.title }}</span>
 		</span>
 	</p>
-	<p class="has-text-centered is-size-4">{{ head::description() }}</p>
-	<p></p>
-	<p class="has-text-centered is-size-7 mt-4">{{ trans(key="made", lang=lang) }}</p>
+	<p class="has-text-centered-mobile has-text-weight-light is-size-6 mt-1">{{ head::description() }}</p>
+	<p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key="made", lang=lang) }}</p>
 </div>
 <!-- /footer::main_column -->
 {% endmacro main_column %}
@@ -34,14 +33,14 @@
 {% macro left_column() %}
 <!-- footer::left_column() -->
 <div class="column">
-	<p class="menu-label">{{ trans(key=config.extra.left_column_label, lang=lang) }}</p>
-	<ul class="menu-list">
+	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.left_column_label, lang=lang) }}</p>
+	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.left_column %}
 	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
 	{%- endfor %}
 	</ul>
-	<p class="menu-label">{{ trans(key="follow_us", lang=lang) }}</p>
-	<p class="is-size-4">
+	<p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key="follow_us", lang=lang) }}</p>
+	<p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
 		{%- if config.extra.linkedin %}
 		<a href="https://www.linkedin.com/{{ config.extra.linkedin }}" rel="me">{{ image::icon(image="linkedin") }}</a>
 		{% endif -%}
@@ -70,8 +69,8 @@
 {% macro middle_column() %}
 <!-- footer::middle_column() -->
 <div class="column">
-	<p class="menu-label">{{ trans(key=config.extra.middle_column_label, lang=lang) }}</p>
-	<ul class="menu-list">
+	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.middle_column_label, lang=lang) }}</p>
+	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.middle_column %}
 	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
 	{%- endfor %}
@@ -84,8 +83,8 @@
 {% macro right_column() %}
 <!-- footer::right_column() -->
 <div class="column">
-	<p class="menu-label">{{ trans(key=config.extra.right_column_label, lang=lang) }}</p>
-	<ul class="menu-list">
+	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.right_column_label, lang=lang) }}</p>
+	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.right_column %}
 	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
 	{%- endfor %}
@@ -93,3 +92,12 @@
 </div>
 <!-- /footer::right_column -->
 {% endmacro right_column %}
+
+
+{% macro menu_label() %}
+menu-label is-size-7 has-text-weight-semibold has-text-grey-light
+{%- endmacro menu_label %}
+
+{% macro menu_list() %}
+menu-list is-size-6 is-size-5-mobile
+{%- endmacro menu_list %}
