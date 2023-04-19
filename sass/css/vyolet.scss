@@ -168,6 +168,13 @@ body {
 }
 
 
+// Scroll to a position below the navbar.
+html {
+	scroll-padding-top: $navbar-height + $navbar-padding-vertical;
+
+}
+
+
 // Sticky footer.
 html {
 	height: 100%;
