@@ -83,8 +83,8 @@ navbar_buttons = [
 # Left column.
 left_column_label = "news"
 left_column = [
-	{ name = "blog", url = "/blog" },
-	{ name = "newsletter", url = "/newsletter" },
+	{ key = "blog", url = "blog" },
+	{ key = "newsletter", url = "newsletter" },
 ]
 # Social links.
 github   = "ystorian/vyolet"
@@ -94,19 +94,19 @@ mastodon = "https://infosec.exchange/@ystorian"
 # Middle column.
 middle_column_label = "products"
 middle_column = [
-	{ name = "solution", url = "/solution" },
-	{ name = "documentation", url = "/documentation" },
-	{ name = "pricing", url = "/pricing" },
-	{ name = "status", url = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b" },
+	{ key = "solution", url = "@solution" },
+	{ key = "documentation", url = "@documentation" },
+	{ key = "pricing", url = "@pricing" },
+	{ key = "status", url = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b" },
 ]
 # Right column.
 right_column_label = "company"
 right_column = [
-	{ name = "about", url = "/about" },
-	{ name = "contact", url = "@/contact/index.md" },
-	{ name = "privacy", url = "/privacy" },
-	{ name = "security", url = "/security" },
-	{ name = "imprint", url = "/contact" },
+	{ key = "about", url = "about" },
+	{ key = "contact", url = "contact" },
+	{ key = "privacy", url = "privacy" },
+	{ key = "security", url = "security" },
+	{ key = "legal", url = "contact" },
 ]
 
 

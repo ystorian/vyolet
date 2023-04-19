@@ -36,7 +36,7 @@
 	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.left_column_label, lang=lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.left_column %}
-	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
+	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
 	{%- endfor %}
 	</ul>
 	<p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key="follow_us", lang=lang) }}</p>
@@ -72,7 +72,7 @@
 	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.middle_column_label, lang=lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.middle_column %}
-	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
+	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
 	{%- endfor %}
 	</ul>
 </div>
@@ -86,7 +86,7 @@
 	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.right_column_label, lang=lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.right_column %}
-	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.name, lang=lang) }}</a></li>
+	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
 	{%- endfor %}
 	</ul>
 </div>
