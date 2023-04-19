@@ -100,6 +100,7 @@
 	position: relative;
 }
 
+
 // SVG logotype.
 .svg-logotype {
 	display: inline-flex;
@@ -110,6 +111,7 @@
 .svg-logotype svg {
 	height: 2em;
 }
+
 
 // Logo.
 .logo {
@@ -153,11 +155,18 @@ body {
 	margin-bottom: 1em;
 }
 
+
 // Sticky column.
-.sticky {
+.is_sticky {
 	position: sticky;
-	top: 0;
+	top: $navbar-height + ($navbar-padding-vertical * 2);
 }
+
+.is_sticky_top {
+	position: sticky;
+	top: $navbar-height;
+}
+
 
 // Sticky footer.
 html {
