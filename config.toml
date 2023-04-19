@@ -74,6 +74,9 @@ navbar_menu = [
 	{ key = "solution", url = "solution" },
 	{ key = "blog", url = "blog" },
 ]
+
+navbar_buttons = [
+	{ key = "login", url = "login", primary = true, disabled = true },
 ]
 
 # Footer.

@@ -21,7 +21,7 @@
 <div class="navbar-end">
 
 {{ navbar::languages() }}
-{{ navbar::button(key="login", disabled=true) }}
+{{ navbar::buttons() }}
 
 </div><!-- /navbar-end -->
 
@@ -90,15 +90,23 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 {% endmacro languages %}
 
 
-{% macro button(key="login", disabled=false) %}
-{% if disabled == true %}{% set disabled = "disabled" %}{% endif %}
-<!-- navbar::button({{ key }}, {{ disabled }}) -->
-<div class="navbar-item">
-	<div class="buttons">
-		<button class="button is-primary" {{ disabled }} >
-			<strong>{{ trans(key=key, lang=lang) }}</strong>
-		</button>
-	</div><!-- /buttons -->
-</div><!-- /navbar-item -->
-<!-- /navbar::button -->
-{% endmacro button %}
+{% macro buttons() %}
+{%- if config.extra.navbar_buttons %}
+<!-- navbar::buttons() -->
+{%- for item in config.extra.navbar_buttons %}
+	{%- set class = "button" %}
+	{% if item.primary == true %}{% set class = class ~ " is-primary" %}{% endif %}
+	{% if item.disabled == true %}{% set disabled = "disabled" %}{% endif %}
+	<div class="navbar-item">
+		<div class="buttons">
+			<button class="{{ class }} }}" href="{{ item.url }}" {{ disabled }}>
+				<strong>{{ trans(key=item.key, lang=lang) }}</strong>
+			</button>
+		</div><!-- /buttons -->
+	</div><!-- /navbar-item -->
+	<!-- /navbar::button -->
+{%- endfor %}
+{%- else %}
+<!-- navbar::buttons() [disabled] -->
+{%- endif %}
+{% endmacro buttons %}
