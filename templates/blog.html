@@ -2,29 +2,29 @@
 {% import "macro/blog.html" as blog %}
 
 {% block content %}
-		<!-- blog.html -->
-		<div class="columns">
-			<div class="column is-3">
-				<aside class="menu is-hidden-mobile">
-					{{ blog::toc_menu(display = true) }}
-					{{ blog::categories_menu(display = true) }}
-					{{ blog::tags_menu(display = true) }}
-				</aside>
-			</div><!-- /column is-3 -->
-			<div class="column is-9">
-				<div class="container">
-					<div class="content">
-						{% if paginator %}
-						{{ blog::list_articles(pages = paginator.pages) }}
-						{% else %}
-						{{ blog::list_articles(pages = section.pages) }}
-						{% endif %}
-						{% if paginator %}
-						{{ blog::paginate(paginator = paginator) }}
-						{% endif %}
-					</div><!-- /content -->
-				</div><!-- /container -->
-			</div><!-- /column is-9 -->
-		</div><!-- /columns -->
-		<!-- /blog.html -->
+<!-- blog.html/content -->
+<div class="columns">
+	<div class="column is-3">
+		<aside class="menu is-hidden-mobile">
+			{{ blog::toc_menu(display = true) }}
+			{{ blog::categories_menu(display = true) }}
+			{{ blog::tags_menu(display = true) }}
+		</aside>
+	</div><!-- /column is-3 -->
+	<div class="column is-9">
+		<div class="container">
+			<div class="content">
+				{% if paginator %}
+				{{ blog::list_articles(pages = paginator.pages) }}
+				{% else %}
+				{{ blog::list_articles(pages = section.pages) }}
+				{% endif %}
+				{% if paginator %}
+				{{ blog::paginate(paginator = paginator) }}
+				{% endif %}
+			</div><!-- /content -->
+		</div><!-- /container -->
+	</div><!-- /column is-9 -->
+</div><!-- /columns -->
+<!-- /blog.html/content -->
 {% endblock content %}

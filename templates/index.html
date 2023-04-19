@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- index.html -->
-				<div class="card article">
-					<div class="card-content">
-						<div class="content article-body">
-							{{ section.content | safe }}
-						</div><!-- /content -->
-					</div><!-- /card-content -->
-					{% block page_footer %}
-					{% endblock page_footer %}
-				</div><!-- /card -->
-<!-- /index.html -->
+<!-- index.html/content -->
+<div class="card article">
+	<div class="card-content">
+		<div class="content article-body">
+			{{ section.content | safe }}
+		</div><!-- /content -->
+	</div><!-- /card-content -->
+	{% block page_footer %}
+	{% endblock page_footer %}
+</div><!-- /card -->
+<!-- /index.html/content -->
 {% endblock content %}
