@@ -55,13 +55,13 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 {% macro menu_items() %}
 <!-- navbar::menu_items() -->
 <div class="navbar-start">
-	{%- if config.extra.header_menu %}
-	{%- for item in config.extra.header_menu %}
+	{%- if config.extra.navbar_menu %}
+	{%- for item in config.extra.navbar_menu %}
 		{%- set navbar_item_class = 'navbar-item' %}
 		{%- if current_path is defined and current_path is containing(item.url) %}
 		{%- set navbar_item_class = 'navbar-item is-active' %}
 		{%- endif %}
-		<a class="{{ navbar_item_class }}" href="{{ get_url(path=item.url) }}">{{ trans(key=item.url, lang=lang) }}</a>
+		<a class="{{ navbar_item_class }}" href="{{ get_url(path=item.url, lang=lang ) }}">{{ trans(key=item.key, lang=lang) }}</a>
 	{%- endfor %}
 	{%- endif %}
 </div><!-- /navbar-start -->
