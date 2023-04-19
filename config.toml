@@ -60,6 +60,8 @@ taxonomies = "on"
 
 # Theme variables.
 [extra]
+# Theme version.
+version = "0.1.0"
 # OpenGraph.
 # Image must be at least 1200x630.
 og_image = "vyolet-opengraph-1200x630.png"
