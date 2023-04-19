@@ -48,7 +48,7 @@
 	{{ script::plausible() }}
 
 	{#- Javascript and meta for the 404 page #}
-	{%- if current_path is undefined %}
+	{%- if head::is_404() %}
 		{{- head::no_index() }}
 		{{- script::show_native() }}
 	{%- endif %}
@@ -78,7 +78,7 @@
 {%- if page.title %}
 	{%- set title = title ~ ' &middot; ' ~ page.title %}
 {%- endif %}
-{%- if current_path is undefined %}
+{%- if head::is_404() %}
 	{%- set title = '⚠️ Page not found' %}
 {%- endif %}
 {{- title | safe }}
@@ -102,3 +102,14 @@
 {%- macro version() %}
 	{{- config.extra.version | default(value='0.0.0') }}
 {%- endmacro version %}
+
+
+{%- macro is_404() %}
+{%- if current_path is undefined -%}
+	true
+{%- else %}
+	{%- if current_path is defined and current_path is ending_with('404/') -%}
+		true
+	{%- endif %}
+{%- endif %}
+{%- endmacro is_404 %}
