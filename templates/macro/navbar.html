@@ -61,7 +61,7 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 		{%- if current_path is defined and current_path is containing(item.url) %}
 		{%- set navbar_item_class = 'navbar-item is-active' %}
 		{%- endif %}
-		<a class="{{ navbar_item_class }}" href="{{ get_url(path=item.url, lang=lang ) }}">{{ trans(key=item.key, lang=lang) }}</a>
+		<a class="{{ navbar_item_class }}" href="{{ get_url(path = item.url, lang = lang ) }}">{{ trans(key = item.key, lang = lang) }}</a>
 	{%- endfor %}
 	{%- endif %}
 </div><!-- /navbar-start -->
@@ -94,13 +94,13 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 {%- if config.extra.navbar_buttons %}
 <!-- navbar::buttons() -->
 {%- for item in config.extra.navbar_buttons %}
-	{%- set class = "button" %}
-	{% if item.primary == true %}{% set class = class ~ " is-primary" %}{% endif %}
-	{% if item.disabled == true %}{% set disabled = "disabled" %}{% endif %}
+	{%- set class = 'button' %}
+	{% if item.primary == true %}{% set class = class ~ ' is-primary' %}{% endif %}
+	{% if item.disabled == true %}{% set disabled = 'disabled' %}{% endif %}
 	<div class="navbar-item">
 		<div class="buttons">
 			<button class="{{ class }} }}" href="{{ item.url }}" {{ disabled }}>
-				<strong>{{ trans(key=item.key, lang=lang) }}</strong>
+				<strong>{{ trans(key = item.key, lang = lang) }}</strong>
 			</button>
 		</div><!-- /buttons -->
 	</div><!-- /navbar-item -->

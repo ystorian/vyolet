@@ -1,18 +1,18 @@
 {% macro selector() %}
 {%- if config.extra.header_languages is defined %}
-{%- set url = current_path | default(value = "") %}
-{%- set url = url | replace(from="/" ~ lang ~ "/", to="") %}
+{%- set url = current_path | default(value = '') %}
+{%- set url = url | replace(from = '/' ~ lang ~ '/', to = '') %}
 {%- endif %}
 <!-- language::selector()
 	current_path: {{ current_path | default(value = "") | safe }}
 	url: {{ url | safe }} -->
 <div class="navbar-item has-dropdown is-hoverable">
-	<a class="navbar-link is-arrowless" href="">{{- image::icon(image="globe") -}}</a>
+	<a class="navbar-link is-arrowless" href="">{{- image::icon(image = 'globe') -}}</a>
 	<div class="navbar-dropdown is-boxed">
 	{%- for language in config.extra.header_languages %}
 		{%- set active = "" %}
-		{%- if language.lang == lang %}{% set active = " is-active" %}{% endif %}
-		<a class="navbar-item{{ active }}" href="{{ get_url(path = url, lang = language.lang, trailing_slash=false) }}">{{ language.name }}</a>
+		{%- if language.lang == lang %}{% set active = ' is-active' %}{% endif %}
+		<a class="navbar-item{{ active }}" href="{{ get_url(path = url, lang = language.lang, trailing_slash = false) }}">{{ language.name }}</a>
 	{%- endfor %}
 	</div><!-- /navbar-dropdown -->
 </div><!-- /navbar-item -->

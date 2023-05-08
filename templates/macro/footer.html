@@ -20,11 +20,11 @@
 <div class="column">
 	<p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
 		<span class="icon-text">
-			<span class="logotype">{{ image::icon(image="logo") }}{{ config.title }}</span>
+			<span class="logotype">{{ image::icon(image = 'logo') }}{{ config.title }}</span>
 		</span>
 	</p>
 	<p class="has-text-centered-mobile has-text-weight-light is-size-6 mt-1">{{ head::description() }}</p>
-	<p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key="made", lang=lang) }}</p>
+	<p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key = 'made', lang = lang) }}</p>
 </div>
 <!-- /footer::main_column -->
 {% endmacro main_column %}
@@ -33,13 +33,13 @@
 {% macro left_column() %}
 <!-- footer::left_column() -->
 <div class="column">
-	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.left_column_label, lang=lang) }}</p>
+	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.left_column_label, lang = lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.left_column %}
-	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
+	<li><a href="{{ get_url(path = item.url, lang = lang) }}">{{ trans(key = item.key, lang = lang) }}</a></li>
 	{%- endfor %}
 	</ul>
-	<p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key="follow_us", lang=lang) }}</p>
+	<p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key = 'follow_us', lang = lang) }}</p>
 	<p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
 		{%- if config.extra.linkedin %}
 		<a href="https://www.linkedin.com/{{ config.extra.linkedin }}" rel="me">{{ image::icon(image="linkedin") }}</a>
@@ -69,14 +69,14 @@
 {% macro middle_column() %}
 <!-- footer::middle_column() -->
 <div class="column">
-	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.middle_column_label, lang=lang) }}</p>
+	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.middle_column_label, lang = lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.middle_column %}
-	{%- if item.url is starting_with('http') %}
-	<li><a href="{{ item.url }}">{{ trans(key=item.key, lang=lang) }}</a></li>
-	{%- else %}
-	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
-	{%- endif %}
+		{%- if item.url is starting_with('http') %}
+		<li><a href="{{ item.url | safe }}">{{ trans(key = item.key, lang = lang) }}</a></li>
+		{%- else %}
+		<li><a href="{{ get_url(path = item.url, lang = lang) }}">{{ trans(key = item.key, lang = lang) }}</a></li>
+		{%- endif %}
 	{%- endfor %}
 	</ul>
 </div>
@@ -87,14 +87,14 @@
 {% macro right_column() %}
 <!-- footer::right_column() -->
 <div class="column">
-	<p class="{{ footer::menu_label() }}">{{ trans(key=config.extra.right_column_label, lang=lang) }}</p>
+	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.right_column_label, lang = lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.right_column %}
-	{%- if item.url is starting_with('http') %}
-	<li class="is-size-7"><a href="{{ item.url }}">{{ trans(key=item.key, lang=lang) }}</a></li>
-	{%- else %}
-	<li><a href="{{ get_url(path=item.url, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
-	{%- endif %}
+		{%- if item.url is starting_with('http') %}
+		<li><a href="{{ item.url | safe }}">{{ trans(key = item.key, lang = lang) }}</a></li>
+		{%- else %}
+		<li><a href="{{ get_url(path = item.url, lang = lang) }}">{{ trans(key = item.key, lang = lang) }}</a></li>
+		{%- endif %}
 	{%- endfor %}
 	</ul>
 </div>

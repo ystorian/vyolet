@@ -5,7 +5,7 @@
 {% block content %}
 <!-- taxonomy_single.html/content -->
 {% if not title %}
-{% set title = taxonomy.name ~ ": " ~ term.name | capitalize %}
+{% set title = taxonomy.name ~ ': ' ~ term.name | capitalize %}
 {% endif %}
 {{ blog::hero(title = title, primary = false) }}
 <div class="container">

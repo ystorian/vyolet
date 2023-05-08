@@ -4,7 +4,7 @@
 {% block content %}
 <!-- taxonomy_list.html/content -->
 {% if not title %}
-{% set title = "All " ~ taxonomy.name | title %}
+{% set title = 'All ' ~ taxonomy.name | title %}
 {% endif %}
 {{ blog::hero(title = title, primary = false) }}
 {{ blog::list_taxonomy(terms = terms) }}
