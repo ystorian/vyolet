@@ -9,6 +9,7 @@
 <!-- base.html/body -->
 <body class="has-navbar-fixed-top">
 
+
 {% block navbar %}
 {{ navbar::navbar() }}
 {% endblock navbar %}
@@ -19,18 +20,14 @@
 <main>
 	{% block content %}
 	{% endblock content %}
-</main>
-<!-- /base.html/main -->
+</main><!-- /base.html/main -->
 
 {{ html::comment(comment = 'Footer') }}
 
 {{ footer::footer() }}
 
-</body>
-<!-- /base.html/body -->
-</html>
-<!-- /base.html/html -->
-
+</body><!-- /base.html/body -->
+</html><!-- /base.html/html -->
 
 {% if config.mode | lower == 'serve' %}
 {{ html::comment(comment = 'Tera context') }}
