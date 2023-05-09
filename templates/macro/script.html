@@ -1,7 +1,7 @@
 {%- macro plausible() %}
 	<!-- script::plausible() -->
 {%- if config.extra.plausible %}
-	{%- set plausible_script_path = config.extra.plausible_script_path | default(value='https://plausible.io/js/script.js') %}
+	{%- set plausible_script_path = config.extra.plausible_script_path | default(value = 'https://plausible.io/js/script.js') %}
 	<script defer data-domain="{{ config.extra.plausible }}" src="{{ plausible_script_path | safe }}" crossorigin="anonymous"></script>
 	{# // https://plausible.io/docs/error-pages-tracking-404 #}
 	{%- if current_path is undefined %}

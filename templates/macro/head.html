@@ -74,7 +74,7 @@
 
 
 {%- macro title() %}
-{%- set title = config.title | default(value='⚠️ No Title for this language') %}
+{%- set title = config.title | default(value = '⚠️ No Title for this language') %}
 {%- if page.title %}
 	{%- set title = title ~ ' &middot; ' ~ page.title %}
 {%- endif %}
@@ -86,7 +86,7 @@
 
 
 {%- macro description() %}
-{%- set description = config.description | default(value=page.description) %}
+{%- set description = config.description | default(value = page.description) %}
 {{- description | safe }}
 {%- endmacro description %}
 
@@ -95,12 +95,12 @@
 {%- endmacro no_index %}
 
 {%- macro og_image() %}
-{%- set og_image = config.extra.og_image | default(value='image/opengraph-1200x630.png') %}
-	<meta property="og:image" content="{{ get_url(path = 'image/' ~ og_image, cachebust = true) }} " />
+{%- set og_image = config.extra.og_image | default(value = 'image/opengraph-1200x630.png') %}
+	<meta property="og:image" content="{{ get_url(path = 'image/' ~ og_image, cachebust = true) }}" />
 {%- endmacro og_image %}
 
 {%- macro version() %}
-	{{- config.extra.version | default(value='0.0.0') }}
+	{{- config.extra.version | default(value = '0.0.0') }}
 {%- endmacro version %}
 
 
