@@ -1,6 +1,5 @@
 {% macro head() %}
-<!-- head::head() -->
-<!-- Generated: {{ head::local_time() }} -->
+<!-- head::head() - {{ head::local_time() }} -->
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,8 +56,7 @@
 	{%- if config.generate_feed and current_path is defined %}
 	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path = 'atom.xml') | safe }}">
 	{%- endif %}
-</head>
-<!-- /head::head -->
+</head><!-- /head::head -->
 {% endmacro head %}
 
 
