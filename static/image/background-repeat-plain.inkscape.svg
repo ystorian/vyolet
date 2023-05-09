@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 192 112"
+   version="1.1"
+   id="svg6776"
+   sodipodi:docname="_background-repeat-plain.inkscape.svg"
+   inkscape:version="1.2.2 (03908c27, 2023-01-22)"
+   width="192"
+   height="112"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="hexagon-grid"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#ccc"
+     showgrid="true"
+     inkscape:current-layer="svg6776">
+    <inkscape:grid
+       type="xygrid"
+       id="small-dot"
+       spacingx="8"
+       spacingy="14"
+       originx="64"
+       originy="28"
+       empspacing="7"
+       empcolor="#aaccff"
+       empopacity="0.1"
+       color="#62d0ef"
+       opacity="0.1"
+       dotted="false"
+       visible="true" />
+    <inkscape:grid
+       type="xygrid"
+       id="large-line"
+       originx="64"
+       empcolor="#ff0000"
+       empopacity=".5"
+       spacingx="112"
+       spacingy="196"
+       originy="126"
+       empspacing="2"
+       color="#ff0000"
+       opacity="0.15"
+       dotted="false" />
+  </sodipodi:namedview>
+  <style
+     id="vyolet-sprint-2023">
+/* oklch values should be listed last, but Inkscape 1.2.2 don't like that */
+.vyolet-main       {fill: oklch(50% 0.24 300);    fill: #7d24d3;}
+.vyolet-medium     {fill: oklch(60% 0.21 300);    fill: #9657e8;}
+.vyolet-light      {fill: oklch(70% 0.18 300);    fill: #b180fc;}
+.vyolet-text-dark  {fill: oklch(35% 0.05 300);    fill: #3e3451;}
+.vyolet-text-light {fill: oklch(80% 0.11 300);    fill: #c8aefa;}
+.vyolet-pattern    {fill: oklch(45% 0.20 300);    fill: #6928b0;
+                                            stop-color: #6928b0}
+.vyolet-bg-dark    {fill: oklch(25% 0.12 300);    fill: #2c0751;}
+.vyolet-bg-light   {fill: oklch(95% 0.02 300);    fill: #f0ecfa;}
+.vyolet-inner      {fill: oklch(35% 0.05 300);    fill: #3e3451;}
+.vyolet-outline    {stroke: oklch(35% 0.05 300);stroke: #3e3451; fill: none;
+                    stroke-width: 28; stroke-linecap: round; stroke-linejoin: round;}
+.vyolet-symbol     {stroke: oklch(35% 0.05 300);stroke: #3e3451; fill: none;
+                    stroke-width: 28; stroke-linecap: butt; stroke-linejoin: round;}
+.vyolet-logotype   {font-family: 'Avenir Next', sans-serif; font-weight: 100;
+                    font-variant: small-caps; vertical-align: middle;
+                    text-align: center; text-anchor: middle}
+</style>
+  <defs
+     id="defs">
+    <linearGradient
+       id="vyolet-gradient"
+       x1="1024"
+       y1="0"
+       x2="128"
+       y2="0"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         style="stop-opacity:1;"
+         class="vyolet-pattern"
+         offset="0"
+         id="gradient-start" />
+      <stop
+         style="stop-opacity:0;"
+         class="vyolet-pattern"
+         offset="1"
+         id="gradient-stop" />
+    </linearGradient>
+  </defs>
+  <path
+     id="hexagon-center"
+     d="m 72,14 -24,42 24,42 h 48 l 24,-42 -24,-42 z"
+     sodipodi:nodetypes="ccccccc" />
+  <path
+     d="m 192,0 v 42 h -24 l -24,-42 z"
+     id="quarter-up-right"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     d="m 0,70 h 24 l 24,42 h -48 z"
+     id="quarter-down-left"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     d="m 168,70 h 24 v 42 h -48 z"
+     id="quarter-down-right"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     d="m 48,0 -24,42 h -24 v -42 z"
+     id="quarter-up-left"
+     sodipodi:nodetypes="ccccc" />
+</svg>
