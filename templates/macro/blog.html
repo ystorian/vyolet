@@ -280,3 +280,12 @@
 </section>
 <!-- /blog::hero -->
 {% endmacro hero %}
+
+
+{%- macro is_blog() %}
+{%- if page.components is defined %}
+{%- if 'blog' in page.components %}
+true
+{%- endif %}
+{%- endif %}
+{%- endmacro is_blog%}
