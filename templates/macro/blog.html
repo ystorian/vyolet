@@ -27,7 +27,7 @@
 {% endmacro toc_menu %}
 
 
-{% macro categories_menu(label="") %}
+{% macro categories_menu(label='') %}
 <!-- blog::categories_menu() -->
 {%- if label != '' %}
 <!-- Categories -->
@@ -100,7 +100,7 @@
 	<div class="card-footer-item has-text-centered">
 		<div>
 			<p class="heading">Updated</p>
-			<p class="subtitle"><time datetime="{{ page.updated | date(format='%F') }}">{{ page.updated | date(format = '%F') }}</time></p>
+			<p class="subtitle"><time datetime="{{ page.updated | date(format = '%F') }}">{{ page.updated | date(format = '%F') }}</time></p>
 		</div>
 	</div>
 	{% else %}
@@ -133,7 +133,7 @@
 
 {% macro footer_date(page) -%}
 {%- if page.date -%}
-<time datetime="{{ page.date | date(format='%F') }}">{{ page.date | date(format = '%F') }}</time>
+<time datetime="{{ page.date | date(format = '%F') }}">{{ page.date | date(format = '%F') }}</time>
 {%- endif -%}
 {%- endmacro footer_date %}
 
