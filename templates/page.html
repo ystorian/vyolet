@@ -5,20 +5,66 @@
 
 {% block content %}
 <!-- page.html/content -->
-{% if 'blog' in page.components %}
-	<div class="card">
-		<div class="card-content">
-			{{ blog::header(page = page) }}
-			<div class="content article-body">
-				{{ page.content | safe }}
-			</div><!-- /content -->
-		</div><!-- /card-content -->
-		{% block page_footer %}
-		{{ blog::footer(page = page) }}
-		{% endblock page_footer %}
-	</div><!-- /card -->
+{%- if blog::is_blog() == true %}
+<div class="card">
+	<div class="card-content">
+		{{ blog::header(page = page) }}
+		<div class="content article-body">
+			{{ page.content | safe }}
+		</div><!-- /content -->
+	</div><!-- /card-content -->
+	{% block page_footer %}
+	{{ blog::footer(page = page) }}
+	{% endblock page_footer %}
+</div><!-- /card -->
 {% else %}
-{{ page.content | safe }}
+<div class="columns">
+	{{- html::comment(comment = 'Left column') }}
+	<div class="column is-one-fifth">
+		<div class="block is_sticky mb-6" >
+		{{ column::toc() }}
+		</div><!-- /container -->
+	</div><!-- /column is-one-fifth -->
+
+	{{- html::comment(comment = 'Main column') }}
+	<div class="column is-three-fifths">
+		<section class="content mb-6">
+		{%- if page.title is defined %}
+			<h1 class="title is-1">{{ page.title }}</h1>
+		{%- endif %}
+		{%- if language::page_has_content() %}
+			{{ page.content | safe }}
+		{%- else %}
+			<article class="message">
+				<div class="message-header">
+					<p>{{ trans(key = 'not_translated', lang = lang) }}</p>
+				</div><!-- /message-header -->
+				<div class="message-body">
+				{%- for language in page.translations | sort(attribute = 'lang') %}
+					{%- if language.lang != lang and language.title is defined %}
+					<div class="columns is-mobile">
+						<div class="column is-1 is-narrow">
+							<span class="tag is-success">{{ language.lang }}</span>
+						</div>
+						<div class="column">
+							<a href="{{ language.permalink | safe }}">{{ language.title }}</a>
+						</div>
+					</div><!-- /columns -->
+					{%- endif %}
+				{%- endfor %}
+				</div><!-- /message-body -->
+			</article><!-- /message -->
+		{%- endif %}
+		</section><!-- /content -->
+	</div><!-- /column three-fifths -->
+
+	{{- html::comment(comment = 'Right column') }}
+	<div class="column is-one-fifth">
+		<div class="container is_sticky mb-6" >
+			{{- column::translated_notice() -}}
+		</div><!-- /container -->
+	</div><!-- /column is-one-fifth -->
+</div><!-- /content -->
 {% endif %}
 <!-- /page.html/content -->
 {% endblock content %}
