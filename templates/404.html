@@ -11,20 +11,23 @@
 
 {% block content %}
 <!-- 404.html/content -->
-<section class="hero is-halfheight-with-navbar">
+<section class="hero is-medium">
 	<div class="hero-body">
 		<div class="container">
 			<div class="columns is-vcentered is-mobile">
-				<div class="column is-3">{{ image::svg(image="warning") }}</div>
-				<div class="column is-9">
+				<div class="column is-one-quarter">
+					{{ image::svg(image = 'warning') }}
+					<div class="has-text-centered">Error 404</div>
+				</div><!-- /column -->
+				<div class="column is-three-quarters">
 					<div lang="en">
-						<p class="title is-1">Page not found</p>
-						<p>The requested page does not exist or has been moved to another address.</p>
+						<p class="title is-1 is-size-4-mobile">Page not found</p>
+						<p class="is-size-4 is-size-5-mobile">The requested page does not exist or has been moved to another address.</p>
 					</div>
 					{%- for language in config.extra.error_404 %}
 					<div lang="{{ language.lang }}" class="is-hidden">
-						<p class="title is-1">{{ language.title }}</p>
-						<p>{{ language.text }}</p>
+						<p class="title is-1 is-size-4-mobile">{{ language.title }}</p>
+						<p class="is-size-4 is-size-5-mobile">{{ language.text }}</p>
 					</div>
 					{%- endfor %}
 				</div><!-- /column -->
