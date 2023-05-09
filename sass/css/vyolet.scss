@@ -28,6 +28,12 @@
 // TODO: Probably importing too much, should refactor later.
 
 
+// Schemes.
+// Light is the default Bulma theme (listed first).
+:root {
+	color-scheme: light dark;
+}
+
 // SVG fill colors.
 .vyolet-main {
 	fill: $vyolet-main;
