@@ -41,25 +41,21 @@
 	</ul>
 	<p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key = 'follow_us', lang = lang) }}</p>
 	<p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
-		{%- if config.extra.linkedin %}
-		<a href="https://www.linkedin.com/{{ config.extra.linkedin }}" rel="me">{{ image::icon(image="linkedin") }}</a>
-		{% endif -%}
-
-		{%- if config.extra.github %}
-		<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ image::icon(image="github") }}</a>
-		{% endif -%}
-
-		{%- if config.extra.mastodon %}
-		<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ image::icon(image="mastodon") }}</a>
-		{% endif -%}
-
-		{%- if config.generate_feed %}
-		<a href="{{ get_url(path='atom.xml') | safe }}">{{ image::icon(image="rss") }} </a>
-		{% endif -%}
-
-		{%- if config.extra.mailto %}
-		<a href="mailto:{{ config.extra.mailto }}">{{ image::icon(image="mail") }} </a>
-		{%- endif %}
+	{%- if config.extra.linkedin %}
+		<a href="https://www.linkedin.com/{{ config.extra.linkedin }}" rel="me">{{ image::icon(image = 'linkedin') }}</a>
+	{% endif -%}
+	{%- if config.extra.github %}
+		<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ image::icon(image = 'github') }}</a>
+	{% endif -%}
+	{%- if config.extra.mastodon %}
+		<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ image::icon(image = 'mastodon') }}</a>
+	{% endif -%}
+	{%- if config.generate_feed %}
+		<a href="{{ get_url(path = 'atom.xml') | safe }}">{{ image::icon(image = 'rss') }} </a>
+	{% endif -%}
+	{%- if config.extra.mailto %}
+		<a href="mailto:{{ config.extra.mailto }}">{{ image::icon(image = 'mail') }} </a>
+	{%- endif %}
 	</p>
 </div>
 <!-- /footer::left_column -->
