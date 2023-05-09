@@ -4,7 +4,7 @@
 <html lang="{{ lang }}">
 {{- head::head() }}
 
-{{ base::html_comment(comment="body") }}
+{{ html::comment(comment = 'Body') }}
 
 <!-- base.html/body -->
 <body class="has-navbar-fixed-top">
@@ -13,7 +13,7 @@
 {{ navbar::navbar() }}
 {% endblock navbar %}
 
-{{ base::html_comment(comment="main") }}
+{{ html::comment(comment = 'Main') }}
 
 <!-- base.html/main -->
 <main>
@@ -22,7 +22,7 @@
 </main>
 <!-- /base.html/main -->
 
-{{ base::html_comment(comment="footer") }}
+{{ html::comment(comment = 'Footer') }}
 
 {{ footer::footer() }}
 
@@ -33,6 +33,6 @@
 
 
 {% if config.mode | lower == 'serve' %}
-{{ base::html_comment(comment="tera context") }}
+{{ html::comment(comment = 'Tera context') }}
 <!-- {{ __tera_context }} -->
 {% endif %}
