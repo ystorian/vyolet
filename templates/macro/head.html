@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="generator" content="vyolet {{ head::version() }}" />
+	{{- head::generator() }}
 	<meta property="og:updated_time" content="{{ head::updated_time() }}" />
 
 	{#- Title #}
@@ -97,9 +97,12 @@
 	<meta property="og:image" content="{{ get_url(path = 'image/' ~ og_image, cachebust = true) }}" />
 {%- endmacro og_image %}
 
-{%- macro version() %}
-	{{- config.extra.version | default(value = '0.0.0') }}
-{%- endmacro version %}
+
+{%- macro generator() %}
+{%- set zola_version = get_env(name = 'zola_version', default = 'zola') %}
+{%- set vyolet_version = config.extra.version | default(value = '0.0.0') %}
+	<meta name="generator" content="{{ zola_version }} {{ vyolet_version }}" />
+{%- endmacro generator %}
 
 
 {%- macro is_404() %}
