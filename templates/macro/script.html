@@ -1,18 +1,23 @@
 {%- macro plausible() %}
 	<!-- script::plausible() -->
-{%- if config.extra.plausible %}
+	{%- if config.extra.plausible_data_domain %}
 	{%- set plausible_script_path = config.extra.plausible_script_path | default(value = 'https://plausible.io/js/script.js') %}
-	<script defer data-domain="{{ config.extra.plausible }}" src="{{ plausible_script_path | safe }}" crossorigin="anonymous"></script>
-	{# // https://plausible.io/docs/error-pages-tracking-404 #}
-	{%- if current_path is undefined %}
+	{%- set plausible_data_api = '' %}
+	{%- if config.extra.plausible_data_api %}
+	{%- set plausible_data_api = 'data-api="' ~ config.extra.plausible_data_api ~ '"' %}
+	{%- endif %}
+	{#- // https://plausible.io/docs/custom-event-goals #}
+	<script defer data-domain="{{ config.extra.plausible_data_domain }}" src="{{ plausible_script_path | safe }}" {{ plausible_data_api | safe }}></script>
+	{#- // https://plausible.io/docs/error-pages-tracking-404 #}
+	{%- if head::is_404() %}
 	<!-- script::plausible/404 -->
 	<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 	<script>plausible("404", {props: {path: document.location.pathname} });</script>
 	<!-- /script::plausible/404 -->
-	{%- endif %}
-{%- endif %}
+	{%- endif -%}
+	{%- endif -%}
 	<!-- /script::plausible -->
-{% endmacro plausible -%}
+{%- endmacro plausible -%}
 
 
 {% macro show_native() %}

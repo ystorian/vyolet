@@ -61,12 +61,14 @@ taxonomies = "on"
 # Theme variables.
 [extra]
 # Theme version.
-version = "0.1.0"
+version = "0.1.1"
 # OpenGraph.
 # Image must be at least 1200x630.
 og_image = "vyolet-opengraph-1200x630.png"
 # Analytics.
-plausible = "ystorian.com/vyolet"
+plausible_data_domain = "ystorian.com/vyolet"
+# plausible_script_path = "https://plausible.io/js/script.js"
+# plausible_data_api    = "https://plausible.io/api/event"
 
 # Header.
 navbar_menu = [
@@ -74,7 +76,6 @@ navbar_menu = [
 	{ key = "solution", url = "solution" },
 	{ key = "blog", url = "blog" },
 ]
-
 navbar_buttons = [
 	{ key = "login", url = "login", primary = true, disabled = true },
 ]

@@ -44,7 +44,7 @@
 	<script src="{{ get_url(path = 'js/vyolet.js', cachebust = true) }}"></script>
 
 	{#- Plausible #}
-	{{ script::plausible() }}
+	{{- script::plausible() -}}
 
 	{#- Javascript and meta for the 404 page #}
 	{%- if head::is_404() %}
@@ -88,9 +88,11 @@
 {{- description | safe }}
 {%- endmacro description %}
 
+
 {%- macro no_index() %}
 	<meta name="robots" content="noindex,nofollow">
 {%- endmacro no_index %}
+
 
 {%- macro og_image() %}
 {%- set og_image = config.extra.og_image | default(value = 'image/opengraph-1200x630.png') %}
