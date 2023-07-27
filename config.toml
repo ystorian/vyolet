@@ -9,7 +9,7 @@
 # your site, use the `config.toml` file in the root of your site, using this
 # file as a reference.
 
-base_url         = "."
+base_url         = "/"
 compile_sass     = true
 default_language = "en"
 feed_limit       = 20
@@ -24,8 +24,8 @@ ignored_content  = ["static/**/*.inkscape.svg"]
 # Output directory, /public by default.
 output_dir = "public"
 
-# Minify the generated HTML files for prod.
-minify_html = true
+# Minify the generated HTML files, true for prod.
+minify_html = false
 
 # Don't build a search index since this feature is not used.
 build_search_index = false
