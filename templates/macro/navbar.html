@@ -99,7 +99,7 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 	{% if item.disabled == true %}{% set disabled = 'disabled' %}{% endif %}
 	<div class="navbar-item">
 		<div class="buttons">
-			<button class="{{ class }} }}" href="{{ item.url }}" {{ disabled }}>
+			<button class="{{ class }}" href="{{ item.url }}" {{ disabled }}>
 				<strong>{{ trans(key = item.key, lang = lang) }}</strong>
 			</button>
 		</div><!-- /buttons -->

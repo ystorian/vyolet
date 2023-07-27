@@ -138,9 +138,10 @@ header_languages = [
 ]
 
 # Translations for the 404 page.
-# Note: English is already in 404.html.
+# Note: English is the default in 404.html.
 error_404 = [
 	# cspell:disable
+	# { lang = "en", title = "Page not found", text = "The requested page does not exist or has been moved to another address." },
 	{ lang = "de", title = "Seite nicht gefunden", text = "Die angeforderte Seite existiert nicht oder wurde an eine andere Adresse verschoben." },
 	{ lang = "es", title = "Página no encontrada", text = "La página solicitada no existe o se ha movido a otra dirección." },
 	{ lang = "fr", title = "Page introuvable", text = "La page demandée n'existe pas ou a été déplacée à une autre adresse." },
