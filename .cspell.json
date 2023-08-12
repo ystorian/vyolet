@@ -13,6 +13,7 @@
 		"Yzo"
 	],
 	"ignorePaths": [
-		"Cargo.lock"
+		"Cargo.lock",
+		"**/vendor/**"
 	]
 }
