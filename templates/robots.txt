@@ -1,0 +1,8 @@
+User-agent: *
+{%- if config.base_url is containing("preview") %}
+Disallow: *
+{%- else %}
+Disallow: */404/
+Allow: /
+Sitemap: {{ get_url(path = 'sitemap.xml') }}
+{%- endif %}

@@ -11,6 +11,12 @@ Header always set Content-Security-Policy "upgrade-insecure-requests;"
 # Protect Git repositories.
 RedirectMatch 404 /\.git
 
+# Set the error pages.
+# Page not found.
+ErrorDocument 404 /404.html
+# Forbidden (directory listing).
+ErrorDocument 403 /403.html
+
 # Prevent clickjacking.
 Header always set X-Frame-Options "DENY" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
 
