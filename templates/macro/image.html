@@ -7,10 +7,12 @@
 {% endmacro logotype -%}
 
 
-{%- macro icon(image='not_found') %}
-{%- set svg = load_data(path = 'image/' ~ image ~ '.svg') %}
-{%- set svg = svg | replace(from = '<svg ', to = '<svg height=32 width=32 ') %}
-<!-- image::icon({{ image }}) --><span class="svg-icon">{{ svg | trim | safe}}</span>
+{%- macro icon(icon='error') %}
+{%- set svg_data = load_data(path = 'icon/' ~ icon ~ '.svg', required=false) %}
+{%- if not svg_data %}
+	{%- set svg_data = load_data(path = 'icon/error.svg') %}
+{%- endif -%}
+<!-- image::icon({{ icon }}) --><span class="svg-icon">{{ svg_data | trim | safe}}</span>
 <!-- /image::icon -->
 {%- endmacro icon -%}
 
