@@ -30,6 +30,7 @@
 // Import Vyolet custom SASS files.
 @import "sticky_footer";
 @import "sticky_column";
+@import "svg_logotype";
 
 // Schemes.
 // Light is the default Bulma theme (listed first).
@@ -107,18 +108,6 @@
 .svg-icon.baseline svg {
 	top: .125em;
 	position: relative;
-}
-
-
-// SVG logotype.
-.svg-logotype {
-	display: inline-flex;
-	align-self: center;
-	padding-right: 1ch;
-}
-
-.svg-logotype svg {
-	height: 2em;
 }
 
 

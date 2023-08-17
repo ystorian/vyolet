@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+// SVG logotype.
+.svg-logotype {
+	display: inline-flex;
+	align-self: center;
+	padding-right: 1ch;
+}
+
+.svg-logotype svg {
+	height: 2em;
+}
