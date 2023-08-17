@@ -15,5 +15,21 @@
 	"ignorePaths": [
 		"Cargo.lock",
 		"**/vendor/**"
+	],
+	"ignoreWords": [
+		"bulma",
+		"cond",
+		"jgthms",
+		"librsvg",
+		"slugification",
+		"syntect",
+		"taplo",
+		"oxipng",
+		"rsvg",
+		"rustfmt",
+		"tera",
+		"vcard",
+		"xloc",
+		"zopfli"
 	]
 }
