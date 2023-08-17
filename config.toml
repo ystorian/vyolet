@@ -100,9 +100,9 @@ mastodon = "https://infosec.exchange/@ystorian"
 # Middle column.
 middle_column_label = "products"
 middle_column = [
-	{ key = "solution", url = "@solution" },
-	{ key = "documentation", url = "@documentation" },
-	{ key = "pricing", url = "@pricing" },
+	{ key = "solution", url = "solution" },
+	{ key = "documentation", url = "documentation" },
+	{ key = "pricing", url = "pricing" },
 	{ key = "status", url = "https://uptimerobot.com/?rid=98b9cf6cfd8c4b" },
 ]
 # Right column.
