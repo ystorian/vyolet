@@ -2,4 +2,4 @@
 +++
 # Solutions
 
-*This is the solutions page*
+This is the solutions page

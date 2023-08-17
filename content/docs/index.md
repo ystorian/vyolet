@@ -2,5 +2,6 @@
 title = "Documentation"
 +++
 
-# Documentation
-*This page is temporarily empty*
+## Documentation
+
+> _This page is temporarily empty_
