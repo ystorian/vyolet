@@ -28,6 +28,7 @@
 
 
 // Import Vyolet custom SASS files.
+@import "sticky_footer";
 @import "sticky_column";
 
 // Schemes.
@@ -176,24 +177,4 @@ html {
 // Don't show the scroll bar on the body.
 html {
 	overflow: auto;
-}
-
-// Sticky footer.
-html {
-	height: 100%;
-}
-
-body {
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-}
-
-main {
-	flex: 1;
-}
-
-header,
-footer {
-	flex: none;
 }
