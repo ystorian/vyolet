@@ -25,8 +25,10 @@
 @import "../../vendor/bulma/sass/layout/_all.sass";
 @import "../../vendor/bulma/sass/grid/_all.sass";
 @import "../../vendor/bulma/sass/helpers/_all.sass";
-// TODO: Probably importing too much, should refactor later.
 
+
+// Import Vyolet custom SASS files.
+@import "sticky_column";
 
 // Schemes.
 // Light is the default Bulma theme (listed first).
@@ -162,16 +164,6 @@ body {
 }
 
 
-// Sticky column.
-.is_sticky {
-	position: sticky;
-	top: $navbar-height + ($navbar-padding-vertical * 2);
-}
-
-.is_sticky_top {
-	position: sticky;
-	top: $navbar-height;
-}
 
 
 // Scroll to a position below the navbar.
@@ -179,6 +171,7 @@ html {
 	scroll-padding-top: $navbar-height + $navbar-padding-vertical;
 
 }
+
 
 // Don't show the scroll bar on the body.
 html {

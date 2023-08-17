@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+// Sticky column.
+.is_sticky {
+	position: sticky;
+	top: $navbar-height + ($navbar-padding-vertical * 2);
+}
+
+.is_sticky_top {
+	position: sticky;
+	top: $navbar-height;
+}
