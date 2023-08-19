@@ -6,7 +6,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{{- head::generator() }}
-	{{- head::theme() }}
+	<meta name="theme" content="vyolet" />
 	{{- head::commit() }}
 
 	{#- Open Graph #}
@@ -120,13 +120,6 @@
 {%- set zola_version = get_env(name = 'zola_version', default = 'zola') %}
 	<meta name="generator" content="{{ zola_version }}" />
 {%- endmacro generator %}
-
-
-{%- macro theme() %}
-{%- if config.extra.version is defined %}
-	<meta name="theme" content="vyolet {{ config.extra.version }}" />
-{%- endif %}
-{%- endmacro theme %}
 
 
 {%- macro commit() %}
