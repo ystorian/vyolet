@@ -114,8 +114,7 @@
 
 {%- macro generator() %}
 {%- set zola_version = get_env(name = 'zola_version', default = 'zola') %}
-{%- set vyolet_version = config.extra.version | default(value = '0.0.0') %}
-	<meta name="generator" content="{{ zola_version }} {{ vyolet_version }}" />
+	<meta name="generator" content="{{ zola_version }}" />
 {%- endmacro generator %}
 
 
