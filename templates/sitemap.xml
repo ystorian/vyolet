@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {%- for sitemap_entry in entries %}
-	{%- if sitemap_entry.permalink is containing("/404/")
-		or sitemap_entry.permalink is containing("/403/") %}
+	{%- if sitemap_entry.permalink is containing("/404/") %}
 	{%- continue %}
 	{%- endif %}
 	<url>
