@@ -18,7 +18,6 @@
 	],
 	"ignoreWords": [
 		"bulma",
-		"cond",
 		"jgthms",
 		"librsvg",
 		"slugification",
