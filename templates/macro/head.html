@@ -1,5 +1,7 @@
 {% macro head() %}
 <!-- head::head() - {{ head::local_time() }} -->
+{%- set cachebust = true %}
+{%- if config.mode == "serve" %}{% set cachebust = false %}{% endif %}
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,22 +26,22 @@
 
 	{#- Image #}
 	{#- Application icon #}
-	<link rel="icon" sizes="any" href="{{ get_url(path = 'appicon/favicon.ico', cachebust = true) }}" />
-	<link rel="apple-touch-icon" href="{{ get_url(path = 'appicon/icon-180x180.png', cachebust = true) }}" />
-	<link rel="manifest" href="{{ get_url(path = 'appicon/manifest.json', cachebust = true) }}" />
-	<link rel="icon" type="image/svg+xml" href="{{ get_url(path = 'appicon/icon.svg', cachebust = true) }}" />
+	<link rel="icon" sizes="any" href="{{ get_url(path = 'appicon/favicon.ico', cachebust = cachebust) }}" />
+	<link rel="apple-touch-icon" href="{{ get_url(path = 'appicon/icon-180x180.png', cachebust = cachebust) }}" />
+	<link rel="manifest" href="{{ get_url(path = 'appicon/manifest.json', cachebust = cachebust) }}" />
+	<link rel="icon" type="image/svg+xml" href="{{ get_url(path = 'appicon/icon.svg', cachebust = cachebust) }}" />
 
 	{#- Open Graph #}
 	{{- head::og_image() }}
 
 	{#- Stylesheet #}
-	<link rel="stylesheet" href="{{ get_url(path = 'css/vyolet.css', cachebust = true) }}" />
+	<link rel="stylesheet" href="{{ get_url(path = 'css/vyolet.css', cachebust = cachebust) }}" />
 
 	{#- Markdown highlighter #}
 	{{- head::syntax_highlight() }}
 
 	{#- Scripts #}
-	<script src="{{ get_url(path = 'js/vyolet.js', cachebust = true) }}"></script>
+	<script src="{{ get_url(path = 'js/vyolet.js', cachebust = cachebust) }}"></script>
 
 	{#- Plausible #}
 	{{- script::plausible() -}}
@@ -91,8 +93,10 @@
 
 
 {%- macro og_image() %}
+{%- set cachebust = true %}
+{%- if config.mode == "serve" %}{% set cachebust = false %}{% endif %}
 {%- set og_image = config.extra.og_image | default(value = 'image/opengraph-1200x630.png') %}
-	<meta property="og:image" content="{{ get_url(path = 'image/' ~ og_image, cachebust = true) }}" />
+	<meta property="og:image" content="{{ get_url(path = 'image/' ~ og_image, cachebust = cachebust) }}" />
 {%- endmacro og_image %}
 
 
