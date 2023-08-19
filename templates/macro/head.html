@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{{- head::generator() }}
 	<meta name="theme" content="vyolet" />
-	{{- head::commit() }}
+	{{- head::commit_id() }}
 
 	{#- Open Graph #}
 	<meta property="og:updated_time" content="{{ head::updated_time() }}" />
@@ -122,10 +122,10 @@
 {%- endmacro generator %}
 
 
-{%- macro commit() %}
-{%- set commit_short = get_env(name = 'commit_short') %}
-	<meta name="commit" content="{{ commit_short }}" />
-{%- endmacro commit %}
+{%- macro commit_id() %}
+{%- set commit_id = get_env(name = 'commit_id') %}
+	<meta name="commit_id" content="{{ commit_id }}" />
+{%- endmacro commit_id %}
 
 
 {%- macro is_404() %}
