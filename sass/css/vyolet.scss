@@ -13,7 +13,7 @@
 @import "../../vendor/bulma/sass/utilities/functions.sass";
 
 // Set the theme variables.
-@import "_variables.scss";
+@import "variables";
 
 
 // Import the rest of the Bulma SASS files.
@@ -27,10 +27,10 @@
 @import "../../vendor/bulma/sass/helpers/_all.sass";
 
 
-// Import Vyolet custom SASS files.
+// Import Vyolet custom SCSS files.
 @import "sticky_footer";
 @import "sticky_column";
-@import "svg_logotype";
+@import "logotype";
 
 // Schemes.
 // Light is the default Bulma theme (listed first).

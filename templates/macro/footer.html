@@ -19,9 +19,7 @@
 <!-- footer::main_column() -->
 <div class="column">
 	<p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
-		<span class="icon-text">
-			<span class="logotype">{{ image::icon(image = 'logo') }}{{ config.title }}</span>
-		</span>
+		{{ image::logotype(header = false) }}
 	</p>
 	<p class="has-text-centered-mobile has-text-weight-light is-size-6 mt-1">{{ head::description() }}</p>
 	<p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key = 'made', lang = lang) }}</p>

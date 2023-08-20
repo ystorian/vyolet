@@ -1,8 +1,12 @@
 {%- macro logotype(header=false) %}
 	<!-- image::logotype() -->
 	{%- set svg = load_data(path = 'image/logotype.svg') -%}
-	{%- set svg = svg | replace(from = '<svg ', to = '<svg height=32 width=128 ') -%}
-	<span class="svg-logotype">{{ svg | trim | safe}}</span>
+	{%- if header -%}
+		{%- set svg = svg | replace(from = '<svg ', to = '<svg height=32 width=128 ') -%}
+	{%- else -%}
+		{%- set svg = svg | replace(from = '<svg ', to = '<svg height=64 width=256 ') -%}
+	{%- endif -%}
+	<span class="logotype">{{ svg | trim | safe}}</span>
 	<!-- /image::logotype -->
 {% endmacro logotype -%}
 
