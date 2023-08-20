@@ -158,10 +158,10 @@ error_404 = [
 [languages.en]
 title              = "Vyolet"
 description        = "Ystorian theme"
-generate_feed      = true
-feed_filename      = "atom.xml"
 build_search_index = false
 search             = { include_title = false, include_description = false, include_path = true, include_content = true }
+# generate_feed      = true
+# feed_filename      = "atom.xml"
 
 taxonomies = [
 	{ name = "categories", paginate_by = 3 },
