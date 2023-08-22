@@ -14,7 +14,8 @@
 	],
 	"ignorePaths": [
 		"Cargo.lock",
-		"**/vendor/**"
+		"**/vendor/**",
+		"*.inkscape.svg"
 	],
 	"ignoreWords": [
 		"bulma",
