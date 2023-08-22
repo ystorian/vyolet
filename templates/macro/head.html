@@ -123,8 +123,10 @@
 
 
 {%- macro commit_id() %}
-{%- set commit_id = get_env(name = 'commit_id') %}
+{%- set commit_id = get_env(name = 'commit_id', default = '') %}
+{%- if commit_id != '' %}
 	<meta name="commit_id" content="{{ commit_id }}" />
+{%- endif %}
 {%- endmacro commit_id %}
 
 
