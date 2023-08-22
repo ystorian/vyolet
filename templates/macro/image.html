@@ -27,6 +27,7 @@
 <!-- /image::svg -->
 {%- endmacro icon -%}
 
+{# This macro is not used #}
 {%- macro svg_xml_url(image='not_found') %}
 {%- set svg = load_data(path = 'image/' ~ image ~ '.svg') -%}
 url("data:image/svg+xml,{{ svg | trim | urlencode }}")
