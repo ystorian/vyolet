@@ -20,14 +20,20 @@
 {% endmacro selector %}
 
 
-{%- macro translation_message(lang) %}
-<!-- language::translation_message() -->
-{%- if lang != config.default_language %}
+{%- macro translated_notice(lang) %}
+<!-- language::translated_notice() -->
 <article class="message is-small">
-	<div class="message-body">{{ trans(key="translated", lang=lang) }}
+	<div class="message-body">{{ trans(key = 'translated', lang = lang) }}
 	</div><!-- /message-body -->
-</article>
+</article><!-- /message -->
+<!-- /language::translated_notice -->
+{%- endmacro translated_notice -%}
+
+
+{%- macro page_has_content() %}
+{%- if page.content is defined and page.content | length > 0 %}
+true
 {%- endif %}
-<!-- /language::translation_message -->
-{%- endmacro translation_message -%}
+{%- endmacro page_has_content -%}
+
 
