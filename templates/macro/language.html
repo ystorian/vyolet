@@ -7,7 +7,7 @@
 	current_path: {{ current_path | default(value = "") | safe }}
 	url: {{ url | safe }} -->
 <div class="navbar-item has-dropdown is-hoverable">
-	<a class="navbar-link is-arrowless" href="">{{- image::icon(image = 'globe') -}}</a>
+	<a class="navbar-link is-arrowless" href="">{{- image::icon(icon = 'globe') -}}</a>
 	<div class="navbar-dropdown is-boxed">
 	{%- for language in config.extra.header_languages %}
 		{%- set active = "" %}
