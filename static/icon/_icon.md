@@ -25,3 +25,4 @@ For consistency, use these properties:
 Note:
 
 - The size of 32 x 32 pixels was selected since it is 1024 / 32.
+- Set either the `fill` or `stroke` property, not both.
