@@ -31,6 +31,7 @@
 @import "sticky_footer";
 @import "sticky_column";
 @import "logotype";
+@import "svg-icon";
 
 // Schemes.
 // Light is the default Bulma theme (listed first).
@@ -87,27 +88,6 @@
 
 .logotype.header {
 	font-size: 150%;
-}
-
-
-// SVG icons.
-.svg-icon {
-	display: inline-flex;
-	align-self: center;
-	padding-right: .5ch;
-}
-
-.svg-icon svg {
-	height: 1em;
-	width: 1em;
-	fill: currentColor;
-	top: .125em;
-	position: relative;
-}
-
-.svg-icon.baseline svg {
-	top: .125em;
-	position: relative;
 }
 
 

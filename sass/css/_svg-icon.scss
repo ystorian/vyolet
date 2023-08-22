@@ -1,0 +1,19 @@
+// SVG icons.
+.svg-icon {
+	display: inline-flex;
+	align-self: center;
+	padding-right: .5ch;
+}
+
+.svg-icon svg {
+	height: 1em;
+	width: 1em;
+	fill: currentColor;
+	top: .125em;
+	position: relative;
+}
+
+.svg-icon.baseline svg {
+	top: .125em;
+	position: relative;
+}
