@@ -32,7 +32,7 @@
 		{%- if page.title is defined %}
 			<h1 class="title is-1">{{ page.title }}</h1>
 		{%- endif %}
-		{%- if language::page_has_content() %}
+		{%- if page::has_content() %}
 			{{ page.content | safe }}
 		{%- else %}
 			<article class="message">
