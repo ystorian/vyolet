@@ -1,8 +1,8 @@
 # Vyolet
 
-Ystorian's web site main theme.
+Zola theme for [ystorian.com](https://ystorian.com).
 
-Built with [Zola](https://www.getzola.org/), leveraging [Bulma](https://bulma.io/).
+Built with [Zola](https://www.getzola.org/), leveraging [Bulma](https://bulma.io/) for CSS.
 
 ## Dependencies
 
@@ -31,26 +31,34 @@ When `icon.svg` is modified, icons must be regenerated with `./update-appicon.sh
 
 ### Versioning
 
-The version of Zola and this theme are set in the `generator` metadata of the
-generated pages:
+The version of Zola, and short git commit of your site repository, are shown in the
+metadata of the generated pages:
 
 ```html
-<meta name="generator" content="zola 17.2.1 vyolet 0.0.1" />
+<meta name="generator" content="zola 17.2.1" />
+<meta name="theme" content="vyolet" />
+<meta name="commit_id" content="1a2b3c" />
 ```
 
-To get the Zola version, the `zola_version` environment variable must be set.
+To use this feature, set the `zola_version` and `commit_id` environment
+variables.
+
 For example add this to your build script:
 
 ```shell
 export zola_version=$(zola --version)
+export commit_id=$(git rev-parse --short HEAD)
 ```
 
-> Note: the `zola_version` environment variable is used in the macro
-> `head::generator` in `templates/macros.html`.
+> Note:
+>
+> - The environment variables above are used in `templates/macro/head.html`.
+> - The `commit_id` is only shown if the site is built from a git repository.
+> It is not the commit of the theme repository, but of the site repository.
 
 ## License
 
-- [vyolet](https://github.com/ystorian/vyolet): MIT
+- **[vyolet](https://github.com/ystorian/vyolet): MIT**
 - [bulma](https://github.com/jgthms/bulma): MIT
 - [zola](https://github.com/getzola/zola): MIT
 - [bulma-pricingtable](https://github.com/Wikiki/bulma-pricingtable): MIT
