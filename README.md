@@ -2,8 +2,6 @@
 
 Zola theme for [ystorian.com](https://ystorian.com).
 
-Built with [Zola](https://www.getzola.org/), leveraging [Bulma](https://bulma.io/) for CSS.
-
 ## Dependencies
 
 ### Bulma
@@ -26,6 +24,20 @@ Colors are defined in:
 - `static/appicon/manifest.json`
 
 When `icon.svg` is modified, icons must be regenerated with `./update-appicon.sh`.
+
+## Front matter
+
+These front matter variables are available for all markdown pages:
+
+```toml
+[extra.translation]
+
+# Set to false to hide the "This page has been automatically translated" message.
+# The message is only displayed if the page is translated.
+# See languages.en.translations.translated in config.toml.
+# Default value: true
+notice = false
+```
 
 ## Building
 
