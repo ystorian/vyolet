@@ -47,3 +47,10 @@ export zola_version=$(zola --version)
 
 > Note: the `zola_version` environment variable is used in the macro
 > `head::generator` in `templates/macros.html`.
+
+## License
+
+- [vyolet](https://github.com/ystorian/vyolet): MIT
+- [bulma](https://github.com/jgthms/bulma): MIT
+- [zola](https://github.com/getzola/zola): MIT
+- [bulma-pricingtable](https://github.com/Wikiki/bulma-pricingtable): MIT
