@@ -48,12 +48,11 @@
 	<script src="{{ get_url(path = 'js/vyolet.js', cachebust = cachebust) }}"></script>
 
 	{#- Plausible #}
-	{{- script::plausible() -}}
+	{{- js::plausible() -}}
 
 	{#- Javascript and meta for the 404 page #}
 	{%- if head::is_404() %}
-		{{- head::no_index() }}
-		{{- script::show_native() }}
+		{{- js::show_native() }}
 	{%- endif %}
 
 	{#- Feed #}

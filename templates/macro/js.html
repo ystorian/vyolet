@@ -1,5 +1,5 @@
 {%- macro plausible() %}
-	<!-- script::plausible() -->
+	<!-- js::plausible() -->
 	{%- if config.extra.plausible_data_domain %}
 	{%- set plausible_script_path = config.extra.plausible_script_path | default(value = 'https://plausible.io/js/script.js') %}
 	{%- set plausible_data_api = '' %}
@@ -10,21 +10,22 @@
 	<script defer data-domain="{{ config.extra.plausible_data_domain | safe }}" src="{{ plausible_script_path | safe }}" {{ plausible_data_api | safe }}></script>
 	{#- // https://plausible.io/docs/error-pages-tracking-404 #}
 	{%- if head::is_404() %}
-	<!-- script::plausible/404 -->
+	<!-- js::plausible/404 -->
 	<script>
 		window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
 	</script>
 	<script>
 		plausible("404", {props: {path: document.location.pathname} });
 	</script>
-	<!-- /script::plausible/404 -->
+	<!-- /js::plausible/404 -->
 	{%- endif %}
 	{%- endif %}
-	<!-- /script::plausible -->
+	<!-- /js::plausible -->
 {%- endmacro plausible -%}
 
 
 {% macro show_native() %}
+	<!-- js::show_native() -->
 	<script>
 	// This is injected into the HTML head only when a non-templated page is
 	// generated, typically a static 404 page. This script will show only the
@@ -52,4 +53,5 @@
 		}
 	});
 	</script>
+	<!-- /js::show_native() -->
 {% endmacro show_native %}
