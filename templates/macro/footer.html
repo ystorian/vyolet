@@ -31,6 +31,7 @@
 {% macro left_column() %}
 <!-- footer::left_column() -->
 <div class="column">
+	{%- if config.extra.left_column_label %}
 	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.left_column_label, lang = lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.left_column %}
@@ -55,6 +56,7 @@
 		<a href="mailto:{{ config.extra.mailto }}">{{ image::icon(icon = 'mail') }} </a>
 	{%- endif %}
 	</p>
+	{%- endif %}
 </div>
 <!-- /footer::left_column -->
 {% endmacro left_column %}
@@ -63,6 +65,7 @@
 {% macro middle_column() %}
 <!-- footer::middle_column() -->
 <div class="column">
+	{%- if config.extra.middle_column_label %}
 	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.middle_column_label, lang = lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.middle_column %}
@@ -73,6 +76,7 @@
 		{%- endif %}
 	{%- endfor %}
 	</ul>
+	{%- endif %}
 </div>
 <!-- /footer::middle_column() -->
 {% endmacro middle_column %}
@@ -81,6 +85,7 @@
 {% macro right_column() %}
 <!-- footer::right_column() -->
 <div class="column">
+	{%- if config.extra.right_column_label %}
 	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.right_column_label, lang = lang) }}</p>
 	<ul class="{{ footer::menu_list() }}">
 	{%- for item in config.extra.right_column %}
@@ -91,6 +96,7 @@
 		{%- endif %}
 	{%- endfor %}
 	</ul>
+	{%- endif %}
 </div>
 <!-- /footer::right_column -->
 {% endmacro right_column %}
