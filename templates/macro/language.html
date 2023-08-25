@@ -8,6 +8,7 @@
 	url: {{ url | safe }} -->
 <div class="navbar-item has-dropdown is-hoverable">
 	<a class="navbar-link is-arrowless is-hidden-mobile" href="">{{- image::icon(icon = 'globe') -}}</a>
+	<div class="navbar-dropdown is-boxed is-right">
 	<div class="navbar-dropdown is-boxed">
 	{%- for language in config.extra.header_languages %}
 		{%- set active = "" %}
