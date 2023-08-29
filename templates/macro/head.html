@@ -55,6 +55,9 @@
 		{{- js::show_native() }}
 	{%- endif %}
 
+	{#- Ask robots to index the site only on production #}
+	{{- head::index() }}
+
 	{#- Feed #}
 	{{- head::feed() }}
 </head><!-- /head::head -->
@@ -90,9 +93,14 @@
 {%- endmacro description %}
 
 
-{%- macro no_index() %}
+{%- macro index() %}
+{%- if head::is_preview() or head::is_404() %}
+	<!-- Build: Preview -->
 	<meta name="robots" content="noindex,nofollow">
-{%- endmacro no_index %}
+{%- else %}
+	<!-- Build: Production -->
+{%- endif %}
+{%- endmacro index %}
 
 
 {%- macro og_image() %}
