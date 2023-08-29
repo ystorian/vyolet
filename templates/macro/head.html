@@ -140,6 +140,13 @@
 {%- endmacro is_404 %}
 
 
+{%- macro is_preview() %}
+{%- if config.base_url is containing("preview") %}
+	true
+{%- endif %}
+{%- endmacro is_preview %}
+
+
 {%- macro feed() %}
 {%- if config.generate_feed and current_path is defined %}
 	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path = 'atom.xml') | safe }}">
