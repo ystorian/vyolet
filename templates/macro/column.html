@@ -24,3 +24,21 @@
 {%- endif %}
 <!-- /column::toc -->
 {% endmacro toc %}
+
+
+{%- macro translation_notice() %}
+<!-- column::translation_notice() -->
+{%- if lang != config.default_language and page::has_content() %}
+	{%- if page.extra.translation.notice is defined and page.extra.translation.notice == false %}
+	<!-- extra.translation.notice set to false in front matter -->
+	{%- else %}
+	<aside>
+		<article class="message is-small">
+			<div class="message-body">{{ trans(key = 'translated', lang = lang) }}
+			</div><!-- /message-body -->
+		</article><!-- /message -->
+	</aside>
+	{%- endif %}
+{%- endif %}
+<!-- /column::translation_notice -->
+{% endmacro translation_notice %}

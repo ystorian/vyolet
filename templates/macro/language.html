@@ -25,16 +25,6 @@
 {% endmacro selector %}
 
 
-{%- macro translated_notice(lang) %}
-<!-- language::translated_notice() -->
-<article class="message is-small">
-	<div class="message-body">{{ trans(key = 'translated', lang = lang) }}
-	</div><!-- /message-body -->
-</article><!-- /message -->
-<!-- /language::translated_notice -->
-{%- endmacro translated_notice -%}
-
-
 {# This macro is not used #}
 {% macro language_switcher() %}
 {% set languages = 1 %}
