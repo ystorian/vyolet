@@ -37,7 +37,7 @@
 
 {% macro logo() %}
 <!-- navbar::logo() -->
-<a class="navbar-item" href="{{ config.base_url | safe }}">
+<a class="navbar-item" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
 	{{ image::logotype(header = true) }}</a>
 <!-- /navbar::logo -->
 {% endmacro logo %}
