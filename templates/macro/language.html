@@ -10,7 +10,10 @@
 <div class="navbar-item has-dropdown is-hoverable">
 	<a class="navbar-link is-arrowless is-hidden-mobile" href="">{{- image::icon(icon = 'globe') -}}</a>
 	<div class="navbar-dropdown is-boxed is-right">
-	<div class="navbar-dropdown is-boxed">
+	<hr class="navbar-divider is-hidden-tablet">
+	<div class="navbar-item is-hidden-tablet is-info">
+		{{- image::icon(icon = 'globe') -}} Language
+	</div>
 	{%- for language in config.extra.header_languages %}
 		{%- set active = "" %}
 		{%- if language.lang == lang %}{% set active = ' is-active' %}{% endif %}
