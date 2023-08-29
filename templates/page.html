@@ -20,11 +20,11 @@
 {% else %}
 <div class="columns">
 	{{- html::comment(comment = 'Left column') }}
-	<div class="column is-one-fifth">
+	<div class="column is-one-fifth is-hidden-mobile ">
 		<div class="block is_sticky mb-6" >
-		{{ column::toc() }}
-		</div><!-- /container -->
-	</div><!-- /column is-one-fifth -->
+			{{ column::toc() }}
+		</div><!-- /block is_sticky mb-6 -->
+	</div><!-- /column is-one-fifth is-hidden-mobile -->
 
 	{{- html::comment(comment = 'Main column') }}
 	<div class="column is-three-fifths">
