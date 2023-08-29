@@ -37,7 +37,8 @@
 		{%- else %}
 			<article class="message">
 				<div class="message-header">
-					<p>{{ trans(key = 'not_translated', lang = lang) }}</p>
+					{# Display "This page is not available in <language>" #}
+					<p>{{ trans(key = 'not_available', lang = lang) }}</p>
 				</div><!-- /message-header -->
 				<div class="message-body">
 				{%- for language in page.translations | sort(attribute = 'lang') %}

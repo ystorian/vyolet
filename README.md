@@ -34,7 +34,7 @@ These front matter variables are available for all markdown pages:
 
 # Set to false to hide the "This page has been automatically translated" message.
 # The message is only displayed if the page is translated.
-# See languages.en.translations.translated in config.toml.
+# See languages.en.translations.notice in config.toml.
 # Default value: true
 notice = false
 ```
