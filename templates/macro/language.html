@@ -1,11 +1,12 @@
 {% macro selector() %}
 {%- if config.extra.header_languages is defined %}
 {%- set url = current_path | default(value = '') %}
-{%- set url = url | replace(from = '/' ~ lang ~ '/', to = '') %}
+{%- set url = url | replace(from = lang ~ '/', to = '') | trim_start_matches(pat='/')%}
 {%- endif %}
 <!-- language::selector()
 	current_path: {{ current_path | default(value = "") | safe }}
-	url: {{ url | safe }} -->
+	url: {{ url | safe }}
+-->
 <div class="navbar-item has-dropdown is-hoverable">
 	<a class="navbar-link is-arrowless is-hidden-mobile" href="">{{- image::icon(icon = 'globe') -}}</a>
 	<div class="navbar-dropdown is-boxed is-right">
