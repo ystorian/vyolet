@@ -1,0 +1,37 @@
+{
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+	"version": "0.2",
+	"language": "en",
+	"ignoreWords": [],
+	"overrides": [
+		{
+			"filename": "**/*.de.md",
+			"language": "de,en"
+		},
+		{
+			"filename": "**/*.es.md",
+			"language": "es,en"
+		},
+		{
+			"filename": "**/*.fr.md",
+			"language": "fr,en"
+		},
+		{
+			"filename": "**/*.it.md",
+			"language": "it,en"
+		},
+		{
+			"filename": "**/*.nl.md",
+			"language": "nl,en"
+		},
+		{
+			"filename": "**/*.pt.md",
+			"language": "pt,en"
+		},
+		{
+			"filename": "**/*.rm.md",
+			"language": "rm,en",
+			"enabled": false
+		}
+	]
+}
