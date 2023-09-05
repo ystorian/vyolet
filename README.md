@@ -6,13 +6,24 @@ Zola theme for [ystorian.com](https://ystorian.com).
 
 ### Bulma
 
-Add the Bulma repo in `vendor/bulma`, and keep only the `sass` subdirectory.
+Add the Bulma repository in `vendor/bulma`, and keep only the `sass` subdirectory.
 
 ```shell
 git submodule add git@github.com:jgthms/bulma.git vendor/bulma
 cd vendor/bulma
 git sparse-checkout init --cone
 git sparse-checkout set sass
+```
+
+### Lucide
+
+Add the Lucide repository in `vendor/lucide`, and keep only the `icons` subdirectory.
+
+```shell
+git submodule add git@github.com:lucide-icons/lucide.git vendor/lucide
+cd vendor/lucide
+git sparse-checkout init --cone
+git sparse-checkout set icons
 ```
 
 ## Theming
