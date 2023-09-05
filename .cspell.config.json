@@ -3,6 +3,10 @@
 	"version": "0.2",
 	"language": "en",
 	"ignoreWords": [],
+	"words": [
+		"Bulma",
+		"Lucide"
+	],
 	"overrides": [
 		{
 			"filename": "**/*.de.md",
