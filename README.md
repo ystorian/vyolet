@@ -4,15 +4,21 @@ Zola theme for [ystorian.com](https://ystorian.com).
 
 ## Dependencies
 
+The following repositories were forked to be used as git submodules in this
+theme. They are locked to specific branches named
+`vyolet-<repository>-<version>` (e.g. `vyolet-bulma-0.9.5`) to allow for easier
+checkout based on tags.
+
 ### Bulma
 
 Add the Bulma repository in `vendor/bulma`, and keep only the `sass` subdirectory.
 
 ```shell
-git submodule add git@github.com:jgthms/bulma.git vendor/bulma
+git submodule add git@github.com:ystorian/bulma.git vendor/bulma
 cd vendor/bulma
 git sparse-checkout init --cone
 git sparse-checkout set sass
+git checkout vyolet-bulma-0.9.5
 ```
 
 ### Lucide
@@ -20,10 +26,11 @@ git sparse-checkout set sass
 Add the Lucide repository in `vendor/lucide`, and keep only the `icons` subdirectory.
 
 ```shell
-git submodule add git@github.com:lucide-icons/lucide.git vendor/lucide
+git submodule add git@github.com:ystorian/lucide.git vendor/lucide
 cd vendor/lucide
 git sparse-checkout init --cone
 git sparse-checkout set icons
+git checkout vyolet-lucide-0.274.0
 ```
 
 ## Theming
