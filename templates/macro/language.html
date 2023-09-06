@@ -4,7 +4,7 @@
 {%- set url = url | replace(from = lang ~ '/', to = '') | trim_start_matches(pat='/')%}
 {%- endif %}
 <!-- language::selector()
-	current_path: {{ current_path | default(value = "") | safe }}
+	current_path: {{ current_path | default(value = '') | safe }}
 	url: {{ url | safe }}
 -->
 <div class="navbar-item has-dropdown is-hoverable">
@@ -15,7 +15,7 @@
 		{{- image::icon(icon = 'globe') -}} Language
 	</div>
 	{%- for language in config.extra.header_languages %}
-		{%- set active = "" %}
+		{%- set active = '' %}
 		{%- if language.lang == lang %}{% set active = ' is-active' %}{% endif %}
 		<a class="navbar-item{{ active }}" href="{{ get_url(path = url, lang = language.lang, trailing_slash = false) }}">{{ language.name }}</a>
 	{%- endfor %}

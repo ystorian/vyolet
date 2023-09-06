@@ -1,7 +1,7 @@
 {% macro head() %}
 <!-- head::head() - {{ head::local_time() }} -->
 {%- set cachebust = true %}
-{%- if config.mode == "serve" %}{% set cachebust = false %}{% endif %}
+{%- if config.mode == 'serve' %}{% set cachebust = false %}{% endif %}
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -105,7 +105,7 @@
 
 {%- macro og_image() %}
 {%- set cachebust = true %}
-{%- if config.mode == "serve" %}{% set cachebust = false %}{% endif %}
+{%- if config.mode== 'serve' %}{% set cachebust = false %}{% endif %}
 {%- set og_image = config.extra.og_image | default(value = 'image/opengraph-1200x630.png') %}
 	<meta property="og:image" content="{{ get_url(path = 'image/' ~ og_image, cachebust = cachebust) }}" />
 {%- endmacro og_image %}
@@ -113,7 +113,7 @@
 
 {%- macro syntax_highlight() %}
 {%- set cachebust = true %}
-{%- if config.mode == "serve" %}{% set cachebust = false %}{% endif %}
+{%- if config.mode== 'serve' %}{% set cachebust = false %}{% endif %}
 {%- if config.markdown.highlight_code and current_path is defined %}
 	<link rel="stylesheet" href="{{ get_url(path = 'css/syntax-theme-dark.css', cachebust = cachebust) }}"
 		media="(prefers-color-scheme: dark)" />
