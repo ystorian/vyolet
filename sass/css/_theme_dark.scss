@@ -1,0 +1,80 @@
+// Dark theme.
+@media (prefers-color-scheme:dark) {
+	:root {
+		color-scheme: dark;
+
+	}
+
+	body {
+		background-image: linear-gradient(120deg, darken($vyolet-background-dark, 5%), darken($vyolet-background-dark, 20%)) !important;
+		color: $vyolet-text-light;
+	}
+
+	.box {
+		background-color: #112;
+		color: #aad
+	}
+
+	.footer {
+		background-color: #223;
+		color: #aad
+	}
+
+	.navbar,
+	.navbar-dropdown,
+	.navbar-menu {
+		background-color: $vyolet-background-dark;
+	}
+
+	.navbar-item,
+	.navbar-link,
+	.navbar-burger {
+		color: #aad
+	}
+
+	.navbar.has-shadow {
+		box-shadow: 0 2px 0 0 darken($vyolet-background-dark, 10%);
+	}
+
+	.notices {
+		background-color: #223 !important
+	}
+
+	.title,
+	.panel-block {
+		color: #ddf
+	}
+
+	.input {
+		background-color: #334;
+		color: #ddf;
+		border-color: #209cee
+	}
+
+	.tabs a {
+		color: #aad
+	}
+
+	.tabs a:hover {
+		color: #ddf;
+		border-bottom-color: #fff
+	}
+
+	.tag:not(body) {
+		background-color: #889;
+		color: #334
+	}
+
+	.modal-card-body {
+		background-color: #223
+	}
+
+	.modal-card-head {
+		background-color: #aab;
+	}
+
+	.hero {
+		background-blend-mode: overlay;
+		background-color: $vyolet-pattern
+	}
+}

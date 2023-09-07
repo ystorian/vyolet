@@ -39,6 +39,10 @@
 	color-scheme: light dark;
 }
 
+@import "theme_light";
+@import "theme_dark";
+
+
 // SVG fill colors.
 .vyolet-main {
 	fill: $vyolet-main;
