@@ -1,46 +1,50 @@
 {% extends 'base.html' %}
 
-{% block navbar %}
-{{ navbar::navbar(padding = false) }}
-{% endblock navbar %}
+{% block body %}
+{{ html::comment(comment = 'Landing body block') }}
+{{ html::body(class = '') }}
+{% endblock body %}
 
 {% block content %}
 <!-- landing.html/content -->
-<div class="hero is-fullwidth is-overlay has-background">
+<section class="hero is-fullwidth is-fullheight is-overlay has-background">
 	<img alt="" class="hero-background is-transparent" src="{{ get_url(path = 'image/background-stretched-square.svg') }}" />
 	<!-- Hero head: will stick at the top -->
 	<div class="hero-head">
+		{% block navbar %}
+		{{ html::comment(comment = 'Landing navbar block') }}
+		{{ navbar::navbar(padding=false, is_hero=true) }}
+		{% endblock navbar %}
 
 	</div>
 
 	<!-- Hero content: will be in the middle -->
 	<div class="hero-body">
-		<div class="container has-text-centered">
-			<p class="title">{{ section.title }}</p>
-			{# <p class="subtitle">{{ section.subtitle }} #}
-				{# {{ page.subtitle }} #}
-			</p>
-		</div>
-	</div>
+		<div class="container">
+			<p class="title">{{ head::title() }}</p>
+			<div class="content article-body">
+			{%- if section.title %}
+			{{ section.title | safe }}
+			{%- endif %}
+			{%- if section.content %}
+			{{ section.content | safe }}
+			{%- endif %}
+			</div><!-- /content -->
+
+		</div><!-- /container -->
+	</div><!-- /hero-body -->
 
 	<!-- Hero footer: will stick at the bottom -->
 	<div class="hero-foot">
-		<nav class="tabs">
-			<div class="container">
-				<ul>
-					<li class="is-active"><a>Overview</a></li>
-					<li><a>Modifiers</a></li>
-					<li><a>Grid</a></li>
-					<li><a>Elements</a></li>
-					<li><a>Components</a></li>
-					<li><a>Layout</a></li>
-				</ul>
-			</div>
-		</nav>
+		{% block footer %}
+		{{ html::comment(comment = 'Landing footer block') }}
+		{{ footer::footer() }}
+		{% endblock footer %}
 	</div>
-</div>
-<div class="content article-body">
-	{{ section.content | safe }}
-</div><!-- /content -->
+</section><!-- /hero is-fullwidth is-overlay has-background -->
 <!-- /landing.html/content -->
 {% endblock content %}
+
+{% block basefooter %}
+<!-- No base footer -->
+{% endblock basefooter %}
