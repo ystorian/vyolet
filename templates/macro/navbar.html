@@ -1,9 +1,14 @@
-{% macro navbar(padding=true) %}
+{% macro navbar(padding=true, is_hero=true) %}
 {#- If padding is true: use the "section" class to add padding below the navbar -#}
 <!-- navbar::navbar() -->
+{%- if is_hero == false %}<div class="is-fixed-top-placeholder"></div>{% endif %}
 <header class="header is-unselectable">
 {%- if padding %}<section class="section">{% endif %}
+{%- if is_hero %}
+<nav class="navbar is-hoverable" aria-label="main navigation">
+{%- else %}
 <nav class="navbar is-fixed-top is-hoverable has-shadow" aria-label="main navigation">
+{%- endif %}
 
 <!-- navbar-brand -->
 <div class="navbar-brand">
@@ -14,17 +19,12 @@
 <!-- navbar-menu -->
 <div id="navbarMenu" class="navbar-menu">
 	{{ navbar::menu_items() }}
-
 	{{ navbar::search() }}
-
-<!-- navbar-end -->
-<div class="navbar-end">
-
-{{ navbar::languages() }}
-{{ navbar::buttons() }}
-
-</div><!-- /navbar-end -->
-
+	<!-- navbar-end -->
+	<div class="navbar-end">
+	{{ navbar::languages() }}
+	{{ navbar::buttons() }}
+	</div><!-- /navbar-end -->
 </div><!-- /navbar-menu -->
 
 </nav>
