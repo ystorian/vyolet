@@ -137,17 +137,10 @@ body {
 	margin-bottom: 1em;
 }
 
-
-
-
-// Scroll to a position below the navbar.
 html {
+	// Scroll to a position below the navbar.
 	scroll-padding-top: $navbar-height + $navbar-padding-vertical;
-
-}
-
-
-// Don't show the scroll bar on the body.
-html {
+	// Don't show the scroll bar on the body.
 	overflow: auto;
+
 }
