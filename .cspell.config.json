@@ -3,6 +3,9 @@
 	"version": "0.2",
 	"language": "en",
 	"ignoreWords": [],
+	"ignorePaths": [
+		"vendor"
+	],
 	"words": [
 		"Bulma",
 		"Lucide",
