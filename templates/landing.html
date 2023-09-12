@@ -8,7 +8,8 @@
 {% block content %}
 <!-- landing.html/content -->
 <section class="hero is-fullwidth is-fullheight is-overlay has-background">
-	<img alt="" class="hero-background is-transparent" src="{{ get_url(path = 'image/background-stretched-square.svg') }}" />
+	<!-- TODO: #1 Add a CSS class for non-draggable background images -->
+	<img alt="" class="hero-background is-transparent is-unselectable" draggable="false" src="{{ get_url(path = 'image/background-stretched-square.svg') }}" />
 	<!-- Hero head: will stick at the top -->
 	<div class="hero-head">
 		{% block navbar %}
