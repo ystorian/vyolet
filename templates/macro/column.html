@@ -1,4 +1,4 @@
-{% macro toc() %}
+{%- macro toc() %}
 <!-- column::toc() -->
 {%- if page.toc %}
 {%- if page.extra.toc is defined and page.extra.toc == false %}
@@ -23,7 +23,7 @@
 {%- endif %}
 {%- endif %}
 <!-- /column::toc -->
-{% endmacro toc %}
+{%- endmacro toc %}
 
 
 {%- macro translation_notice() %}
@@ -41,4 +41,4 @@
 {%- endif %}
 {%- endif %}
 <!-- /column::translation_notice -->
-{% endmacro translation_notice %}
+{%- endmacro translation_notice %}

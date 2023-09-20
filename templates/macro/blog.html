@@ -1,88 +1,88 @@
-{% macro toc_menu(display) %}
+{%- macro toc_menu(display) %}
 <!-- blog::toc_menu() -->
 {%- if display %}
-<!-- TOC -->
-{%- if page.toc %}
-<p class="menu-label">TOC</p>
-<ul class="menu-list">
-{%- for h1 in page.toc %}
-	<li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
-	{%- if h1.children %}
+	<!-- TOC -->
+	{%- if page.toc %}
+	<p class="menu-label">TOC</p>
+	<ul class="menu-list">
+	{%- for h1 in page.toc %}
+		<li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+		{%- if h1.children %}
 		<ul class="menu-list">
 		{%- for h2 in h1.children %}
 			<li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
 		{%- endfor %}
 		</ul>
+		{%- endif %}
+		</li>
+	{%- endfor %}
+	</ul>
+	{%- else %}
+	<!-- No TOC found -->
 	{%- endif %}
-	</li>
-{%- endfor %}
-</ul>
 {%- else %}
-<!-- No TOC found -->
-{%- endif %}
-{% else %}
 <!-- TOC menu not displayed -->
 {%- endif %}
 <!-- /blog::toc_menu -->
-{% endmacro toc_menu %}
+{%- endmacro toc_menu %}
 
 
-{% macro categories_menu(label='') %}
+{%- macro categories_menu(label='') %}
 <!-- blog::categories_menu() -->
 {%- if label != '' %}
-<!-- Categories -->
-{%- set categories = get_taxonomy(kind = 'categories') %}
-{%- if categories %}
-<p class="menu-label">{{ label }}</p>
-<ul class="menu-list">
-{%- for category in categories.items %}
-	<li><a href="{{ category.path | safe }}">{{ category.name }}</a></li>
-{%- endfor %}
-</ul>
+	<!-- Categories -->
+	{%- set categories = get_taxonomy(kind = 'categories') %}
+	{%- if categories %}
+	<p class="menu-label">{{ label }}</p>
+	<ul class="menu-list">
+	{%- for category in categories.items %}
+		<li><a href="{{ category.path | safe }}">{{ category.name }}</a></li>
+	{%- endfor %}
+	</ul>
+	{%- else %}
+	<!-- Not categories found -->
+	{%- endif %}
+	<!-- /Categories -->
 {%- else %}
-<!-- Not categories found -->
-{%- endif %}
-<!-- /Categories -->
-{% else %}
 <!-- Categories menu not displayed -->
-{% endif %}
+{%- endif %}
 <!-- /blog::categories_menu -->
-{% endmacro categories_menu %}
+{%- endmacro categories_menu %}
 
 
-{% macro tags_menu(display) %}
+{%- macro tags_menu(display) %}
 <!-- blog::tags_menu() -->
 {%- if display %}
-<!-- Tags -->
-{%- set tags = get_taxonomy(kind = 'tags') %}
-{%- if tags %}
-<p class="menu-label">Tags</p>
-<ul class="menu-list">
-{%- for tag in tags.items %}
-	<li><a href="{{ tag.path | safe }}">{{ tag.name }}</a></li>
-{%- endfor %}
-</ul>
-{%- else %}
-<!-- Not tags found -->
-{%- endif %}
-<!-- /Tags -->
+	<!-- Tags -->
+	{%- set tags = get_taxonomy(kind = 'tags') %}
+	{%- if tags %}
+	<p class="menu-label">Tags</p>
+	<ul class="menu-list">
+	{%- for tag in tags.items %}
+		<li><a href="{{ tag.path | safe }}">{{ tag.name }}</a></li>
+	{%- endfor %}
+	</ul>
+	{%- else %}
+	<!-- Not tags found -->
+	{%- endif %}
+	<!-- /Tags -->
 {%- else %}
 <!-- Tags menu not displayed -->
 {%- endif %}
 <!-- /blog::tags_menu -->
-{% endmacro tags_menu %}
+{%- endmacro tags_menu %}
 
 
 
-{% macro read_time(page) %}
+{%- macro read_time(page) %}
 <!-- blog::read_time() -->
 {{ image::icon(icon = 'clock')}}
 <span>&nbsp;{{ page.reading_time }} minute read</span>
 <!-- /blog::read_time -->
-{% endmacro read_time %}
+{%- endmacro read_time %}
 
 
-{% macro footer(page) %}
+{%- macro footer(page) %}
 <!-- blog::footer() -->
 <footer class="card-footer">
 
@@ -103,7 +103,7 @@
 			<p class="subtitle"><time datetime="{{ page.updated | date(format = '%F') }}">{{ page.updated | date(format = '%F') }}</time></p>
 		</div>
 	</div>
-	{% else %}
+	{%- else %}
 	<!-- (page without "updated" date) -->
 	{%- endif %}
 	<!-- /Updated -->
@@ -128,17 +128,19 @@
 
 </footer>
 <!-- /blog::footer -->
-{% endmacro footer %}
+{%- endmacro footer %}
 
 
-{% macro footer_date(page) %}
+{%- macro footer_date(page) %}
+<!-- blog::footer_date() -->
 {%- if page.date %}
 <time datetime="{{ page.date | date(format = '%F') }}">{{ page.date | date(format = '%F') }}</time>
 {%- endif %}
+{<!-- /blog::footer_date -->
 {%- endmacro footer_date %}
 
 
-{% macro footer_categories(page) %}
+{%- macro footer_categories(page) %}
 <!-- blog::footer_categories() -->
 {%- if page.taxonomies.categories %}
 {%- set category = page.taxonomies.categories[0] %}
@@ -159,26 +161,26 @@
 {%- endmacro footer_tags %}
 
 
-{% macro page_in_list(page) %}
+{%- macro page_in_list(page) %}
 <!-- blog::page_in_list() -->
 <div class="card article">
 	<div class="card-content">
 	{{ self::header(page = page) }}
-	{% if page.summary %}
+	{%- if page.summary %}
 	<div class="content article-body">
 	{{ page.summary | safe }}
 	<nav class="readmore">
 	<a href="{{ page.permalink | safe }}">Read More&nbsp;&raquo;</a>
 	</nav><!-- /readmore -->
 	</div><!-- /content -->
-	{% endif %}
+	{%- endif %}
 	</div><!-- /card-content -->
 </div><!-- /card article -->
 <!-- /blog::page_in_list -->
-{% endmacro page_in_list %}
+{%- endmacro page_in_list %}
 
 
-{% macro header(page) %}
+{%- macro header(page) %}
 <!-- blog::header() -->
 <section class="hero is-small is-primary">
 <div class="hero-body">
@@ -194,46 +196,46 @@
 </div><!-- /tags -->
 </div><!-- /has-text-centered -->
 <!-- /blog::header() -->
-{% endmacro header %}
+{%- endmacro header %}
 
 
-{% macro list_taxonomy(terms) %}
+{%- macro list_taxonomy(terms) %}
 <!-- blog::list_taxonomy() -->
 <section>
 	<div class="container">
 	<div class="columns">
 	<div class="column is-8 is-offset-2">
-	{% if terms %}
+	{%-if terms %}
 	<div class="list box">
-		{% for term in terms %}
+		{%-for term in terms %}
 		<a href="{{ term.permalink | safe }}">
 			<span class="tag is-large is-primary">
 				{{ term.name }}({{ term.pages | length }})
 			</span>
 		</a>
-		{% endfor %}
+		{%-endfor %}
 	</div><!-- /list -->
-	{% endif %}
+	{%-endif %}
 	</div><!-- /column -->
 	</div><!-- /columns -->
 	</div><!-- /container -->
 </section>
 <!-- /blog::list_taxonomy -->
-{% endmacro list_taxonomy %}
+{%- endmacro list_taxonomy %}
 
-{% macro list_articles(pages) %}
+{%- macro list_articles(pages) %}
 <!-- blog::list_articles() -->
 <section>
-{% for page in pages %}
+{%- for page in pages %}
 	{{ blog::page_in_list(page=page) }}
-{% endfor %}
+{%- endfor %}
 </section>
 <!-- /blog::list_articles -->
-{% endmacro list_articles %}
+{%- endmacro list_articles %}
 
 
 
-{% macro paginate(paginator) %}
+{%- macro paginate(paginator) %}
 <!-- blog::paginate() -->
 <nav class="pagination is-centered my-6" role="navigation" aria-label="pagination">
 	{%- if paginator.previous %}
@@ -258,15 +260,15 @@
 	{%- endif %}
 </nav>
 <!-- /blog::paginate -->
-{% endmacro paginate %}
+{%- endmacro paginate %}
 
 
-{% macro hero(title, primary) %}
+{%- macro hero(title, primary) %}
 <!-- blog::hero() -->
-{% set class = 'is-bold' %}
-{% if primary %}
-{% set class = class ~ ' hero is-primary' %}
-{% endif %}
+{%- set class = 'is-bold' %}
+{%- if primary %}
+{%- set class = class ~ ' hero is-primary' %}
+{%- endif %}
 <section class="{{ class }}">
 	<div class="hero-body">
 		<div class="container has-text-centered">
@@ -275,7 +277,7 @@
 	</div><!-- /hero-body -->
 </section>
 <!-- /blog::hero -->
-{% endmacro hero %}
+{%- endmacro hero %}
 
 
 {%- macro is_blog() %}

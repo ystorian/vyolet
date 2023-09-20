@@ -1,4 +1,4 @@
-{% macro selector() %}
+{%- macro selector() %}
 {%- if config.extra.header_languages is defined %}
 {%- set url = current_path | default(value = '') %}
 {%- set url = url | replace(from = lang ~ '/', to = '') | trim_start_matches(pat='/')%}
@@ -22,24 +22,24 @@
 	</div><!-- /navbar-dropdown -->
 </div><!-- /navbar-item -->
 <!-- /language::selector() -->
-{% endmacro selector %}
+{%- endmacro selector %}
 
 
 {# This macro is not used #}
-{% macro language_switcher() %}
-{% set languages = 1 %}
-{% for language_name, language in config.languages %}
-	{% set_global languages = languages + 1 %}
-{% endfor %}
-{% if languages > 1 %}
+{%- macro language_switcher() %}
+{%- set languages = 1 %}
+{%- for language_name, language in config.languages %}
+	{%- set_global languages = languages + 1 %}
+{%- endfor %}
+{%- if languages > 1 %}
 <div id="language-switch">
 	<button onclick="showLanguages()" aria-label="show languages"><i class="fas fa-globe"></i></button>
 	<div id="languages" style="display: none">
-	{% for language_name, language in config.languages %}
-	{% set url = get_url(path = 'about/_index.md', lang = language_name) | trim_end_matches(pat = 'about/') %}
+	{%- for language_name, language in config.languages %}
+	{%- set url = get_url(path = 'about/_index.md', lang = language_name) | trim_end_matches(pat = 'about/') %}
 	<a onclick="window.location.href='{{ url }}'">{{ trans(key = 'language_name', lang = language_name) }}</a>
-	{% endfor %}
+	{%- endfor %}
 	</div>
 </div>
-{% endif %}
-{% endmacro language_switcher %}
+{%- endif %}
+{%- endmacro language_switcher %}

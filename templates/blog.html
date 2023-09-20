@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% import 'macro/blog.html' as blog %}
 
-{% block content %}
+{%- block content %}
 <!-- blog.html/content -->
 <div class="columns">
 	<div class="column is-3">
@@ -14,17 +14,17 @@
 	<div class="column is-9">
 		<div class="container">
 			<div class="content">
-				{% if paginator %}
+				{%- if paginator %}
 				{{ blog::list_articles(pages = paginator.pages) }}
-				{% else %}
+				{%- else %}
 				{{ blog::list_articles(pages = section.pages) }}
-				{% endif %}
-				{% if paginator %}
+				{%- endif %}
+				{%- if paginator %}
 				{{ blog::paginate(paginator = paginator) }}
-				{% endif %}
+				{%- endif %}
 			</div><!-- /content -->
 		</div><!-- /container -->
 	</div><!-- /column is-9 -->
 </div><!-- /columns -->
 <!-- /blog.html/content -->
-{% endblock content %}
+{%- endblock content %}

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% import 'macro/blog.html' as blog %}
 
-{% block content %}
+{%- block content %}
 <!-- taxonomy_list.html/content -->
-{% if not title %}
-{% set title = 'All ' ~ taxonomy.name | title %}
-{% endif %}
+{%- if not title %}
+{%- set title = 'All ' ~ taxonomy.name | title %}
+{%- endif %}
 {{ blog::hero(title = title, primary = false) }}
 {{ blog::list_taxonomy(terms = terms) }}
 <!-- /taxonomy_list.html/content -->
-{% endblock content %}
+{%- endblock content %}

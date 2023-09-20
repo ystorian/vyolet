@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{%- block content %}
 <!-- index.html/content -->
 <div class="card article">
 	<div class="card-content">
@@ -8,8 +8,8 @@
 			{{ section.content | safe }}
 		</div><!-- /content -->
 	</div><!-- /card-content -->
-	{% block page_footer %}
-	{% endblock page_footer %}
+	{%- block page_footer %}
+	{%- endblock page_footer %}
 </div><!-- /card -->
 <!-- /index.html/content -->
-{% endblock content %}
+{%- endblock content %}

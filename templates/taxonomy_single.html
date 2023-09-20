@@ -2,21 +2,21 @@
 
 {% import 'macro/blog.html' as blog %}
 
-{% block content %}
+{%- block content %}
 <!-- taxonomy_single.html/content -->
-{% if not title %}
-{% set title = taxonomy.name ~ ': ' ~ term.name | capitalize %}
-{% endif %}
+{%- if not title %}
+{%- set title = taxonomy.name ~ ': ' ~ term.name | capitalize %}
+{%- endif %}
 {{ blog::hero(title = title, primary = false) }}
 <div class="container">
-	{% if paginator %}
+	{%- if paginator %}
 	{{ blog::list_articles(pages = paginator.pages) }}
-	{% else %}
+	{%- else %}
 	{{ blog::list_articles(pages = term.pages) }}
-	{% endif %}
-	{% if paginator %}
+	{%- endif %}
+	{%- if paginator %}
 	{{ blog::paginate(paginator = paginator) }}
-	{% endif %}
+	{%- endif %}
 </div><!-- /container -->
 <!-- /taxonomy_single.html/content -->
-{% endblock content %}
+{%- endblock content %}

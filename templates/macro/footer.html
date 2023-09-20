@@ -1,4 +1,4 @@
-{% macro footer() %}
+{%- macro footer() %}
 <!-- footer::footer() -->
 <footer class="footer is-unselectable">
 <div class="columns is-flex-direction-row-reverse">
@@ -12,10 +12,10 @@
 </div><!-- /columns -->
 </footer>
 <!-- /footer::footer -->
-{% endmacro footer %}
+{%- endmacro footer %}
 
 
-{% macro main_column() %}
+{%- macro main_column() %}
 <!-- footer::main_column() -->
 <div class="column">
 <p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
@@ -25,10 +25,10 @@
 <p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key = 'made', lang = lang) }}</p>
 </div><!-- /column -->
 <!-- /footer::main_column -->
-{% endmacro main_column %}
+{%- endmacro main_column %}
 
 
-{% macro left_column() %}
+{%- macro left_column() %}
 <!-- footer::left_column() -->
 <div class="column">
 {%- if config.extra.left_column_label %}
@@ -41,28 +41,34 @@
 {%- endif %}
 <p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key = 'follow_us', lang = lang) }}</p>
 <p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
+
 {%- if config.extra.linkedin %}
 <a href="https://www.linkedin.com/{{ config.extra.linkedin | safe }}" rel="me">{{ image::icon(icon = 'linkedin') }}</a>
-{% endif %}
+{%- endif %}
+
 {%- if config.extra.github %}
 <a href="https://github.com/{{ config.extra.github }}" rel="me">{{ image::icon(icon = 'github') }}</a>
-{% endif %}
+{%- endif %}
+
 {%- if config.extra.mastodon %}
 <a href="{{ config.extra.mastodon | safe }}" rel="me">{{ image::icon(icon = 'mastodon') }}</a>
-{% endif %}
+{%- endif %}
+
 {%- if config.generate_feed %}
 <a href="{{ get_url(path = 'atom.xml') | safe }}">{{ image::icon(icon = 'rss') }} </a>
-{% endif %}
+{%- endif %}
+
 {%- if config.extra.mailto %}
 <a href="mailto:{{ config.extra.mailto }}">{{ image::icon(icon = 'mail') }} </a>
 {%- endif %}
+
 </p>
 </div><!-- /column -->
 <!-- /footer::left_column -->
-{% endmacro left_column %}
+{%- endmacro left_column %}
 
 
-{% macro middle_column() %}
+{%- macro middle_column() %}
 <!-- footer::middle_column() -->
 <div class="column">
 	{%- if config.extra.middle_column_label %}
@@ -79,10 +85,10 @@
 	{%- endif %}
 </div>
 <!-- /footer::middle_column() -->
-{% endmacro middle_column %}
+{%- endmacro middle_column %}
 
 
-{% macro right_column() %}
+{%- macro right_column() %}
 <!-- footer::right_column() -->
 <div class="column">
 	{%- if config.extra.right_column_label %}
@@ -99,13 +105,13 @@
 	{%- endif %}
 </div>
 <!-- /footer::right_column -->
-{% endmacro right_column %}
+{%- endmacro right_column %}
 
 
-{% macro menu_label() %}
+{%- macro menu_label() %}
 menu-label is-size-7 has-text-weight-semibold has-text-grey-light
 {%- endmacro menu_label %}
 
-{% macro menu_list() %}
+{%- macro menu_list() %}
 menu-list is-size-6 is-size-5-mobile
 {%- endmacro menu_list %}

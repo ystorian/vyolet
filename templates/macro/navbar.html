@@ -1,9 +1,13 @@
-{% macro navbar(padding=true, is_hero=true) %}
-{#- If padding is true: use the "section" class to add padding below the navbar -#}
+{%- macro navbar(padding=true, is_hero=true) %}
+{#- If padding is true: use the "section" class to add padding below the navbar #}
 <!-- navbar::navbar() -->
-{%- if is_hero == false %}<div class="is-fixed-top-placeholder"></div>{% endif %}
+{%- if is_hero == false %}
+<div class="is-fixed-top-placeholder"></div>
+{%- endif %}
 <header class="header is-unselectable">
-{%- if padding %}<section class="section">{% endif %}
+{%- if padding %}
+<section class="section">
+{%- endif %}
 {%- if is_hero %}
 <nav class="navbar is-hoverable" aria-label="main navigation">
 {%- else %}
@@ -28,31 +32,33 @@
 </div><!-- /navbar-menu -->
 
 </nav>
-{%- if padding %}</section>{% endif %}
+{%- if padding %}
+</section>
+{%- endif %}
 </header>
 <!-- /navbar::navbar -->
-{% endmacro navbar %}
+{%- endmacro navbar %}
 
 
 
-{% macro logo() %}
+{%- macro logo() %}
 <!-- navbar::logo() -->
 <a class="navbar-item" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
 	{{ image::logotype(header = true) }}</a>
 <!-- /navbar::logo -->
-{% endmacro logo %}
+{%- endmacro logo %}
 
 
-{% macro burger() %}
+{%- macro burger() %}
 <!-- navbar::burger() -->
 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-data-target="navbarMenu"><span aria-hidden="true"></span>
-<span aria-hidden="true"></span><span aria-hidden="true"></span></a>
+	data-target="navbarMenu"><span aria-hidden="true"></span>
+	<span aria-hidden="true"></span><span aria-hidden="true"></span></a>
 <!-- /navbar::burger -->
-{% endmacro burger %}
+{%- endmacro burger %}
 
 
-{% macro menu_items() %}
+{%- macro menu_items() %}
 <!-- navbar::menu_items() -->
 <div class="navbar-start">
 	{%- if config.extra.navbar_menu %}
@@ -66,10 +72,10 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 	{%- endif %}
 </div><!-- /navbar-start -->
 <!-- /navbar::menu_items -->
-{% endmacro menu_items %}
+{%- endmacro menu_items %}
 
 
-{% macro search() %}
+{%- macro search() %}
 {%- if config.build_search_index %}
 <!-- navbar::search() -->
 <div class="navbar-item search-container js-only">
@@ -80,23 +86,27 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 </div><!-- /search-container -->
 <!-- /navbar::search -->
 {%- else %}
-<!-- navbar::search() [disabled] -->
+<!-- navbar::search() (disabled since build_search_index is not set) -->
 {%- endif %}
-{% endmacro search %}
+{%- endmacro search %}
 
 
-{% macro languages() %}
+{%- macro languages() %}
 {{ language::selector() }}
-{% endmacro languages %}
+{%- endmacro languages %}
 
 
-{% macro buttons() %}
+{%- macro buttons() %}
 {%- if config.extra.navbar_buttons %}
 <!-- navbar::buttons() -->
 {%- for item in config.extra.navbar_buttons %}
 	{%- set class = 'button' %}
-	{% if item.primary == true %}{% set class = class ~ ' is-primary' %}{% endif %}
-	{% if item.disabled == true %}{% set disabled = 'disabled' %}{% endif %}
+	{%- if item.primary == true %}
+	{%- set class = class ~ ' is-primary' %}
+	{%- endif %}
+	{%- if item.disabled == true %}
+	{%- set disabled = 'disabled' %}
+	{%- endif %}
 	<div class="navbar-item">
 		<div class="buttons">
 			<button class="{{ class }}" href="{{ item.url }}" {{ disabled }}>
@@ -109,4 +119,4 @@ data-target="navbarMenu"><span aria-hidden="true"></span>
 {%- else %}
 <!-- navbar::buttons() [disabled] -->
 {%- endif %}
-{% endmacro buttons %}
+{%- endmacro buttons %}

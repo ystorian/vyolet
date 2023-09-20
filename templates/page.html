@@ -3,7 +3,7 @@
 {% import 'macro/blog.html' as blog %}
 
 
-{% block content %}
+{%- block content %}
 <!-- page.html/content -->
 {%- if blog::is_blog() == true %}
 <div class="card">
@@ -13,11 +13,11 @@
 			{{ page.content | safe }}
 		</div><!-- /content -->
 	</div><!-- /card-content -->
-	{% block page_footer %}
+	{%- block page_footer %}
 	{{ blog::footer(page = page) }}
-	{% endblock page_footer %}
+	{%- endblock page_footer %}
 </div><!-- /card -->
-{% else %}
+{%- else %}
 <div class="columns">
 	{{- html::comment(comment = 'Left column') }}
 	<div class="column is-one-fifth is-hidden-mobile ">
@@ -66,6 +66,6 @@
 		</div><!-- /container -->
 	</div><!-- /column is-one-fifth -->
 </div><!-- /content -->
-{% endif %}
+{%- endif %}
 <!-- /page.html/content -->
-{% endblock content %}
+{%- endblock content %}
