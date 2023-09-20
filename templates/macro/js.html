@@ -7,7 +7,8 @@
 	{%- set plausible_data_api = 'data-api="' ~ config.extra.plausible_data_api ~ '"' %}
 	{%- endif %}
 	{#- // https://plausible.io/docs/custom-event-goals #}
-	<script defer data-domain="{{ config.extra.plausible_data_domain | safe }}" src="{{ plausible_script_path | safe }}" {{ plausible_data_api | safe }}></script>
+	<script defer data-domain="{{ config.extra.plausible_data_domain | safe }}" src="{{ plausible_script_path | safe }}"
+		{{ plausible_data_api | safe }}></script>
 	{#- // https://plausible.io/docs/error-pages-tracking-404 #}
 	{%- if head::is_404() %}
 	<!-- js::plausible/404 -->
@@ -21,7 +22,7 @@
 	{%- endif %}
 	{%- endif %}
 	<!-- /js::plausible -->
-{%- endmacro plausible -%}
+{%- endmacro plausible %}
 
 
 {% macro show_native() %}

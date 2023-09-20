@@ -2,7 +2,7 @@
 {%- set lucide_path = '../../vendor/lucide/' %}
 {%- set svg_data = load_data(path = lucide_path ~ icon ~ '.svg', required=false) %}
 {%- if not svg_data %}
-	{%- set svg_data = load_data(path = lucide_path ~ 'icon/error.svg') %}
-{%- endif -%}
+{%- set svg_data = load_data(path = lucide_path ~ 'icon/error.svg') %}
+{%- endif %}
 <!-- shortcode::icon({{ icon }}) --><span class="lucide-icon">{{ svg_data | trim | safe}}</span>
 <!-- /image::icon -->

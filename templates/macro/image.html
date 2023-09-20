@@ -1,34 +1,40 @@
 {%- macro logotype(header=false) %}
-	<!-- image::logotype() -->
-	{%- set svg = load_data(path = 'image/logotype.svg') -%}
-	{%- if header -%}
-		{%- set svg = svg | replace(from = '<svg ', to = '<svg height=32 width=128 ') -%}
-	{%- else -%}
-		{%- set svg = svg | replace(from = '<svg ', to = '<svg height=64 width=256 ') -%}
-	{%- endif -%}
-	<span class="logotype">{{ svg | trim | safe}}</span>
-	<!-- /image::logotype -->
-{% endmacro logotype -%}
+<!-- image::logotype() -->
+{%- set svg = load_data(path = 'image/logotype.svg') %}
+{%- if header %}
+{%- set svg = svg | replace(from = '<svg ', to = '<svg height=32 width=128 ') %}
+{%- else %}
+{%- set svg = svg | replace(from = '<svg ', to = '<svg height=64 width=256 ') %}
+{%- endif %}
+<span class="logotype">
+{{ svg | trim | safe}}
+</span><!-- /logotype -->
+<!-- /image::logotype -->
+{%- endmacro logotype %}
 
 
 {%- macro icon(icon='error') %}
 {%- set svg_data = load_data(path = 'icon/' ~ icon ~ '.svg', required=false) %}
 {%- if not svg_data %}
-	{%- set svg_data = load_data(path = 'icon/error.svg') %}
-{%- endif -%}
-<!-- image::icon({{ icon }}) --><span class="svg-icon">{{ svg_data | trim | safe}}</span>
+{%- set svg_data = load_data(path = 'icon/error.svg') %}
+{%- endif %}
+<!-- image::icon({{ icon }}) -->
+<span class="svg-icon">
+{{ svg_data | trim | safe}}
+</span><!-- /svg-icon -->
 <!-- /image::icon -->
-{%- endmacro icon -%}
+{%- endmacro icon %}
 
 
 {%- macro svg(image='not_found') %}
 {%- set svg = load_data(path = 'image/' ~ image ~ '.svg') %}
-<!-- image::svg({{ image }}) -->{{ svg | trim | safe}}
+<!-- image::svg({{ image }}) -->
+{{ svg | trim | safe}}
 <!-- /image::svg -->
-{%- endmacro icon -%}
+{%- endmacro svg %}
 
 {# This macro is not used #}
 {%- macro svg_xml_url(image='not_found') %}
-{%- set svg = load_data(path = 'image/' ~ image ~ '.svg') -%}
+{%- set svg = load_data(path = 'image/' ~ image ~ '.svg') %}
 url("data:image/svg+xml,{{ svg | trim | urlencode }}")
-{%- endmacro icon -%}
+{%- endmacro svg_xml_url %}

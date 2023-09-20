@@ -5,21 +5,21 @@
 <!-- extra.toc set to false in front matter -->
 {%- else %}
 <aside class="menu has-text-weight-light">
+<ul class="menu-list">
+<p class="menu-label"><a href="">{{ page.title }}</a></p>
+{%- for h1 in page.toc %}
+	<li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+	{%- if h1.children %}
 	<ul class="menu-list">
-		<p class="menu-label"><a href="">{{ page.title }}</a></p>
-	{%- for h1 in page.toc %}
-		<li><a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
-		{%- if h1.children %}
-			<ul class="menu-list">
-			{%- for h2 in h1.children %}
-				<li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
-			{% endfor -%}
-			</ul>
-		{% endif -%}
-		</li>
+	{%- for h2 in h1.children %}
+		<li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
 	{%- endfor %}
-	</ul>
-</aside>
+	</ul><!-- /menu-list -->
+	{%- endif %}
+	</li>
+{%- endfor %}
+</ul><!-- /menu-list -->
+</aside><!-- /menu -->
 {%- endif %}
 {%- endif %}
 <!-- /column::toc -->
@@ -29,16 +29,16 @@
 {%- macro translation_notice() %}
 <!-- column::translation_notice() -->
 {%- if lang != config.default_language and page::has_content() %}
-	{%- if page.extra.translation.notice is defined and page.extra.translation.notice == false %}
-	<!-- extra.translation.notice set to false in front matter -->
-	{%- else %}
-	<aside>
-		<article class="message is-small">
-			<div class="message-body">{{ trans(key = 'notice', lang = lang) }}
-			</div><!-- /message-body -->
-		</article><!-- /message -->
-	</aside>
-	{%- endif %}
+{%- if page.extra.translation.notice is defined and page.extra.translation.notice == false %}
+<!-- extra.translation.notice set to false in front matter -->
+{%- else %}
+<aside>
+<article class="message is-small">
+<div class="message-body">{{ trans(key = 'notice', lang = lang) }}
+</div><!-- /message-body -->
+</article><!-- /message -->
+</aside>
+{%- endif %}
 {%- endif %}
 <!-- /column::translation_notice -->
 {% endmacro translation_notice %}

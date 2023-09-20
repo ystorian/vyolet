@@ -11,9 +11,9 @@
 		<ul class="menu-list">
 		{%- for h2 in h1.children %}
 			<li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
-		{% endfor -%}
+		{%- endfor %}
 		</ul>
-	{% endif -%}
+	{%- endif %}
 	</li>
 {%- endfor %}
 </ul>
@@ -58,9 +58,9 @@
 {%- if tags %}
 <p class="menu-label">Tags</p>
 <ul class="menu-list">
-	{%- for tag in tags.items %}
+{%- for tag in tags.items %}
 	<li><a href="{{ tag.path | safe }}">{{ tag.name }}</a></li>
-	{%- endfor %}
+{%- endfor %}
 </ul>
 {%- else %}
 <!-- Not tags found -->
@@ -131,24 +131,24 @@
 {% endmacro footer %}
 
 
-{% macro footer_date(page) -%}
-{%- if page.date -%}
+{% macro footer_date(page) %}
+{%- if page.date %}
 <time datetime="{{ page.date | date(format = '%F') }}">{{ page.date | date(format = '%F') }}</time>
-{%- endif -%}
+{%- endif %}
 {%- endmacro footer_date %}
 
 
-{% macro footer_categories(page) -%}
+{% macro footer_categories(page) %}
 <!-- blog::footer_categories() -->
 {%- if page.taxonomies.categories %}
-{%- set category = page.taxonomies.categories[0] -%}
+{%- set category = page.taxonomies.categories[0] %}
 <a href="{{ get_taxonomy_url(kind = 'categories', name = category) | safe }}"><span class="tag is-light">{{ category }}</span></a>
-{%- endif -%}
+{%- endif %}
 <!-- /blog::footer_categories -->
 {%- endmacro footer_categories %}
 
 
-{%- macro footer_tags(page) -%}
+{%- macro footer_tags(page) %}
 <!-- blog::footer_tags() -->
 {%- if page.taxonomies.tags %}
 {%- for tag in page.taxonomies.tags %}
@@ -156,12 +156,11 @@
 {%- endfor %}
 {%- endif %}
 <!-- /blog::footer_tags -->
-{%- endmacro footer_tags -%}
+{%- endmacro footer_tags %}
 
 
 {% macro page_in_list(page) %}
 <!-- blog::page_in_list() -->
-<!-- card article -->
 <div class="card article">
 	<div class="card-content">
 	{{ self::header(page = page) }}
@@ -170,12 +169,11 @@
 	{{ page.summary | safe }}
 	<nav class="readmore">
 	<a href="{{ page.permalink | safe }}">Read More&nbsp;&raquo;</a>
-	</nav>
+	</nav><!-- /readmore -->
 	</div><!-- /content -->
 	{% endif %}
 	</div><!-- /card-content -->
-</div>
-<!-- /card article -->
+</div><!-- /card article -->
 <!-- /blog::page_in_list -->
 {% endmacro page_in_list %}
 
@@ -183,20 +181,18 @@
 {% macro header(page) %}
 <!-- blog::header() -->
 <section class="hero is-small is-primary">
-	<div class="hero-body">
-		<p class="title has-text-centered">{{ page.title }}</p>
-	</div>
-</section>
-<!-- has-text-centered -->
+<div class="hero-body">
+<p class="title has-text-centered">{{ page.title }}</p>
+</div><!-- /hero-body -->
+</section><!-- /hero -->
 <div class="has-text-centered my-4">
-	<div class="tags has-addons level-item">
-	{%- if page.date %}
-		<span class="tag is-rounded">{{ page.date | date(format = '%F') }}</span>
-	{%- endif %}
-	<span class="tag is-rounded">{{ self::read_time(page = page) }}</span>
-	</div><!-- /tags -->
-</div>
-<!-- /has-text-centered -->
+<div class="tags has-addons level-item">
+{%- if page.date %}
+<span class="tag is-rounded">{{ page.date | date(format = '%F') }}</span>
+{%- endif %}
+<span class="tag is-rounded">{{ self::read_time(page = page) }}</span>
+</div><!-- /tags -->
+</div><!-- /has-text-centered -->
 <!-- /blog::header() -->
 {% endmacro header %}
 
@@ -228,9 +224,9 @@
 {% macro list_articles(pages) %}
 <!-- blog::list_articles() -->
 <section>
-	{% for page in pages %}
+{% for page in pages %}
 	{{ blog::page_in_list(page=page) }}
-	{% endfor %}
+{% endfor %}
 </section>
 <!-- /blog::list_articles -->
 {% endmacro list_articles %}

@@ -18,12 +18,12 @@
 {% macro main_column() %}
 <!-- footer::main_column() -->
 <div class="column">
-	<p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
-		{{ image::logotype(header = false) }}
-	</p>
-	<p class="has-text-centered-mobile has-text-weight-light is-size-6 mt-1">{{ head::description() }}</p>
-	<p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key = 'made', lang = lang) }}</p>
-</div>
+<p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
+{{ image::logotype(header = false) }}
+</p>
+<p class="has-text-centered-mobile has-text-weight-light is-size-6 mt-1">{{ head::description() }}</p>
+<p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key = 'made', lang = lang) }}</p>
+</div><!-- /column -->
 <!-- /footer::main_column -->
 {% endmacro main_column %}
 
@@ -31,33 +31,33 @@
 {% macro left_column() %}
 <!-- footer::left_column() -->
 <div class="column">
-	{%- if config.extra.left_column_label %}
-	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.left_column_label, lang = lang) }}</p>
-	<ul class="{{ footer::menu_list() }}">
-	{%- for item in config.extra.left_column %}
+{%- if config.extra.left_column_label %}
+<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.left_column_label, lang = lang) }}</p>
+<ul class="{{ footer::menu_list() }}">
+{%- for item in config.extra.left_column %}
 	<li><a href="{{ get_url(path = item.url, lang = lang) }}">{{ trans(key = item.key, lang = lang) }}</a></li>
-	{%- endfor %}
-	</ul>
-	{%- endif %}
-	<p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key = 'follow_us', lang = lang) }}</p>
-	<p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
-	{%- if config.extra.linkedin %}
-		<a href="https://www.linkedin.com/{{ config.extra.linkedin }}" rel="me">{{ image::icon(icon = 'linkedin') }}</a>
-	{% endif -%}
-	{%- if config.extra.github %}
-		<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ image::icon(icon = 'github') }}</a>
-	{% endif -%}
-	{%- if config.extra.mastodon %}
-		<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ image::icon(icon = 'mastodon') }}</a>
-	{% endif -%}
-	{%- if config.generate_feed %}
-		<a href="{{ get_url(path = 'atom.xml') | safe }}">{{ image::icon(icon = 'rss') }} </a>
-	{% endif -%}
-	{%- if config.extra.mailto %}
-		<a href="mailto:{{ config.extra.mailto }}">{{ image::icon(icon = 'mail') }} </a>
-	{%- endif %}
-	</p>
-</div>
+{%- endfor %}
+</ul>
+{%- endif %}
+<p class="{{ footer::menu_label() }} is-hidden-mobile">{{ trans(key = 'follow_us', lang = lang) }}</p>
+<p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
+{%- if config.extra.linkedin %}
+<a href="https://www.linkedin.com/{{ config.extra.linkedin | safe }}" rel="me">{{ image::icon(icon = 'linkedin') }}</a>
+{% endif %}
+{%- if config.extra.github %}
+<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ image::icon(icon = 'github') }}</a>
+{% endif %}
+{%- if config.extra.mastodon %}
+<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ image::icon(icon = 'mastodon') }}</a>
+{% endif %}
+{%- if config.generate_feed %}
+<a href="{{ get_url(path = 'atom.xml') | safe }}">{{ image::icon(icon = 'rss') }} </a>
+{% endif %}
+{%- if config.extra.mailto %}
+<a href="mailto:{{ config.extra.mailto }}">{{ image::icon(icon = 'mail') }} </a>
+{%- endif %}
+</p>
+</div><!-- /column -->
 <!-- /footer::left_column -->
 {% endmacro left_column %}
 
