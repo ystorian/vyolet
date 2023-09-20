@@ -7,6 +7,10 @@
 
 {%- macro body(class='has-navbar-fixed-top') %}
 <!-- html::body() -->
+{%- if class != '' %}
 <body class="{{ class }}">
+{%- else %}
+<body>
+{%- endif %}
 <!-- /html::body() -->
 {%- endmacro body %}
