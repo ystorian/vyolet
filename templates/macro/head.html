@@ -1,4 +1,4 @@
-{% macro head() %}
+{%- macro head() %}
 <!-- head::head() - {{ head::local_time() }} -->
 {%- set cachebust = true %}
 {%- if config.mode == 'serve' %}{% set cachebust = false %}{% endif %}
@@ -61,7 +61,7 @@
 	{#- Feed #}
 	{{- head::feed() }}
 </head><!-- /head::head -->
-{% endmacro head %}
+{%- endmacro head %}
 
 
 
@@ -79,8 +79,7 @@
 {%- set title = config.title | default(value = '⚠️ No Title for this language') %}
 {%- if page.title %}
 	{%- set title = title ~ ' &middot; ' ~ page.title %}
-{%- endif %}
-{%- if head::is_404() %}
+{%- elif head::is_404() %}
 	{%- set title = '⚠️ Page not found' %}
 {%- endif %}
 {{- title | safe }}
@@ -94,9 +93,14 @@
 
 
 {%- macro index() %}
-{%- if head::is_preview() or head::is_404() %}
+{%- if head::is_preview() %}
 	<!-- Build: Preview -->
 	<meta name="robots" content="noindex,nofollow">
+{%- elif head::is_404() %}
+	<!-- Build: 404 -->
+	<meta name="robots" content="noindex,nofollow">
+{%- elif config.mode == 'serve' %}
+	<!-- Build: Serve -->
 {%- else %}
 	<!-- Build: Production -->
 {%- endif %}
@@ -138,12 +142,10 @@
 
 
 {%- macro is_404() %}
-{%- if current_path is undefined -%}
+{%- if current_path is undefined %}
 	true
-{%- else %}
-	{%- if current_path is defined and current_path is ending_with('404/') -%}
-		true
-	{%- endif %}
+{%- elif current_path is defined and current_path is ending_with('404/') %}
+	true
 {%- endif %}
 {%- endmacro is_404 %}
 
