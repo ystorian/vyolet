@@ -1,20 +1,32 @@
 {%- macro navbar(padding=true, is_hero=true) %}
 {#- If padding is true: use the "section" class to add padding below the navbar #}
-<!-- navbar::navbar() -->
-{%- if is_hero == false %}
-<div class="is-fixed-top-placeholder"></div>
-{%- endif %}
-<header class="header is-unselectable">
+{%- set padding_string = 'no padding' %}
 {%- if padding %}
-<section class="section">
-{%- endif %}
-{%- if is_hero %}
-<nav class="navbar is-hoverable" aria-label="main navigation">
-{%- else %}
-<nav class="navbar is-fixed-top is-hoverable has-shadow" aria-label="main navigation">
+{%- set padding_string = 'with padding' %}
 {%- endif %}
 
-<!-- navbar-brand -->
+{#- If is_hero is true: use the "is-fixed-top" class to make the navbar fixed #}
+{%- set is_hero_string = 'not hero' %}
+{%- set navbar_class = 'is-fixed-top has-shadow' %}
+{%- if is_hero %}
+{%- set is_hero_string = 'is hero' %}
+{%- set navbar_class = '' %}
+{%- endif %}
+
+{{- html::macro(macro = 'navbar::navbar( ' ~ padding_string ~ ', ' ~ is_hero_string ~ ' )') }}
+
+{%- if is_hero != true %}
+<div class="is-fixed-top-placeholder"></div>
+{%- endif %}
+
+<header class="header is-unselectable">
+
+{%- if padding %}
+<section class="section"><!-- {{ padding_string }} -->
+{%- endif %}
+
+<nav class="navbar is-hoverable {{ navbar_class }}" aria-label="main navigation">
+
 <div class="navbar-brand">
 	<a class="navbar-item" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
 		{{- image::logotype(width = 128) }}
@@ -22,11 +34,9 @@
 	{{ navbar::burger() }}
 </div><!-- /navbar-brand -->
 
-<!-- navbar-menu -->
 <div id="navbarMenu" class="navbar-menu">
 	{{ navbar::menu_items() }}
 	{{ navbar::search() }}
-	<!-- navbar-end -->
 	<div class="navbar-end">
 	{{ language::navbar_dropdown() }}
 	{{ navbar::buttons() }}
