@@ -14,23 +14,23 @@
 
 
 {%- macro icon(icon='error') %}
+{{- html::macro(macro = 'image::icon(' ~ icon ~ ')') }}
 {%- set svg_data = load_data(path = 'icon/' ~ icon ~ '.svg', required=false) %}
 {%- if not svg_data %}
 {%- set svg_data = load_data(path = 'icon/error.svg') %}
 {%- endif %}
-<!-- image::icon({{ icon }}) -->
 <span class="svg-icon">
 {{ svg_data | trim | safe}}
 </span><!-- /svg-icon -->
-<!-- /image::icon -->
+{{- html::endmacro(macro = 'image::icon') }}
 {%- endmacro icon %}
 
 
 {%- macro svg(image='not_found') %}
+{{- html::macro(macro = 'image::svg(' ~ image ~ ')') }}
 {%- set svg = load_data(path = 'image/' ~ image ~ '.svg') %}
-<!-- image::svg({{ image }}) -->
 {{ svg | trim | safe}}
-<!-- /image::svg -->
+{{- html::endmacro(macro = 'image::svg') }}
 {%- endmacro svg %}
 
 {# This macro is not used #}

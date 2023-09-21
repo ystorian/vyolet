@@ -1,5 +1,7 @@
 {% extends 'taxonomy_single.html' %}
 
 {%- block content %}
+{{- html::block(block = 'tags/single.html/content') }}
 {{ super() }}
+{{- html::endblock(block = 'tags/single.html/content') }}
 {%- endblock content %}

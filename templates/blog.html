@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% import 'macro/blog.html' as blog %}
 
-{%- block content %}
-<!-- blog.html/content -->
+{% block content %}
+{{- html::block(block = 'blog content') }}
 <div class="columns">
 	<div class="column is-3">
 		<aside class="menu is-hidden-mobile">
@@ -26,5 +26,5 @@
 		</div><!-- /container -->
 	</div><!-- /column is-9 -->
 </div><!-- /columns -->
-<!-- /blog.html/content -->
-{%- endblock content %}
+{{- html::endblock(block = 'blog content') }}
+{% endblock content %}

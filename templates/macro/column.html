@@ -1,5 +1,5 @@
 {%- macro toc() %}
-<!-- column::toc() -->
+{{- html::macro(macro = 'column::toc') }}
 {%- if page.toc %}
 {%- if page.extra.toc is defined and page.extra.toc == false %}
 <!-- extra.toc set to false in front matter -->
@@ -22,12 +22,12 @@
 </aside><!-- /menu -->
 {%- endif %}
 {%- endif %}
-<!-- /column::toc -->
+{{- html::endmacro(macro = 'column::toc') }}
 {%- endmacro toc %}
 
 
 {%- macro translation_notice() %}
-<!-- column::translation_notice() -->
+{{- html::macro(macro = 'column::translation_notice') }}
 {%- if lang != config.default_language and page::has_content() %}
 {%- if page.extra.translation.notice is defined and page.extra.translation.notice == false %}
 <!-- extra.translation.notice set to false in front matter -->
@@ -40,5 +40,5 @@
 </aside>
 {%- endif %}
 {%- endif %}
-<!-- /column::translation_notice -->
+{{- html::endmacro(macro = 'column::translation_notice') }}
 {%- endmacro translation_notice %}

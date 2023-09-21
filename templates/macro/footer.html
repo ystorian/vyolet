@@ -1,5 +1,5 @@
 {%- macro footer() %}
-<!-- footer::footer() -->
+{{- html::macro(macro = 'footer::footer') }}
 <footer class="footer is-unselectable">
 <div class="columns is-flex-direction-row-reverse">
 
@@ -11,12 +11,12 @@
 
 </div><!-- /columns -->
 </footer>
-<!-- /footer::footer -->
+{{- html::endmacro(macro = 'footer::footer') }}
 {%- endmacro footer %}
 
 
 {%- macro main_column() %}
-<!-- footer::main_column() -->
+{{- html::macro(macro = 'footer::main_column') }}
 <div class="column">
 <p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
 {{ image::logotype(header = false) }}
@@ -24,12 +24,12 @@
 <p class="has-text-centered-mobile has-text-weight-light is-size-6 mt-1">{{ head::description() }}</p>
 <p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key = 'made', lang = lang) }}</p>
 </div><!-- /column -->
-<!-- /footer::main_column -->
+{{- html::endmacro(macro = 'footer::main_column') }}
 {%- endmacro main_column %}
 
 
 {%- macro left_column() %}
-<!-- footer::left_column() -->
+{{- html::macro(macro = 'footer::left_column') }}
 <div class="column">
 {%- if config.extra.left_column_label %}
 <p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.left_column_label, lang = lang) }}</p>
@@ -43,23 +43,33 @@
 <p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
 
 {%- if config.extra.linkedin %}
-<a href="https://www.linkedin.com/{{ config.extra.linkedin | safe }}" rel="me">{{ image::icon(icon = 'linkedin') }}</a>
+<a href="https://www.linkedin.com/{{ config.extra.linkedin | safe }}" rel="me">
+	{{- image::icon(icon = 'linkedin') }}
+</a>
 {%- endif %}
 
 {%- if config.extra.github %}
-<a href="https://github.com/{{ config.extra.github }}" rel="me">{{ image::icon(icon = 'github') }}</a>
+<a href="https://github.com/{{ config.extra.github }}" rel="me">
+	{{- image::icon(icon = 'github') }}
+</a>
 {%- endif %}
 
 {%- if config.extra.mastodon %}
-<a href="{{ config.extra.mastodon | safe }}" rel="me">{{ image::icon(icon = 'mastodon') }}</a>
+<a href="{{ config.extra.mastodon | safe }}" rel="me">
+	{{- image::icon(icon = 'mastodon') }}
+</a>
 {%- endif %}
 
 {%- if config.generate_feed %}
-<a href="{{ get_url(path = 'atom.xml') | safe }}">{{ image::icon(icon = 'rss') }} </a>
+<a href="{{ get_url(path = 'atom.xml') | safe }}">
+	{{- image::icon(icon = 'rss') }}
+</a>
 {%- endif %}
 
 {%- if config.extra.mailto %}
-<a href="mailto:{{ config.extra.mailto }}">{{ image::icon(icon = 'mail') }} </a>
+<a href="mailto:{{ config.extra.mailto }}">
+	{{- image::icon(icon = 'mail') }}
+</a>
 {%- endif %}
 
 </p>

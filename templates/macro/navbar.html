@@ -29,14 +29,16 @@
 	{{ navbar::languages() }}
 	{{ navbar::buttons() }}
 	</div><!-- /navbar-end -->
-</div><!-- /navbar-menu -->
+</div>
 
-</nav>
+</nav><!-- /navbar {{ navbar_class }} -->
+
 {%- if padding %}
-</section>
+</section><!-- /{{ padding_string }} -->
 {%- endif %}
+
 </header>
-<!-- /navbar::navbar -->
+{{- html::endmacro(macro = 'navbar::navbar') }}
 {%- endmacro navbar %}
 
 
@@ -50,16 +52,16 @@
 
 
 {%- macro burger() %}
-<!-- navbar::burger() -->
+{{- html::macro(macro = 'navbar::burger') }}
 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
 	data-target="navbarMenu"><span aria-hidden="true"></span>
 	<span aria-hidden="true"></span><span aria-hidden="true"></span></a>
-<!-- /navbar::burger -->
+{{- html::endmacro(macro = 'navbar::burger') }}
 {%- endmacro burger %}
 
 
 {%- macro menu_items() %}
-<!-- navbar::menu_items() -->
+{{- html::macro(macro = 'navbar::menu_items') }}
 <div class="navbar-start">
 	{%- if config.extra.navbar_menu %}
 	{%- for item in config.extra.navbar_menu %}
@@ -71,23 +73,23 @@
 	{%- endfor %}
 	{%- endif %}
 </div><!-- /navbar-start -->
-<!-- /navbar::menu_items -->
+{{- html::endmacro(macro = 'navbar::menu_items') }}
 {%- endmacro menu_items %}
 
 
 {%- macro search() %}
+{{- html::macro(macro = 'navbar::search') }}
 {%- if config.build_search_index %}
-<!-- navbar::search() -->
 <div class="navbar-item search-container js-only">
 	<input class="input" id="search" type="search" placeholder="Search">
 	<div class="search-results box">
 		<div class="search-results__items"></div>
 	</div><!-- /search-results -->
 </div><!-- /search-container -->
-<!-- /navbar::search -->
 {%- else %}
-<!-- navbar::search() (disabled since build_search_index is not set) -->
+<!--	[disabled] -->
 {%- endif %}
+{{- html::endmacro(macro = 'navbar::search') }}
 {%- endmacro search %}
 
 
@@ -97,8 +99,8 @@
 
 
 {%- macro buttons() %}
+{{- html::macro(macro = 'navbar::buttons') }}
 {%- if config.extra.navbar_buttons %}
-<!-- navbar::buttons() -->
 {%- for item in config.extra.navbar_buttons %}
 	{%- set class = 'button' %}
 	{%- if item.primary == true %}
@@ -114,9 +116,9 @@
 			</button>
 		</div><!-- /buttons -->
 	</div><!-- /navbar-item -->
-	<!-- /navbar::button -->
 {%- endfor %}
 {%- else %}
-<!-- navbar::buttons() [disabled] -->
+<!--	[disabled] -->
 {%- endif %}
+{{- html::endmacro(macro = 'navbar::buttons') }}
 {%- endmacro buttons %}

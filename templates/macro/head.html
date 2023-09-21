@@ -1,5 +1,6 @@
 {%- macro head() %}
-<!-- head::head() - {{ head::local_time() }} -->
+{{- html::macro(macro = 'head::head') }}
+<!-- {{ head::local_time() }} -->
 {%- set cachebust = true %}
 {%- if config.mode == 'serve' %}{% set cachebust = false %}{% endif %}
 <head>
@@ -47,20 +48,21 @@
 	{#- Scripts #}
 	<script src="{{ get_url(path = 'js/vyolet.js', cachebust = cachebust) }}"></script>
 
-	{#- Plausible #}
+	{# Plausible #}
 	{{- js::plausible() -}}
 
-	{#- Javascript and meta for the 404 page #}
+	{# Javascript and meta for the 404 page #}
 	{%- if head::is_404() %}
 		{{- js::show_native() }}
 	{%- endif %}
 
-	{#- Ask robots to index the site only on production #}
+	{# Ask robots to index the site only on production #}
 	{{- head::index() }}
 
 	{#- Feed #}
 	{{- head::feed() }}
-</head><!-- /head::head -->
+</head>
+{{- html::endmacro(macro = 'head::head') }}
 {%- endmacro head %}
 
 
@@ -93,17 +95,19 @@
 
 
 {%- macro index() %}
+{{- html::macro(macro = 'head::index') }}
 {%- if head::is_preview() %}
-	<!-- Build: Preview -->
+<!--	Build: Preview -->
 	<meta name="robots" content="noindex,nofollow">
 {%- elif head::is_404() %}
-	<!-- Build: 404 -->
+<!--	Build: 404 -->
 	<meta name="robots" content="noindex,nofollow">
 {%- elif config.mode == 'serve' %}
-	<!-- Build: Serve -->
+<!--	Build: Serve -->
 {%- else %}
-	<!-- Build: Production -->
+<!--	Build: Production -->
 {%- endif %}
+{{- html::endmacro(macro = 'head::index') }}
 {%- endmacro index %}
 
 

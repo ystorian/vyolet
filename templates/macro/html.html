@@ -1,16 +1,40 @@
 {%- macro comment(comment) %}
 <!-- ####################################################################### -->
-<!-- ##	{{ comment }} -->
+<!-- ##	{{ comment | safe }} -->
 <!-- ####################################################################### -->
-{%- endmacro %}
+{%- endmacro comment %}
+
+
+{%- macro block(block) %}
+<!-- ####################################################################### -->
+<!-- 🅱🅻🅾🅲🅺 {{ block | safe }} -->
+
+{%- endmacro block %}
+
+
+{%- macro endblock(block) %}
+<!-- 🄱🄻🄾🄲🄺 {{ block | safe }} -->
+<!-- ####################################################################### -->
+
+{%- endmacro endblock %}
+
+
+{%- macro macro(macro) %}
+<!-- 🅼 {{ macro | safe }} -->
+{%- endmacro macro %}
+
+
+{%- macro endmacro(macro) %}
+<!-- 🄼 {{ macro | safe }} -->
+{%- endmacro endmacro %}
 
 
 {%- macro body(class='has-navbar-fixed-top') %}
-<!-- html::body() -->
+{{- html::macro(macro = 'html::body') }}
 {%- if class != '' %}
 <body class="{{ class }}">
 {%- else %}
 <body>
 {%- endif %}
-<!-- /html::body() -->
+{{- html::endmacro(macro = 'html::body') }}
 {%- endmacro body %}

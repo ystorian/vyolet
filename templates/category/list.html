@@ -24,5 +24,7 @@
 {% extends 'taxonomy_list.html' %}
 
 {%- block content %}
+{{- html::block(block = 'category/list.html/content') }}
 {{ super() }}
+{{- html::endblock(block = 'category/list.html/content') }}
 {%- endblock content %}

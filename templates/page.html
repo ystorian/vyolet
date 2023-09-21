@@ -4,7 +4,7 @@
 
 
 {%- block content %}
-<!-- page.html/content -->
+{{- html::block(block = 'page.html/content') }}
 {%- if blog::is_blog() == true %}
 <div class="card">
 	<div class="card-content">
@@ -67,5 +67,5 @@
 	</div><!-- /column is-one-fifth -->
 </div><!-- /content -->
 {%- endif %}
-<!-- /page.html/content -->
+{{- html::endblock(block = 'page.html/content') }}
 {%- endblock content %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {%- block content %}
-<!-- index.html/content -->
+{{- html::block(block = 'index.html/content') }}
 <div class="card article">
 	<div class="card-content">
 		<div class="content article-body">
@@ -11,5 +11,5 @@
 	{%- block page_footer %}
 	{%- endblock page_footer %}
 </div><!-- /card -->
-<!-- /index.html/content -->
+{{- html::endblock(block = 'index.html/content') }}
 {%- endblock content %}

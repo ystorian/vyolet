@@ -4,32 +4,40 @@
 <html lang="{{ lang }}">
 {{- head::head() }}
 
-{{ html::comment(comment = 'Body') }}
-
-<!-- base.html/body -->
-<body class="has-navbar-fixed-top">
+{% block body %}
+{{- html::block(block = 'base.html/body') }}
+{{- html::body() }}
+{{- html::endblock(block = 'base.html/body') }}
+{% endblock body %}
 
 
 {% block navbar %}
-{{ navbar::navbar() }}
+{{- html::block(block = 'base.html/navbar') }}
+{{- navbar::navbar(padding=true, is_hero=false) }}
+{{- html::endblock(block = 'base.html/navbar') }}
 {% endblock navbar %}
 
 {{ html::comment(comment = 'Main') }}
 
-<!-- base.html/main -->
-<main>
-	{% block content %}
-	{% endblock content %}
+<main><!-- base.html/main -->
+
+{% block content %}
+{{- html::block(block = 'base.html/content') }}
+{{- html::endblock(block = 'base.html/content') }}
+{% endblock content %}
+
 </main><!-- /base.html/main -->
 
-{{ html::comment(comment = 'Footer') }}
-
+{% block footer %}
+{{- html::block(block = 'base.html/footer') }}
 {{ footer::footer() }}
+{{- html::endblock(block = 'base.html/footer') }}
+{% endblock footer %}
 
 </body><!-- /base.html/body -->
 </html><!-- /base.html/html -->
 
-{% if config.mode | lower == 'serve' %}
+{%- if config.mode | lower == 'serve' %}
 {{ html::comment(comment = 'Tera context') }}
 <!-- {{ __tera_context }} -->
-{% endif %}
+{%- endif %}

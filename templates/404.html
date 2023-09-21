@@ -3,14 +3,14 @@
 
 {# Navbar without padding #}
 {% block navbar %}
-<!-- 404.html/navbar -->
-{{ navbar::navbar(padding=false) }}
-<!-- /404.html/navbar -->
+{{- html::block(block = '404.html/navbar') }}
+{{- navbar::navbar(padding=false) }}
+{{- html::endblock(block = '404.html/navbar') }}
 {% endblock navbar %}
 
 
 {% block content %}
-<!-- 404.html/content -->
+{{- html::block(block = '404.html/content') }}
 <section class="hero is-large">
 	<div class="hero-body">
 		<div class="container">
@@ -35,5 +35,5 @@
 		</div><!-- /container -->
 	</div><!-- /hero-body -->
 </section><!-- /hero -->
-<!-- /404.html/content -->
+{{- html::endblock(block = '404.html/content') }}
 {% endblock content %}

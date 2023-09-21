@@ -27,6 +27,7 @@
 
 {# This macro is not used #}
 {%- macro language_switcher() %}
+{{- html::macro(macro = 'language::language_switcher') }}
 {%- set languages = 1 %}
 {%- for language_name, language in config.languages %}
 	{%- set_global languages = languages + 1 %}
@@ -42,4 +43,5 @@
 	</div>
 </div>
 {%- endif %}
+{{- html::endmacro(macro = 'language::language_switcher') }}
 {%- endmacro language_switcher %}
