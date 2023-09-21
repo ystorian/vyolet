@@ -19,7 +19,7 @@
 {{- html::macro(macro = 'footer::main_column') }}
 <div class="column">
 <p class="has-text-centered-mobile is-size-3 is-size-1-mobile">
-{{ image::logotype(header = false) }}
+{{ image::logotype(width = 256) }}
 </p>
 <p class="has-text-centered-mobile has-text-weight-light is-size-6 mt-1">{{ head::description() }}</p>
 <p class="has-text-centered-mobile is-size-7 mt-4">{{ trans(key = 'made', lang = lang) }}</p>
@@ -74,12 +74,12 @@
 
 </p>
 </div><!-- /column -->
-<!-- /footer::left_column -->
+{{- html::endmacro(macro = 'footer::left_column') }}
 {%- endmacro left_column %}
 
 
 {%- macro middle_column() %}
-<!-- footer::middle_column() -->
+{{- html::macro(macro = 'footer::middle_column') }}
 <div class="column">
 	{%- if config.extra.middle_column_label %}
 	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.middle_column_label, lang = lang) }}</p>
@@ -94,12 +94,12 @@
 	</ul>
 	{%- endif %}
 </div>
-<!-- /footer::middle_column() -->
+{{- html::endmacro(macro = 'footer::middle_column') }}
 {%- endmacro middle_column %}
 
 
 {%- macro right_column() %}
-<!-- footer::right_column() -->
+{{- html::macro(macro = 'footer::right_column') }}
 <div class="column">
 	{%- if config.extra.right_column_label %}
 	<p class="{{ footer::menu_label() }}">{{ trans(key = config.extra.right_column_label, lang = lang) }}</p>
@@ -114,7 +114,7 @@
 	</ul>
 	{%- endif %}
 </div>
-<!-- /footer::right_column -->
+{{- html::endmacro(macro = 'footer::right_column') }}
 {%- endmacro right_column %}
 
 

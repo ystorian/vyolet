@@ -16,7 +16,9 @@
 
 <!-- navbar-brand -->
 <div class="navbar-brand">
-	{{ navbar::logo() }}
+	<a class="navbar-item" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
+		{{- image::logotype(width = 128) }}
+	</a>
 	{{ navbar::burger() }}
 </div><!-- /navbar-brand -->
 
@@ -40,15 +42,6 @@
 </header>
 {{- html::endmacro(macro = 'navbar::navbar') }}
 {%- endmacro navbar %}
-
-
-
-{%- macro logo() %}
-<!-- navbar::logo() -->
-<a class="navbar-item" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
-	{{ image::logotype(header = true) }}</a>
-<!-- /navbar::logo -->
-{%- endmacro logo %}
 
 
 {%- macro burger() %}
