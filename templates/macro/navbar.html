@@ -28,7 +28,7 @@
 	{{ navbar::search() }}
 	<!-- navbar-end -->
 	<div class="navbar-end">
-	{{ navbar::languages() }}
+	{{ language::navbar_dropdown() }}
 	{{ navbar::buttons() }}
 	</div><!-- /navbar-end -->
 </div>
@@ -84,11 +84,6 @@
 {%- endif %}
 {{- html::endmacro(macro = 'navbar::search') }}
 {%- endmacro search %}
-
-
-{%- macro languages() %}
-{{ language::selector() }}
-{%- endmacro languages %}
 
 
 {%- macro buttons() %}

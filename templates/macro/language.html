@@ -1,28 +1,35 @@
-{%- macro selector() %}
+{%- macro navbar_dropdown() %}
+{{- html::macro(macro = 'language::navbar_dropdown') }}
 {%- if config.extra.header_languages is defined %}
 {%- set url = current_path | default(value = '') %}
 {%- set url = url | replace(from = lang ~ '/', to = '') | trim_start_matches(pat='/')%}
 {%- endif %}
-<!-- language::selector()
+<!--
 	current_path: {{ current_path | default(value = '') | safe }}
 	url: {{ url | safe }}
 -->
 <div class="navbar-item has-dropdown is-hoverable">
-	<a class="navbar-link is-arrowless is-hidden-mobile" href="">{{- image::icon(icon = 'globe') -}} {{ lang }}</a>
+	<a class="navbar-link is-arrowless is-hidden-mobile" href="">
+		{{- image::icon(icon = 'globe') }}
+		{{ lang }}
+	</a>
 	<div class="navbar-dropdown is-boxed is-right">
-	<hr class="navbar-divider is-hidden-tablet">
-	<div class="navbar-item is-hidden-tablet is-info">
-		{{- image::icon(icon = 'globe') -}} Language
-	</div>
-	{%- for language in config.extra.header_languages %}
-		{%- set active = '' %}
-		{%- if language.lang == lang %}{% set active = ' is-active' %}{% endif %}
-		<a class="navbar-item{{ active }}" href="{{ get_url(path = url, lang = language.lang, trailing_slash = false) }}">{{ language.name }}</a>
-	{%- endfor %}
+		<hr class="navbar-divider is-hidden-tablet">
+		<div class="navbar-item is-hidden-tablet is-info">
+			{{- image::icon(icon = 'globe') }}
+			Language
+		</div><!-- /navbar-item -->
+{%- for language in config.extra.header_languages %}
+	{%- set active = '' %}
+	{%- if language.lang == lang %}
+	{%- set active = ' is-active' %}
+	{%- endif %}
+	<a class="navbar-item{{ active }}" href="{{ get_url(path = url, lang = language.lang, trailing_slash = false) }}">{{ language.name }}</a>
+{%- endfor %}
 	</div><!-- /navbar-dropdown -->
 </div><!-- /navbar-item -->
-<!-- /language::selector() -->
-{%- endmacro selector %}
+{{- html::endmacro(macro = 'language::navbar_dropdown') }}
+{%- endmacro navbar_dropdown %}
 
 
 {# This macro is not used #}
