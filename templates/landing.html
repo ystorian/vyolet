@@ -14,9 +14,9 @@
 
 {%- block content %}
 {{- html::block(block = 'landing.html/content') }}
-<section class="hero is-fullwidth is-fullheight is-overlay has-background">
+<section class="hero is-halfwidth is-fullheight has-background-hexagon">
 	<!-- TODO: #1 Add a CSS class for non-draggable background images -->
-	<img alt="" class="hero-background is-transparent is-unselectable" draggable="false" src="{{ get_url(path = 'image/background-stretched-square.svg') }}" />
+	<!-- <img alt="" class="hero-background is-transparent is-unselectable" draggable="false" src="{{ get_url(path = 'image/background-stretched-square.svg') }}" /> -->
 	<!-- Hero head: will stick at the top -->
 	<div class="hero-head">
 		{{ navbar::navbar(padding=false, is_hero=true) }}
