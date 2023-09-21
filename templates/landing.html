@@ -1,51 +1,55 @@
 {% extends 'base.html' %}
 
-{% block body %}
-{{ html::comment(comment = 'Landing body block') }}
-{{ html::body(class = '') }}
-{% endblock body %}
+{%- block body %}
+{{- html::block(block = 'landing.html/body') }}
+{{- html::body(class = '') }}
+{{- html::endblock(block = 'landing.html/body') }}
+{%- endblock body %}
 
-{% block content %}
-<!-- landing.html/content -->
+{%- block navbar %}
+{{- html::block(block = 'landing.html/navbar') }}
+<!-- [No default navbar] -->
+{{- html::endblock(block = 'landing.html/navbar') }}
+{%- endblock navbar %}
+
+{%- block content %}
+{{- html::block(block = 'landing.html/content') }}
 <section class="hero is-fullwidth is-fullheight is-overlay has-background">
 	<!-- TODO: #1 Add a CSS class for non-draggable background images -->
 	<img alt="" class="hero-background is-transparent is-unselectable" draggable="false" src="{{ get_url(path = 'image/background-stretched-square.svg') }}" />
 	<!-- Hero head: will stick at the top -->
 	<div class="hero-head">
-		{% block navbar %}
-		{{ html::comment(comment = 'Landing navbar block') }}
 		{{ navbar::navbar(padding=false, is_hero=true) }}
-		{% endblock navbar %}
-
-	</div>
+	</div><!-- /hero-head -->
 
 	<!-- Hero content: will be in the middle -->
 	<div class="hero-body">
 		<div class="container">
-			<p class="title">{{ head::title() }}</p>
-			<div class="content article-body">
-			{%- if section.title %}
-			{{ section.title | safe }}
-			{%- endif %}
-			{%- if section.content %}
-			{{ section.content | safe }}
-			{%- endif %}
-			</div><!-- /content -->
-
+			<p class="hero-title">{{ head::title() }}</p>
+			<p class="hero-subtitle">{{ head::description() }}</p>
 		</div><!-- /container -->
 	</div><!-- /hero-body -->
 
 	<!-- Hero footer: will stick at the bottom -->
-	<div class="hero-foot">
-		{% block footer %}
+	{# <div class="hero-foot">
 		{{ html::comment(comment = 'Landing footer block') }}
 		{{ footer::footer() }}
-		{% endblock footer %}
-	</div>
-</section><!-- /hero is-fullwidth is-overlay has-background -->
-<!-- /landing.html/content -->
-{% endblock content %}
+	</div> #}
+	<section class="content mb-6 mx-6">
 
-{% block basefooter %}
-<!-- No base footer -->
-{% endblock basefooter %}
+		<div class="content article-body">
+			{%- if section.title %}
+			<!-- section.title -->
+			{{ section.title | safe }}
+			<!-- /section.title -->
+			{%- endif %}
+			{%- if section.content %}
+			<!-- section.title -->
+			{{ section.content | safe }}
+			{%- endif %}
+		</div><!-- /content article-body -->
+
+	</section><!-- /content -->
+</section><!-- /hero is-fullwidth is-overlay has-background -->
+{{- html::endblock(block = 'landing.html/content') }}
+{%- endblock content %}
