@@ -37,10 +37,10 @@ $menu-label: $vyolet-light;
 // Set the primary color to the main theme color.
 $primary: $vyolet-main;
 
-// TODO: Fix the navbar height.
+// Fix the navbar height.
 // This may fix https://github.com/ystorian/vyolet/issues/2
 // See https://github.com/jgthms/bulma/issues/3655
-// $navbar-height: 3.5rem !default;
+$navbar-height: 3.5rem;
 
 // Reduce the navbar breakpoint to smaller screens.
 //	Default is $desktop (1024px).
