@@ -46,7 +46,7 @@
 	{{- head::syntax_highlight() }}
 
 	{#- Scripts #}
-	<script src="{{ get_url(path = 'js/vyolet.js', cachebust = cachebust) }}"></script>
+	<script defer src="{{ get_url(path = 'js/vyolet.js', cachebust = cachebust) }}"></script>
 
 	{# Plausible #}
 	{{- js::plausible() -}}
