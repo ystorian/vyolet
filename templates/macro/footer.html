@@ -43,31 +43,31 @@
 <p class="is-size-4 is-size-3-mobile has-text-centered-mobile">
 
 {%- if config.extra.linkedin %}
-<a href="https://www.linkedin.com/{{ config.extra.linkedin | safe }}" rel="me">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/{{ config.extra.linkedin | safe }}" rel="me">
 	{{- image::icon(icon = 'linkedin') }}
 </a>
 {%- endif %}
 
 {%- if config.extra.github %}
-<a href="https://github.com/{{ config.extra.github }}" rel="me">
+<a aria-label="GitHub" href="https://github.com/{{ config.extra.github }}" rel="me">
 	{{- image::icon(icon = 'github') }}
 </a>
 {%- endif %}
 
 {%- if config.extra.mastodon %}
-<a href="{{ config.extra.mastodon | safe }}" rel="me">
+<a aria-label="Mastodon" href="{{ config.extra.mastodon | safe }}" rel="me">
 	{{- image::icon(icon = 'mastodon') }}
 </a>
 {%- endif %}
 
 {%- if config.generate_feed %}
-<a href="{{ get_url(path = 'atom.xml') | safe }}">
+<a aria-label="RSS" href="{{ get_url(path = 'atom.xml') | safe }}">
 	{{- image::icon(icon = 'rss') }}
 </a>
 {%- endif %}
 
 {%- if config.extra.mailto %}
-<a href="mailto:{{ config.extra.mailto }}">
+<a aria-label="Email" href="mailto:{{ config.extra.mailto }}">
 	{{- image::icon(icon = 'mail') }}
 </a>
 {%- endif %}
