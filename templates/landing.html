@@ -15,8 +15,6 @@
 {%- block content %}
 {{- html::block(block = 'landing.html/content') }}
 <section class="hero is-halfwidth is-fullheight has-background-hexagon">
-	<!-- TODO: #1 Add a CSS class for non-draggable background images -->
-	<!-- <img alt="" class="hero-background is-transparent is-unselectable" draggable="false" src="{{ get_url(path = 'image/background-stretched-square.svg') }}" /> -->
 	<!-- Hero head: will stick at the top -->
 	<div class="hero-head">
 		{{ navbar::navbar(padding=false, is_hero=true) }}
@@ -24,7 +22,7 @@
 
 	<!-- Hero content: will be in the middle -->
 	<div class="hero-body">
-		<div class="container">
+		<div class="container has-text-centered">
 			<p class="hero-title">{{ head::title() }}</p>
 			<p class="hero-subtitle">{{ head::description() }}</p>
 		</div><!-- /container -->
@@ -43,12 +41,14 @@
 			{{ section.title | safe }}
 			<!-- /section.title -->
 			{%- endif %}
-			{%- if section.content %}
-			<!-- section.title -->
-			{{ section.content | safe }}
-			{%- endif %}
 		</div><!-- /content article-body -->
-
+		<div class="columns is-centered">
+			<div class="column is-two-thirds">
+				{%- if section.content %}
+				{{ section.content | safe }}
+				{%- endif %}
+			</div><!-- /column is-half -->
+		</div><!-- /columns is-centered -->
 	</section><!-- /content -->
 </section><!-- /hero is-fullwidth is-overlay has-background -->
 {{- html::endblock(block = 'landing.html/content') }}
