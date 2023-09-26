@@ -68,8 +68,8 @@ taxonomies = "on"
 # Theme version.
 version = "0.1.1"
 # OpenGraph.
-# Image must be at least 1200x630.
-og_image = "vyolet-opengraph-1200x630.png"
+# Image must be at least 1200x630 and is stored in `static/image`.
+og_image = "opengraph.png"
 # Analytics.
 plausible_data_domain = "ystorian.com/vyolet"
 # plausible_script_path = "https://plausible.io/js/script.js"
