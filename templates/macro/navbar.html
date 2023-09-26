@@ -28,7 +28,7 @@
 <nav class="navbar is-hoverable {{ navbar_class }}" aria-label="main navigation">
 
 <div class="navbar-brand">
-	<a class="navbar-item" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
+	<a class="navbar-item" aria-label="home" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
 		{{- image::logotype(width = 128) }}
 	</a>
 	{{ navbar::burger() }}
