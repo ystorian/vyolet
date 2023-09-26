@@ -4,13 +4,14 @@
 	"language": "en",
 	"ignoreWords": [],
 	"ignorePaths": [
-		"vendor"
+		"vendor",
+		"*.inkscape.svg"
 	],
 	"words": [
 		"Bulma",
 		"Lucide",
 		"slugification",
-		"taplo",
+		"Taplo",
 		"Tera"
 	],
 	"overrides": [
