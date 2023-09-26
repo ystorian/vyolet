@@ -1,8 +1,7 @@
 {%- macro logotype(width=128) %}
 {{- html::macro(macro = 'image::logotype(' ~ width ~ ')') }}
-{%- set height = width / 4 %}
 {%- set svg = load_data(path = 'image/logotype.svg') %}
-{%- set svg = svg | replace(from = '<svg ', to = '<svg width=' ~ width ~ ' height=' ~ height ~ ' ') %}
+{%- set svg = svg | replace(from = '<svg ', to = '<svg width=' ~ width ~ ' ') %}
 <span class="logotype">
 {{ svg | trim | safe}}
 </span><!-- /logotype -->
