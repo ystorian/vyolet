@@ -21,6 +21,9 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+	{#- Prevent format autodetection #}
+	<meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no" />
+
 	{#- Description #}
 	<meta name="description" content="{{ head::description() }}" />
 	<meta property="og:description" content="{{ head::description() }}">
