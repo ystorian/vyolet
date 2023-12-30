@@ -29,7 +29,11 @@
 
 <div class="navbar-brand">
 	<a class="navbar-item" aria-label="home" href="{{ get_url(path = '/', lang = lang, trailing_slash = false) | safe }}">
+		{%- if is_hero == true %}
+		{# {{- image::logo(width = 64) }} #}
+		{%- else %}
 		{{- image::logotype(width = 128) }}
+		{%- endif %}
 	</a>
 	{{ navbar::burger() }}
 </div><!-- /navbar-brand -->
