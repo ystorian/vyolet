@@ -13,7 +13,8 @@
 		"oklch",
 		"slugification",
 		"Taplo",
-		"Tera"
+		"Tera",
+		"WCAG"
 	],
 	"overrides": [
 		{
