@@ -9,6 +9,17 @@
 {%- endmacro logotype %}
 
 
+{%- macro logo(width=32) %}
+{{- html::macro(macro = 'image::logo(' ~ width ~ ')') }}
+{%- set svg = load_data(path = 'image/logo.svg') %}
+{%- set svg = svg | replace(from = '<svg ', to = '<svg width=' ~ width ~ ' ') %}
+<span class="logo">
+{{ svg | trim | safe}}
+</span><!-- /logo -->
+{{- html::endmacro(macro = 'image::logo') }}
+{%- endmacro logo %}
+
+
 {%- macro icon(icon='error') %}
 {{- html::macro(macro = 'image::icon(' ~ icon ~ ')') }}
 {%- set svg_data = load_data(path = 'icon/' ~ icon ~ '.svg', required=false) %}
