@@ -1,3 +1,39 @@
+/* TODO
+// Redirect to the native language page.
+document.addEventListener('DOMContentLoaded', () => {
+
+	// Get the user's language from the browser.
+	// Since we don't support country specific language variants, we need only
+	// the first two characters (e.g., 'en' from 'en-US').
+	// Also ensure it's lowercase like our URLs.
+	const browser_language = navigator.language.substr(0, 2).toLowerCase();
+
+	// Get the language of the page.
+	const page_language = document.documentElement.lang;
+
+	// Get the user's language preference from local storage, if it exists.
+	const user_language = localStorage.getItem('language');
+
+	// If the language code of the browser is different from the language code
+	// of the page, redirect to the native language page.
+	if(browser_language !== page_language) {
+		const path = window.location.pathname.split('/');
+		path[1] = language_code;
+		// Test if the redirect is possible.
+		const xhr = new XMLHttpRequest();
+		xhr.open('HEAD', path.join('/'), true);
+		xhr.onreadystatechange = () => {
+			if(xhr.readyState === 4) {
+				if(xhr.status === 200) {
+					window.location.pathname = path.join('/');
+				}
+			}
+		};
+
+	}
+});
+*/
+
 // Activate the menu when clicking on the navbar burger.
 document.addEventListener('DOMContentLoaded', () => {
 
