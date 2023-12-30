@@ -65,6 +65,9 @@
 
 	{#- Feed #}
 	{{- head::feed() }}
+
+	{#- Structured data #}
+	{{- head::structured_data() }}
 </head>
 {{- html::endmacro(macro = 'head::head') }}
 {%- endmacro head %}
@@ -170,3 +173,18 @@
 	<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path = 'atom.xml') | safe }}">
 {%- endif %}
 {%- endmacro feed %}
+
+{%- macro structured_data() %}
+{{- html::macro(macro = 'head::structured_data') }}
+{%- if base_url is defined %}
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"url": "{{ base_url }}",
+			"logo": "{{ get_url(path = 'appicon/icon.svg') }}"
+		}
+	</script>
+{%- endif %}
+{{- html::endmacro(macro = 'head::structured_data') }}
+{%- endmacro structured_data %}
