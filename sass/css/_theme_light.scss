@@ -1,6 +1,16 @@
 // Light theme (default).
 @media (prefers-color-scheme:light) {
+	:root {
+		color-scheme: light;
+	}
+
+	html {
+		background-color: $vyolet-background-dark;
+	}
+
 	body {
 		color: $vyolet-text-dark;
+		background-color: $vyolet-background-light;
 	}
+
 }

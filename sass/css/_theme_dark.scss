@@ -2,7 +2,10 @@
 @media (prefers-color-scheme:dark) {
 	:root {
 		color-scheme: dark;
+	}
 
+	html {
+		background-color: $vyolet-background-dark;
 	}
 
 	body {
