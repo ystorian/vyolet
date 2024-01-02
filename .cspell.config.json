@@ -2,15 +2,22 @@
 	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
 	"version": "0.2",
 	"language": "en",
-	"ignoreWords": [],
+	"ignoreWords": [
+		"rsvg"
+	],
 	"ignorePaths": [
 		"vendor",
 		"*.inkscape.svg"
 	],
 	"words": [
 		"Bulma",
+		"Flavien",
+		"librsvg",
 		"Lucide",
 		"oklch",
+		"oxipng",
+		"rustfmt",
+		"Scheurer",
 		"slugification",
 		"Taplo",
 		"Tera",
