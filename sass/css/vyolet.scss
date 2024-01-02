@@ -121,9 +121,30 @@
 	color: $vyolet-text-light;
 }
 
+.hero h1,
+.hero h2,
+.hero h3,
+.hero h4,
+.hero h5,
+.hero h6,
+.hero li {
+	color: $vyolet-background-light;
+}
+
+.hero li::marker {
+	content: '';
+}
+
+.hero p {
+	color: $vyolet-text-light;
+}
+
+.hero strong {
+	color: $vyolet-background-light;
+}
 
 .hero-subtitle {
-	font-size: 5vw;
+	font-size: 3vw;
 	font-weight: 1000;
 	color: $vyolet-text-light;
 }
