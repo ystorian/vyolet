@@ -80,7 +80,7 @@
 
 
 {%- macro updated_time() %}
-{{- now(utc = true) | date(format = '%+') -}}
+{{- now(utc = true) | date(format = '%Y-%m-%dT%H:%M:%S') -}}
 {%- endmacro updated_time %}
 
 
